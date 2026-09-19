@@ -1,6 +1,6 @@
 import { client } from '@generated/artifactsmmo/client.gen';
 import { config } from '@/config';
-import { logger, payloadPreview } from '@/util/logger';
+import { httpMessage, logger, payloadPreview } from '@/util/logger';
 
 // Configures the generated ArtifactsMMO client and re-exports the typed
 // per-operation stubs. Import stubs from this module, not from @generated
@@ -16,6 +16,11 @@ client.setConfig({
 // so the token stays out of the logs).
 const log = logger.child({ scope: 'artifacts' });
 const startedAt = new WeakMap<Request, number>();
+const BODY_PREVIEW_MAX = 2000;
+
+// Correlates the request/response wire dumps of one upstream exchange.
+const exchangeIds = new WeakMap<Request, number>();
+let exchangeSeq = 0;
 
 const pathOf = (request: Request) => {
     const url = new URL(request.url);
@@ -25,8 +30,17 @@ const pathOf = (request: Request) => {
 client.interceptors.request.use(async (request) => {
     startedAt.set(request, performance.now());
     if (log.isLevelEnabled('debug')) {
+        const id = ++exchangeSeq;
+        exchangeIds.set(request, id);
         const body = request.body ? await request.clone().text() : '';
-        log.debug(`→ ${request.method} ${pathOf(request)}${body ? ` ${payloadPreview(body)}` : ''}`);
+        logger.debug(httpMessage(
+            'Request',
+            `api-${id}`,
+            `${request.method} ${pathOf(request)}`,
+            `${request.method} ${pathOf(request)} HTTP/1.1`,
+            request.headers,
+            payloadPreview(body, BODY_PREVIEW_MAX),
+        ));
     }
     return request;
 });
@@ -41,10 +55,15 @@ client.interceptors.response.use(async (response, request) => {
         log.warn(line);
     }
     if (log.isLevelEnabled('debug')) {
-        const body = payloadPreview(await response.clone().text());
-        if (body) {
-            log.debug(`← ${request.method} ${pathOf(request)} ${body}`);
-        }
+        const body = payloadPreview(await response.clone().text(), BODY_PREVIEW_MAX);
+        logger.debug(httpMessage(
+            'Response',
+            `api-${exchangeIds.get(request) ?? '?'}`,
+            `${request.method} ${pathOf(request)}`,
+            `HTTP/1.1 ${response.status} ${response.statusText}`.trimEnd(),
+            response.headers,
+            body,
+        ));
     }
     return response;
 });

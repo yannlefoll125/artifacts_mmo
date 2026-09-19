@@ -6,7 +6,8 @@ import {
     getServerDetailsGet, type MyCharactersListSchema
 } from '@/api/client';
 import {MyCharacters} from "@/adapters/myCharacters";
-import {logger, payloadPreview} from '@/util/logger';
+import {STATUS_CODES} from 'node:http';
+import {httpMessage, logger, payloadPreview} from '@/util/logger';
 
 export function buildServer() {
     const server = Fastify({
@@ -22,15 +23,30 @@ export function buildServer() {
         );
     });
 
-    // Payload logging, opt-in via LOG_LEVEL=debug.
+    // Jetty-style wire dumps, opt-in via LOG_LEVEL=debug.
+    const BODY_PREVIEW_MAX = 2000;
     server.addHook('preHandler', async (request) => {
-        if (logger.isLevelEnabled('debug') && request.body != null) {
-            request.log.debug(`→ ${request.method} ${request.url} ${payloadPreview(request.body)}`);
+        if (logger.isLevelEnabled('debug')) {
+            logger.debug(httpMessage(
+                'Request',
+                String(request.id),
+                `${request.method} ${request.url}`,
+                `${request.method} ${request.url} HTTP/${request.raw.httpVersion}`,
+                request.headers,
+                request.body != null ? payloadPreview(request.body, BODY_PREVIEW_MAX) : '',
+            ));
         }
     });
     server.addHook('onSend', async (request, reply, payload) => {
-        if (logger.isLevelEnabled('debug') && typeof payload === 'string' && payload) {
-            request.log.debug(`← ${request.method} ${request.url} ${payloadPreview(payload)}`);
+        if (logger.isLevelEnabled('debug')) {
+            logger.debug(httpMessage(
+                'Response',
+                String(request.id),
+                `${request.method} ${request.url}`,
+                `HTTP/${request.raw.httpVersion} ${reply.statusCode} ${STATUS_CODES[reply.statusCode] ?? ''}`.trimEnd(),
+                reply.getHeaders(),
+                typeof payload === 'string' && payload ? payloadPreview(payload, BODY_PREVIEW_MAX) : '',
+            ));
         }
         return payload;
     });
