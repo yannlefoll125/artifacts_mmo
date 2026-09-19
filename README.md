@@ -41,6 +41,13 @@ Other settings (e.g. `PORT`) come from the environment; an optional `packages/se
 | `yarn typecheck` | `tsc --noEmit` in every workspace                                      |
 | `yarn test`      | Run the server's Vitest suite                                          |
 
+## Logging
+
+The server logs one readable line per request and per upstream game-API call.
+`LOG_LEVEL=debug` adds Jersey-style wire dumps of both directions (start line,
+headers with `authorization`/`cookie` redacted, body capped at 2000 chars).
+Output is pretty-printed unless `NODE_ENV=production`; force with `LOG_PRETTY=0/1`.
+
 ## Conventions
 
 - **Contract first**: anything a client needs (request/response shapes, route paths)
