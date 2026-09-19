@@ -1,6 +1,10 @@
 import Fastify from 'fastify';
 import type { ApiResult, HealthStatus } from '@artifacts/shared';
-import { getServerDetailsGet } from '@/api/client';
+import {
+    getActiveCharactersCharactersActiveGet,
+    getMyCharactersMyCharactersGet,
+    getServerDetailsGet, type MyCharactersListSchema
+} from '@/api/client';
 
 export function buildServer() {
     const server = Fastify({ logger: true });
@@ -16,6 +20,11 @@ export function buildServer() {
         }
         return { ok: true, data: data.data };
     });
+
+    server.get('/test', async (): Promise<ApiResult<unknown>> => {
+
+        return { ok: true , data: await getMyCharactersMyCharactersGet()};
+    })
 
     return server;
 }
