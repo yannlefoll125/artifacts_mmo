@@ -19,6 +19,8 @@ export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends 
 };
 
 /**
+ * `GET /`
+ *
  * Get Server Details
  *
  * Return the status of the game server.
@@ -26,6 +28,8 @@ export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends 
 export const getServerDetailsGet = <ThrowOnError extends boolean = false>(options?: Options<GetServerDetailsGetData, ThrowOnError>): RequestResult<GetServerDetailsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetServerDetailsGetResponses, unknown, ThrowOnError>({ url: '/', ...options });
 
 /**
+ * `GET /my/bank`
+ *
  * Get Bank Details
  *
  * Fetch bank details.
@@ -37,6 +41,8 @@ export const getBankDetailsMyBankGet = <ThrowOnError extends boolean = false>(op
 });
 
 /**
+ * `GET /my/bank/items`
+ *
  * Get Bank Items
  *
  * Fetch all items in your bank.
@@ -48,6 +54,8 @@ export const getBankItemsMyBankItemsGet = <ThrowOnError extends boolean = false>
 });
 
 /**
+ * `GET /my/grandexchange/orders`
+ *
  * Get Ge Orders
  *
  * Fetch your orders details (sell and buy orders).
@@ -59,6 +67,8 @@ export const getGeOrdersMyGrandexchangeOrdersGet = <ThrowOnError extends boolean
 });
 
 /**
+ * `GET /my/grandexchange/history`
+ *
  * Get Ge History
  *
  * Fetch your transaction history of the last 7 days (buy and sell orders).
@@ -70,6 +80,8 @@ export const getGeHistoryMyGrandexchangeHistoryGet = <ThrowOnError extends boole
 });
 
 /**
+ * `GET /my/details`
+ *
  * Get Account Details
  *
  * Fetch account details.
@@ -81,6 +93,8 @@ export const getAccountDetailsMyDetailsGet = <ThrowOnError extends boolean = fal
 });
 
 /**
+ * `GET /my/pending_items`
+ *
  * Get Pending Items
  *
  * Retrieve all unclaimed pending items for your account.
@@ -95,6 +109,8 @@ export const getPendingItemsMyPendingItemsGet = <ThrowOnError extends boolean = 
 });
 
 /**
+ * `GET /my/rates`
+ *
  * Get Rate Limits
  *
  * Get all rate limits.
@@ -106,6 +122,8 @@ export const getRateLimitsMyRatesGet = <ThrowOnError extends boolean = false>(op
 });
 
 /**
+ * `POST /my/change_password`
+ *
  * Change Password
  *
  * Change your account password. Changing the password reset the account token.
@@ -121,6 +139,8 @@ export const changePasswordMyChangePasswordPost = <ThrowOnError extends boolean 
 });
 
 /**
+ * `POST /my/change_email`
+ *
  * Change Email
  *
  * Change your account email.
@@ -136,6 +156,8 @@ export const changeEmailMyChangeEmailPost = <ThrowOnError extends boolean = fals
 });
 
 /**
+ * `GET /my/subscription`
+ *
  * Get My Subscription
  *
  * Get current subscription details.
@@ -147,6 +169,8 @@ export const getMySubscriptionMySubscriptionGet = <ThrowOnError extends boolean 
 });
 
 /**
+ * `POST /my/subscribe/stripe`
+ *
  * Subscribe with Stripe
  *
  * Subscribe to become a member and unlock the benefits tied to your selected plan.
@@ -163,6 +187,8 @@ export const buySubscriptionMySubscribeStripePost = <ThrowOnError extends boolea
 });
 
 /**
+ * `POST /my/subscribe/member_token`
+ *
  * Subscribe With Member Token
  *
  * Redeem a member token to start or extend membership by 30 days.
@@ -176,6 +202,8 @@ export const subscribeWithMemberTokenMySubscribeMemberTokenPost = <ThrowOnError 
 });
 
 /**
+ * `POST /my/subscribe/cancel`
+ *
  * Cancel Subscription
  *
  * Cancel subscription at the end of the current billing period.
@@ -187,6 +215,8 @@ export const cancelSubscriptionMySubscribeCancelPost = <ThrowOnError extends boo
 });
 
 /**
+ * `GET /my/purchase_history`
+ *
  * Get My Purchase History
  *
  * List all purchases (subscriptions and gem packs).
@@ -198,6 +228,8 @@ export const getMyPurchaseHistoryMyPurchaseHistoryGet = <ThrowOnError extends bo
 });
 
 /**
+ * `GET /my/gems_history`
+ *
  * Get My Gems History
  *
  * List all gem credits and debits.
@@ -209,6 +241,8 @@ export const getMyGemsHistoryMyGemsHistoryGet = <ThrowOnError extends boolean = 
 });
 
 /**
+ * `POST /my/buy_gems`
+ *
  * Buy Gems
  *
  * Purchase gems. Returns a Stripe checkout URL for payment.
@@ -224,6 +258,8 @@ export const buyGemsMyBuyGemsPost = <ThrowOnError extends boolean = false>(optio
 });
 
 /**
+ * `POST /my/{name}/action/move`
+ *
  * Action Move
  *
  * Moves a character on the map using either the map's ID or X and Y position.
@@ -240,6 +276,8 @@ export const actionMoveMyNameActionMovePost = <ThrowOnError extends boolean = fa
 });
 
 /**
+ * `POST /my/{name}/action/transition`
+ *
  * Action Transition
  *
  * Execute a transition from the current map to another layer.
@@ -252,6 +290,8 @@ export const actionTransitionMyNameActionTransitionPost = <ThrowOnError extends 
 });
 
 /**
+ * `POST /my/{name}/action/rest`
+ *
  * Action Rest
  *
  * Recovers hit points by resting. (1 second per 5 HP, minimum 3 seconds)
@@ -263,6 +303,8 @@ export const actionRestMyNameActionRestPost = <ThrowOnError extends boolean = fa
 });
 
 /**
+ * `POST /my/{name}/action/equip`
+ *
  * Action Equip Item
  *
  * Equip multiple items on your character.
@@ -279,6 +321,8 @@ export const actionEquipItemMyNameActionEquipPost = <ThrowOnError extends boolea
 });
 
 /**
+ * `POST /my/{name}/action/unequip`
+ *
  * Action Unequip Item
  *
  * Unequip multiple items on your character.
@@ -295,6 +339,8 @@ export const actionUnequipItemMyNameActionUnequipPost = <ThrowOnError extends bo
 });
 
 /**
+ * `POST /my/{name}/action/use`
+ *
  * Action Use Item
  *
  * Use an item as a consumable.
@@ -310,6 +356,8 @@ export const actionUseItemMyNameActionUsePost = <ThrowOnError extends boolean = 
 });
 
 /**
+ * `POST /my/{name}/action/fight`
+ *
  * Action Fight
  *
  * Start a fight against a monster on the character's map.
@@ -326,6 +374,8 @@ export const actionFightMyNameActionFightPost = <ThrowOnError extends boolean = 
 });
 
 /**
+ * `POST /my/{name}/action/gathering`
+ *
  * Action Gathering
  *
  * Harvest a resource on the character's map.
@@ -337,6 +387,8 @@ export const actionGatheringMyNameActionGatheringPost = <ThrowOnError extends bo
 });
 
 /**
+ * `POST /my/{name}/action/crafting`
+ *
  * Action Crafting
  *
  * Craft an item. The character must be on a map with a workshop.
@@ -352,6 +404,8 @@ export const actionCraftingMyNameActionCraftingPost = <ThrowOnError extends bool
 });
 
 /**
+ * `POST /my/{name}/action/bank/deposit/gold`
+ *
  * Action Deposit Bank Gold
  *
  * Deposit gold in a bank on the character's map.
@@ -367,6 +421,8 @@ export const actionDepositBankGoldMyNameActionBankDepositGoldPost = <ThrowOnErro
 });
 
 /**
+ * `POST /my/{name}/action/bank/deposit/item`
+ *
  * Action Deposit Bank Item
  *
  * Deposit multiple items in a bank on the character's map.
@@ -383,6 +439,8 @@ export const actionDepositBankItemMyNameActionBankDepositItemPost = <ThrowOnErro
 });
 
 /**
+ * `POST /my/{name}/action/bank/withdraw/item`
+ *
  * Action Withdraw Bank Item
  *
  * Take items from your bank and put them in the character's inventory.
@@ -399,6 +457,8 @@ export const actionWithdrawBankItemMyNameActionBankWithdrawItemPost = <ThrowOnEr
 });
 
 /**
+ * `POST /my/{name}/action/bank/withdraw/gold`
+ *
  * Action Withdraw Bank Gold
  *
  * Withdraw gold from your bank.
@@ -414,6 +474,8 @@ export const actionWithdrawBankGoldMyNameActionBankWithdrawGoldPost = <ThrowOnEr
 });
 
 /**
+ * `POST /my/{name}/action/bank/buy_expansion`
+ *
  * Action Buy Bank Expansion
  *
  * Buy a 20 slots bank expansion.
@@ -425,6 +487,8 @@ export const actionBuyBankExpansionMyNameActionBankBuyExpansionPost = <ThrowOnEr
 });
 
 /**
+ * `POST /my/{name}/action/npc/buy`
+ *
  * Action Npc Buy Item
  *
  * Buy an item from an NPC on the character's map.
@@ -440,6 +504,8 @@ export const actionNpcBuyItemMyNameActionNpcBuyPost = <ThrowOnError extends bool
 });
 
 /**
+ * `POST /my/{name}/action/npc/sell`
+ *
  * Action Npc Sell Item
  *
  * Sell an item to an NPC on the character's map.
@@ -455,6 +521,8 @@ export const actionNpcSellItemMyNameActionNpcSellPost = <ThrowOnError extends bo
 });
 
 /**
+ * `POST /my/{name}/action/recycling`
+ *
  * Action Recycling
  *
  * Recycling an item. The character must be on a map with a workshop (only for equipments and weapons).
@@ -470,6 +538,8 @@ export const actionRecyclingMyNameActionRecyclingPost = <ThrowOnError extends bo
 });
 
 /**
+ * `POST /my/{name}/action/grandexchange/buy`
+ *
  * Action Ge Buy Item
  *
  * Buy an item at the Grand Exchange on the character's map.
@@ -485,6 +555,8 @@ export const actionGeBuyItemMyNameActionGrandexchangeBuyPost = <ThrowOnError ext
 });
 
 /**
+ * `POST /my/{name}/action/grandexchange/create_sell_order`
+ *
  * Action Ge Create Sell Order
  *
  * Create a sell order at the Grand Exchange on the character's map.
@@ -500,6 +572,8 @@ export const actionGeCreateSellOrderMyNameActionGrandexchangeCreateSellOrderPost
 });
 
 /**
+ * `POST /my/{name}/action/grandexchange/cancel`
+ *
  * Action Ge Cancel Order
  *
  * Cancel an order (sell or buy) at the Grand Exchange on the character's map.
@@ -518,6 +592,8 @@ export const actionGeCancelOrderMyNameActionGrandexchangeCancelPost = <ThrowOnEr
 });
 
 /**
+ * `POST /my/{name}/action/grandexchange/create_buy_order`
+ *
  * Action Ge Create Buy Order
  *
  * Create a buy order at the Grand Exchange on the character's map.
@@ -537,6 +613,8 @@ export const actionGeCreateBuyOrderMyNameActionGrandexchangeCreateBuyOrderPost =
 });
 
 /**
+ * `POST /my/{name}/action/grandexchange/fill`
+ *
  * Action Ge Fill
  *
  * Sell items to an existing buy order at the Grand Exchange on the character's map.
@@ -555,6 +633,8 @@ export const actionGeFillMyNameActionGrandexchangeFillPost = <ThrowOnError exten
 });
 
 /**
+ * `POST /my/{name}/action/task/complete`
+ *
  * Action Complete Task
  *
  * Complete a task.
@@ -566,6 +646,8 @@ export const actionCompleteTaskMyNameActionTaskCompletePost = <ThrowOnError exte
 });
 
 /**
+ * `POST /my/{name}/action/task/exchange`
+ *
  * Action Task Exchange
  *
  * Exchange 6 tasks coins for a random reward. Rewards are exclusive items or resources.
@@ -577,6 +659,8 @@ export const actionTaskExchangeMyNameActionTaskExchangePost = <ThrowOnError exte
 });
 
 /**
+ * `POST /my/{name}/action/task/new`
+ *
  * Action Accept New Task
  *
  * Accepting a new task.
@@ -588,6 +672,8 @@ export const actionAcceptNewTaskMyNameActionTaskNewPost = <ThrowOnError extends 
 });
 
 /**
+ * `POST /my/{name}/action/task/trade`
+ *
  * Action Task Trade
  *
  * Trading items with a Tasks Master.
@@ -603,6 +689,8 @@ export const actionTaskTradeMyNameActionTaskTradePost = <ThrowOnError extends bo
 });
 
 /**
+ * `POST /my/{name}/action/task/cancel`
+ *
  * Action Task Cancel
  *
  * Cancel a task for 1 tasks coin.
@@ -614,6 +702,8 @@ export const actionTaskCancelMyNameActionTaskCancelPost = <ThrowOnError extends 
 });
 
 /**
+ * `POST /my/{name}/action/give/gold`
+ *
  * Action Give Gold
  *
  * Give gold to another character in your account on the same map.
@@ -629,6 +719,8 @@ export const actionGiveGoldMyNameActionGiveGoldPost = <ThrowOnError extends bool
 });
 
 /**
+ * `POST /my/{name}/action/give/item`
+ *
  * Action Give Items
  *
  * Give items to another character in your account on the same map.
@@ -645,6 +737,8 @@ export const actionGiveItemsMyNameActionGiveItemPost = <ThrowOnError extends boo
 });
 
 /**
+ * `POST /my/{name}/action/claim_item/{id}`
+ *
  * Action Claim Pending Item
  *
  * Claim a pending item with a specific character.
@@ -656,6 +750,8 @@ export const actionClaimPendingItemMyNameActionClaimItemIdPost = <ThrowOnError e
 });
 
 /**
+ * `POST /my/{name}/action/delete`
+ *
  * Action Delete Item
  *
  * Delete an item from your character's inventory.
@@ -671,6 +767,8 @@ export const actionDeleteItemMyNameActionDeletePost = <ThrowOnError extends bool
 });
 
 /**
+ * `POST /my/{name}/action/change_skin`
+ *
  * Action Change Skin
  *
  * Change the skin of your character.
@@ -686,6 +784,8 @@ export const actionChangeSkinMyNameActionChangeSkinPost = <ThrowOnError extends 
 });
 
 /**
+ * `POST /my/{name}/action/rename`
+ *
  * Action Rename
  *
  * Rename a character. An active membership is required.
@@ -701,6 +801,8 @@ export const actionRenameMyNameActionRenamePost = <ThrowOnError extends boolean 
 });
 
 /**
+ * `GET /my/logs`
+ *
  * Get All Characters Logs
  *
  * History of the last 5000 actions of all your characters.
@@ -712,6 +814,8 @@ export const getAllCharactersLogsMyLogsGet = <ThrowOnError extends boolean = fal
 });
 
 /**
+ * `GET /my/logs/{name}`
+ *
  * Get Character Logs
  *
  * History of the last actions of your character.
@@ -723,6 +827,8 @@ export const getCharacterLogsMyLogsNameGet = <ThrowOnError extends boolean = fal
 });
 
 /**
+ * `GET /my/characters`
+ *
  * Get My Characters
  *
  * List of your characters.
@@ -734,6 +840,8 @@ export const getMyCharactersMyCharactersGet = <ThrowOnError extends boolean = fa
 });
 
 /**
+ * `GET /accounts/{account}/achievements`
+ *
  * Get Account Achievements
  *
  * Retrieve the achievements of a account.
@@ -741,6 +849,8 @@ export const getMyCharactersMyCharactersGet = <ThrowOnError extends boolean = fa
 export const getAccountAchievementsAccountsAccountAchievementsGet = <ThrowOnError extends boolean = false>(options: Options<GetAccountAchievementsAccountsAccountAchievementsGetData, ThrowOnError>): RequestResult<GetAccountAchievementsAccountsAccountAchievementsGetResponses, GetAccountAchievementsAccountsAccountAchievementsGetErrors, ThrowOnError> => (options.client ?? client).get<GetAccountAchievementsAccountsAccountAchievementsGetResponses, GetAccountAchievementsAccountsAccountAchievementsGetErrors, ThrowOnError>({ url: '/accounts/{account}/achievements', ...options });
 
 /**
+ * `GET /accounts/{account}/characters`
+ *
  * Get Account Characters
  *
  * Account character lists.
@@ -748,6 +858,8 @@ export const getAccountAchievementsAccountsAccountAchievementsGet = <ThrowOnErro
 export const getAccountCharactersAccountsAccountCharactersGet = <ThrowOnError extends boolean = false>(options: Options<GetAccountCharactersAccountsAccountCharactersGetData, ThrowOnError>): RequestResult<GetAccountCharactersAccountsAccountCharactersGetResponses, unknown, ThrowOnError> => (options.client ?? client).get<GetAccountCharactersAccountsAccountCharactersGetResponses, unknown, ThrowOnError>({ url: '/accounts/{account}/characters', ...options });
 
 /**
+ * `POST /accounts/create`
+ *
  * Create Account
  */
 export const createAccountAccountsCreatePost = <ThrowOnError extends boolean = false>(options: Options<CreateAccountAccountsCreatePostData, ThrowOnError>): RequestResult<CreateAccountAccountsCreatePostResponses, CreateAccountAccountsCreatePostErrors, ThrowOnError> => (options.client ?? client).post<CreateAccountAccountsCreatePostResponses, CreateAccountAccountsCreatePostErrors, ThrowOnError>({
@@ -760,6 +872,8 @@ export const createAccountAccountsCreatePost = <ThrowOnError extends boolean = f
 });
 
 /**
+ * `POST /accounts/forgot_password`
+ *
  * Forgot Password
  *
  * Request a password reset.
@@ -774,6 +888,8 @@ export const forgotPasswordAccountsForgotPasswordPost = <ThrowOnError extends bo
 });
 
 /**
+ * `POST /accounts/reset_password`
+ *
  * Reset Password
  *
  * Reset password with a token. Use /forgot_password to get a token by email.
@@ -788,6 +904,8 @@ export const resetPasswordAccountsResetPasswordPost = <ThrowOnError extends bool
 });
 
 /**
+ * `GET /accounts/{account}`
+ *
  * Get Account
  *
  * Retrieve the details of an account.
@@ -795,6 +913,8 @@ export const resetPasswordAccountsResetPasswordPost = <ThrowOnError extends bool
 export const getAccountAccountsAccountGet = <ThrowOnError extends boolean = false>(options: Options<GetAccountAccountsAccountGetData, ThrowOnError>): RequestResult<GetAccountAccountsAccountGetResponses, GetAccountAccountsAccountGetErrors, ThrowOnError> => (options.client ?? client).get<GetAccountAccountsAccountGetResponses, GetAccountAccountsAccountGetErrors, ThrowOnError>({ url: '/accounts/{account}', ...options });
 
 /**
+ * `GET /achievements`
+ *
  * Get All Achievements
  *
  * List of all achievements.
@@ -802,6 +922,8 @@ export const getAccountAccountsAccountGet = <ThrowOnError extends boolean = fals
 export const getAllAchievementsAchievementsGet = <ThrowOnError extends boolean = false>(options?: Options<GetAllAchievementsAchievementsGetData, ThrowOnError>): RequestResult<GetAllAchievementsAchievementsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllAchievementsAchievementsGetResponses, unknown, ThrowOnError>({ url: '/achievements', ...options });
 
 /**
+ * `GET /achievements/{code}`
+ *
  * Get Achievement
  *
  * Retrieve the details of an achievement.
@@ -809,6 +931,8 @@ export const getAllAchievementsAchievementsGet = <ThrowOnError extends boolean =
 export const getAchievementAchievementsCodeGet = <ThrowOnError extends boolean = false>(options: Options<GetAchievementAchievementsCodeGetData, ThrowOnError>): RequestResult<GetAchievementAchievementsCodeGetResponses, GetAchievementAchievementsCodeGetErrors, ThrowOnError> => (options.client ?? client).get<GetAchievementAchievementsCodeGetResponses, GetAchievementAchievementsCodeGetErrors, ThrowOnError>({ url: '/achievements/{code}', ...options });
 
 /**
+ * `GET /badges`
+ *
  * Get All Badges
  *
  * List of all badges.
@@ -816,6 +940,8 @@ export const getAchievementAchievementsCodeGet = <ThrowOnError extends boolean =
 export const getAllBadgesBadgesGet = <ThrowOnError extends boolean = false>(options?: Options<GetAllBadgesBadgesGetData, ThrowOnError>): RequestResult<GetAllBadgesBadgesGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllBadgesBadgesGetResponses, unknown, ThrowOnError>({ url: '/badges', ...options });
 
 /**
+ * `GET /badges/{code}`
+ *
  * Get Badge
  *
  * Retrieve the details of a badge.
@@ -823,6 +949,8 @@ export const getAllBadgesBadgesGet = <ThrowOnError extends boolean = false>(opti
 export const getBadgeBadgesCodeGet = <ThrowOnError extends boolean = false>(options: Options<GetBadgeBadgesCodeGetData, ThrowOnError>): RequestResult<GetBadgeBadgesCodeGetResponses, GetBadgeBadgesCodeGetErrors, ThrowOnError> => (options.client ?? client).get<GetBadgeBadgesCodeGetResponses, GetBadgeBadgesCodeGetErrors, ThrowOnError>({ url: '/badges/{code}', ...options });
 
 /**
+ * `GET /skins`
+ *
  * Get All Skins
  *
  * List of all skins available in the game.
@@ -830,6 +958,8 @@ export const getBadgeBadgesCodeGet = <ThrowOnError extends boolean = false>(opti
 export const getAllSkinsSkinsGet = <ThrowOnError extends boolean = false>(options?: Options<GetAllSkinsSkinsGetData, ThrowOnError>): RequestResult<GetAllSkinsSkinsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllSkinsSkinsGetResponses, unknown, ThrowOnError>({ url: '/skins', ...options });
 
 /**
+ * `GET /skins/{code}`
+ *
  * Get Skin
  *
  * Retrieve the details of a skin.
@@ -837,6 +967,8 @@ export const getAllSkinsSkinsGet = <ThrowOnError extends boolean = false>(option
 export const getSkinSkinsCodeGet = <ThrowOnError extends boolean = false>(options: Options<GetSkinSkinsCodeGetData, ThrowOnError>): RequestResult<GetSkinSkinsCodeGetResponses, GetSkinSkinsCodeGetErrors, ThrowOnError> => (options.client ?? client).get<GetSkinSkinsCodeGetResponses, GetSkinSkinsCodeGetErrors, ThrowOnError>({ url: '/skins/{code}', ...options });
 
 /**
+ * `GET /season_rewards`
+ *
  * Get All Season Rewards
  *
  * List of all rewards for the current season.
@@ -844,6 +976,8 @@ export const getSkinSkinsCodeGet = <ThrowOnError extends boolean = false>(option
 export const getAllSeasonRewardsSeasonRewardsGet = <ThrowOnError extends boolean = false>(options?: Options<GetAllSeasonRewardsSeasonRewardsGetData, ThrowOnError>): RequestResult<GetAllSeasonRewardsSeasonRewardsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllSeasonRewardsSeasonRewardsGetResponses, unknown, ThrowOnError>({ url: '/season_rewards', ...options });
 
 /**
+ * `GET /season_rewards/{code}`
+ *
  * Get Season Rewards By Code
  *
  * List all season rewards matching a specific code.
@@ -851,6 +985,8 @@ export const getAllSeasonRewardsSeasonRewardsGet = <ThrowOnError extends boolean
 export const getSeasonRewardsByCodeSeasonRewardsCodeGet = <ThrowOnError extends boolean = false>(options: Options<GetSeasonRewardsByCodeSeasonRewardsCodeGetData, ThrowOnError>): RequestResult<GetSeasonRewardsByCodeSeasonRewardsCodeGetResponses, unknown, ThrowOnError> => (options.client ?? client).get<GetSeasonRewardsByCodeSeasonRewardsCodeGetResponses, unknown, ThrowOnError>({ url: '/season_rewards/{code}', ...options });
 
 /**
+ * `POST /characters/create`
+ *
  * Create Character
  *
  * Create new character on your account. You can create up to 5 characters.
@@ -866,6 +1002,8 @@ export const createCharacterCharactersCreatePost = <ThrowOnError extends boolean
 });
 
 /**
+ * `POST /characters/delete`
+ *
  * Delete Character
  *
  * Delete character on your account.
@@ -881,6 +1019,8 @@ export const deleteCharacterCharactersDeletePost = <ThrowOnError extends boolean
 });
 
 /**
+ * `GET /characters/{name}/stats`
+ *
  * Get Character Stats
  *
  * Retrieve gameplay statistics for a character.
@@ -891,6 +1031,8 @@ export const deleteCharacterCharactersDeletePost = <ThrowOnError extends boolean
 export const getCharacterStatsCharactersNameStatsGet = <ThrowOnError extends boolean = false>(options: Options<GetCharacterStatsCharactersNameStatsGetData, ThrowOnError>): RequestResult<GetCharacterStatsCharactersNameStatsGetResponses, GetCharacterStatsCharactersNameStatsGetErrors, ThrowOnError> => (options.client ?? client).get<GetCharacterStatsCharactersNameStatsGetResponses, GetCharacterStatsCharactersNameStatsGetErrors, ThrowOnError>({ url: '/characters/{name}/stats', ...options });
 
 /**
+ * `GET /characters/active`
+ *
  * Get Active Characters
  *
  * Fetch active characters details.
@@ -898,6 +1040,8 @@ export const getCharacterStatsCharactersNameStatsGet = <ThrowOnError extends boo
 export const getActiveCharactersCharactersActiveGet = <ThrowOnError extends boolean = false>(options?: Options<GetActiveCharactersCharactersActiveGetData, ThrowOnError>): RequestResult<GetActiveCharactersCharactersActiveGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetActiveCharactersCharactersActiveGetResponses, unknown, ThrowOnError>({ url: '/characters/active', ...options });
 
 /**
+ * `GET /characters/{name}`
+ *
  * Get Character
  *
  * Retrieve the details of a character.
@@ -905,6 +1049,8 @@ export const getActiveCharactersCharactersActiveGet = <ThrowOnError extends bool
 export const getCharacterCharactersNameGet = <ThrowOnError extends boolean = false>(options: Options<GetCharacterCharactersNameGetData, ThrowOnError>): RequestResult<GetCharacterCharactersNameGetResponses, GetCharacterCharactersNameGetErrors, ThrowOnError> => (options.client ?? client).get<GetCharacterCharactersNameGetResponses, GetCharacterCharactersNameGetErrors, ThrowOnError>({ url: '/characters/{name}', ...options });
 
 /**
+ * `GET /effects`
+ *
  * Get All Effects
  *
  * List of all effects. Effects are used by equipment, tools, runes, consumables and monsters. An effect is an action that produces an effect on the game.
@@ -912,6 +1058,8 @@ export const getCharacterCharactersNameGet = <ThrowOnError extends boolean = fal
 export const getAllEffectsEffectsGet = <ThrowOnError extends boolean = false>(options?: Options<GetAllEffectsEffectsGetData, ThrowOnError>): RequestResult<GetAllEffectsEffectsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllEffectsEffectsGetResponses, unknown, ThrowOnError>({ url: '/effects', ...options });
 
 /**
+ * `GET /effects/{code}`
+ *
  * Get Effect
  *
  * Retrieve the details of an effect.
@@ -919,6 +1067,8 @@ export const getAllEffectsEffectsGet = <ThrowOnError extends boolean = false>(op
 export const getEffectEffectsCodeGet = <ThrowOnError extends boolean = false>(options: Options<GetEffectEffectsCodeGetData, ThrowOnError>): RequestResult<GetEffectEffectsCodeGetResponses, GetEffectEffectsCodeGetErrors, ThrowOnError> => (options.client ?? client).get<GetEffectEffectsCodeGetResponses, GetEffectEffectsCodeGetErrors, ThrowOnError>({ url: '/effects/{code}', ...options });
 
 /**
+ * `GET /events/active`
+ *
  * Get All Active Events
  *
  * Fetch active events details.
@@ -926,6 +1076,8 @@ export const getEffectEffectsCodeGet = <ThrowOnError extends boolean = false>(op
 export const getAllActiveEventsEventsActiveGet = <ThrowOnError extends boolean = false>(options?: Options<GetAllActiveEventsEventsActiveGetData, ThrowOnError>): RequestResult<GetAllActiveEventsEventsActiveGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllActiveEventsEventsActiveGetResponses, unknown, ThrowOnError>({ url: '/events/active', ...options });
 
 /**
+ * `GET /events`
+ *
  * Get All Events
  *
  * Fetch events details.
@@ -933,6 +1085,8 @@ export const getAllActiveEventsEventsActiveGet = <ThrowOnError extends boolean =
 export const getAllEventsEventsGet = <ThrowOnError extends boolean = false>(options?: Options<GetAllEventsEventsGetData, ThrowOnError>): RequestResult<GetAllEventsEventsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllEventsEventsGetResponses, unknown, ThrowOnError>({ url: '/events', ...options });
 
 /**
+ * `GET /grandexchange/history/{code}`
+ *
  * Get Ge History
  *
  * Fetch the transaction history of the item for the last 7 days (buy and sell orders).
@@ -940,6 +1094,8 @@ export const getAllEventsEventsGet = <ThrowOnError extends boolean = false>(opti
 export const getGeHistoryGrandexchangeHistoryCodeGet = <ThrowOnError extends boolean = false>(options: Options<GetGeHistoryGrandexchangeHistoryCodeGetData, ThrowOnError>): RequestResult<GetGeHistoryGrandexchangeHistoryCodeGetResponses, GetGeHistoryGrandexchangeHistoryCodeGetErrors, ThrowOnError> => (options.client ?? client).get<GetGeHistoryGrandexchangeHistoryCodeGetResponses, GetGeHistoryGrandexchangeHistoryCodeGetErrors, ThrowOnError>({ url: '/grandexchange/history/{code}', ...options });
 
 /**
+ * `GET /grandexchange/orders`
+ *
  * Get Ge Orders
  *
  * Fetch all orders (sell and buy orders).
@@ -950,6 +1106,8 @@ export const getGeHistoryGrandexchangeHistoryCodeGet = <ThrowOnError extends boo
 export const getGeOrdersGrandexchangeOrdersGet = <ThrowOnError extends boolean = false>(options?: Options<GetGeOrdersGrandexchangeOrdersGetData, ThrowOnError>): RequestResult<GetGeOrdersGrandexchangeOrdersGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetGeOrdersGrandexchangeOrdersGetResponses, unknown, ThrowOnError>({ url: '/grandexchange/orders', ...options });
 
 /**
+ * `GET /grandexchange/orders/{id}`
+ *
  * Get Ge Order
  *
  * Retrieve a specific order by ID.
@@ -957,6 +1115,8 @@ export const getGeOrdersGrandexchangeOrdersGet = <ThrowOnError extends boolean =
 export const getGeOrderGrandexchangeOrdersIdGet = <ThrowOnError extends boolean = false>(options: Options<GetGeOrderGrandexchangeOrdersIdGetData, ThrowOnError>): RequestResult<GetGeOrderGrandexchangeOrdersIdGetResponses, GetGeOrderGrandexchangeOrdersIdGetErrors, ThrowOnError> => (options.client ?? client).get<GetGeOrderGrandexchangeOrdersIdGetResponses, GetGeOrderGrandexchangeOrdersIdGetErrors, ThrowOnError>({ url: '/grandexchange/orders/{id}', ...options });
 
 /**
+ * `GET /items`
+ *
  * Get All Items
  *
  * Fetch items details.
@@ -964,6 +1124,8 @@ export const getGeOrderGrandexchangeOrdersIdGet = <ThrowOnError extends boolean 
 export const getAllItemsItemsGet = <ThrowOnError extends boolean = false>(options?: Options<GetAllItemsItemsGetData, ThrowOnError>): RequestResult<GetAllItemsItemsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllItemsItemsGetResponses, unknown, ThrowOnError>({ url: '/items', ...options });
 
 /**
+ * `GET /items/{code}`
+ *
  * Get Item
  *
  * Retrieve the details of a item.
@@ -971,6 +1133,8 @@ export const getAllItemsItemsGet = <ThrowOnError extends boolean = false>(option
 export const getItemItemsCodeGet = <ThrowOnError extends boolean = false>(options: Options<GetItemItemsCodeGetData, ThrowOnError>): RequestResult<GetItemItemsCodeGetResponses, GetItemItemsCodeGetErrors, ThrowOnError> => (options.client ?? client).get<GetItemItemsCodeGetResponses, GetItemItemsCodeGetErrors, ThrowOnError>({ url: '/items/{code}', ...options });
 
 /**
+ * `GET /leaderboard/characters`
+ *
  * Get Characters Leaderboard
  *
  * Fetch leaderboard details.
@@ -978,6 +1142,8 @@ export const getItemItemsCodeGet = <ThrowOnError extends boolean = false>(option
 export const getCharactersLeaderboardLeaderboardCharactersGet = <ThrowOnError extends boolean = false>(options?: Options<GetCharactersLeaderboardLeaderboardCharactersGetData, ThrowOnError>): RequestResult<GetCharactersLeaderboardLeaderboardCharactersGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetCharactersLeaderboardLeaderboardCharactersGetResponses, unknown, ThrowOnError>({ url: '/leaderboard/characters', ...options });
 
 /**
+ * `GET /leaderboard/accounts`
+ *
  * Get Accounts Leaderboard
  *
  * Fetch leaderboard details.
@@ -985,6 +1151,8 @@ export const getCharactersLeaderboardLeaderboardCharactersGet = <ThrowOnError ex
 export const getAccountsLeaderboardLeaderboardAccountsGet = <ThrowOnError extends boolean = false>(options?: Options<GetAccountsLeaderboardLeaderboardAccountsGetData, ThrowOnError>): RequestResult<GetAccountsLeaderboardLeaderboardAccountsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAccountsLeaderboardLeaderboardAccountsGetResponses, unknown, ThrowOnError>({ url: '/leaderboard/accounts', ...options });
 
 /**
+ * `GET /maps`
+ *
  * Get All Maps
  *
  * Fetch maps details.
@@ -992,6 +1160,8 @@ export const getAccountsLeaderboardLeaderboardAccountsGet = <ThrowOnError extend
 export const getAllMapsMapsGet = <ThrowOnError extends boolean = false>(options?: Options<GetAllMapsMapsGetData, ThrowOnError>): RequestResult<GetAllMapsMapsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllMapsMapsGetResponses, unknown, ThrowOnError>({ url: '/maps', ...options });
 
 /**
+ * `GET /maps/{layer}`
+ *
  * Get Layer Maps
  *
  * Fetch maps details.
@@ -999,6 +1169,8 @@ export const getAllMapsMapsGet = <ThrowOnError extends boolean = false>(options?
 export const getLayerMapsMapsLayerGet = <ThrowOnError extends boolean = false>(options: Options<GetLayerMapsMapsLayerGetData, ThrowOnError>): RequestResult<GetLayerMapsMapsLayerGetResponses, unknown, ThrowOnError> => (options.client ?? client).get<GetLayerMapsMapsLayerGetResponses, unknown, ThrowOnError>({ url: '/maps/{layer}', ...options });
 
 /**
+ * `GET /maps/{layer}/{x}/{y}`
+ *
  * Get Map By Position
  *
  * Retrieve the details of a map by layer and coordinates.
@@ -1006,6 +1178,8 @@ export const getLayerMapsMapsLayerGet = <ThrowOnError extends boolean = false>(o
 export const getMapByPositionMapsLayerXYGet = <ThrowOnError extends boolean = false>(options: Options<GetMapByPositionMapsLayerXyGetData, ThrowOnError>): RequestResult<GetMapByPositionMapsLayerXyGetResponses, GetMapByPositionMapsLayerXyGetErrors, ThrowOnError> => (options.client ?? client).get<GetMapByPositionMapsLayerXyGetResponses, GetMapByPositionMapsLayerXyGetErrors, ThrowOnError>({ url: '/maps/{layer}/{x}/{y}', ...options });
 
 /**
+ * `GET /maps/id/{map_id}`
+ *
  * Get Map By Id
  *
  * Retrieve the details of a map by its unique ID.
@@ -1013,6 +1187,8 @@ export const getMapByPositionMapsLayerXYGet = <ThrowOnError extends boolean = fa
 export const getMapByIdMapsIdMapIdGet = <ThrowOnError extends boolean = false>(options: Options<GetMapByIdMapsIdMapIdGetData, ThrowOnError>): RequestResult<GetMapByIdMapsIdMapIdGetResponses, GetMapByIdMapsIdMapIdGetErrors, ThrowOnError> => (options.client ?? client).get<GetMapByIdMapsIdMapIdGetResponses, GetMapByIdMapsIdMapIdGetErrors, ThrowOnError>({ url: '/maps/id/{map_id}', ...options });
 
 /**
+ * `GET /monsters`
+ *
  * Get All Monsters
  *
  * Fetch monsters details.
@@ -1020,6 +1196,8 @@ export const getMapByIdMapsIdMapIdGet = <ThrowOnError extends boolean = false>(o
 export const getAllMonstersMonstersGet = <ThrowOnError extends boolean = false>(options?: Options<GetAllMonstersMonstersGetData, ThrowOnError>): RequestResult<GetAllMonstersMonstersGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllMonstersMonstersGetResponses, unknown, ThrowOnError>({ url: '/monsters', ...options });
 
 /**
+ * `GET /monsters/{code}`
+ *
  * Get Monster
  *
  * Retrieve the details of a monster.
@@ -1027,6 +1205,8 @@ export const getAllMonstersMonstersGet = <ThrowOnError extends boolean = false>(
 export const getMonsterMonstersCodeGet = <ThrowOnError extends boolean = false>(options: Options<GetMonsterMonstersCodeGetData, ThrowOnError>): RequestResult<GetMonsterMonstersCodeGetResponses, GetMonsterMonstersCodeGetErrors, ThrowOnError> => (options.client ?? client).get<GetMonsterMonstersCodeGetResponses, GetMonsterMonstersCodeGetErrors, ThrowOnError>({ url: '/monsters/{code}', ...options });
 
 /**
+ * `GET /npcs/details`
+ *
  * Get All Npcs
  *
  * Fetch NPCs details.
@@ -1034,6 +1214,8 @@ export const getMonsterMonstersCodeGet = <ThrowOnError extends boolean = false>(
 export const getAllNpcsNpcsDetailsGet = <ThrowOnError extends boolean = false>(options?: Options<GetAllNpcsNpcsDetailsGetData, ThrowOnError>): RequestResult<GetAllNpcsNpcsDetailsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllNpcsNpcsDetailsGetResponses, unknown, ThrowOnError>({ url: '/npcs/details', ...options });
 
 /**
+ * `GET /npcs/details/{code}`
+ *
  * Get Npc
  *
  * Retrieve the details of a NPC.
@@ -1041,6 +1223,8 @@ export const getAllNpcsNpcsDetailsGet = <ThrowOnError extends boolean = false>(o
 export const getNpcNpcsDetailsCodeGet = <ThrowOnError extends boolean = false>(options: Options<GetNpcNpcsDetailsCodeGetData, ThrowOnError>): RequestResult<GetNpcNpcsDetailsCodeGetResponses, GetNpcNpcsDetailsCodeGetErrors, ThrowOnError> => (options.client ?? client).get<GetNpcNpcsDetailsCodeGetResponses, GetNpcNpcsDetailsCodeGetErrors, ThrowOnError>({ url: '/npcs/details/{code}', ...options });
 
 /**
+ * `GET /npcs/items/{code}`
+ *
  * Get Npc Items
  *
  * Retrieve the items list of a NPC. If the NPC has items to buy, sell or trade, they will be displayed.
@@ -1048,6 +1232,8 @@ export const getNpcNpcsDetailsCodeGet = <ThrowOnError extends boolean = false>(o
 export const getNpcItemsNpcsItemsCodeGet = <ThrowOnError extends boolean = false>(options: Options<GetNpcItemsNpcsItemsCodeGetData, ThrowOnError>): RequestResult<GetNpcItemsNpcsItemsCodeGetResponses, GetNpcItemsNpcsItemsCodeGetErrors, ThrowOnError> => (options.client ?? client).get<GetNpcItemsNpcsItemsCodeGetResponses, GetNpcItemsNpcsItemsCodeGetErrors, ThrowOnError>({ url: '/npcs/items/{code}', ...options });
 
 /**
+ * `GET /npcs/items`
+ *
  * Get All Npcs Items
  *
  * Retrieve the list of all NPC items.
@@ -1055,6 +1241,8 @@ export const getNpcItemsNpcsItemsCodeGet = <ThrowOnError extends boolean = false
 export const getAllNpcsItemsNpcsItemsGet = <ThrowOnError extends boolean = false>(options?: Options<GetAllNpcsItemsNpcsItemsGetData, ThrowOnError>): RequestResult<GetAllNpcsItemsNpcsItemsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllNpcsItemsNpcsItemsGetResponses, unknown, ThrowOnError>({ url: '/npcs/items', ...options });
 
 /**
+ * `GET /raids`
+ *
  * Get All Raids
  *
  * Fetch the list of all raids.
@@ -1062,6 +1250,8 @@ export const getAllNpcsItemsNpcsItemsGet = <ThrowOnError extends boolean = false
 export const getAllRaidsRaidsGet = <ThrowOnError extends boolean = false>(options?: Options<GetAllRaidsRaidsGetData, ThrowOnError>): RequestResult<GetAllRaidsRaidsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllRaidsRaidsGetResponses, unknown, ThrowOnError>({ url: '/raids', ...options });
 
 /**
+ * `GET /raids/{code}`
+ *
  * Get Raid
  *
  * Retrieve the details of a specific raid.
@@ -1069,6 +1259,8 @@ export const getAllRaidsRaidsGet = <ThrowOnError extends boolean = false>(option
 export const getRaidRaidsCodeGet = <ThrowOnError extends boolean = false>(options: Options<GetRaidRaidsCodeGetData, ThrowOnError>): RequestResult<GetRaidRaidsCodeGetResponses, GetRaidRaidsCodeGetErrors, ThrowOnError> => (options.client ?? client).get<GetRaidRaidsCodeGetResponses, GetRaidRaidsCodeGetErrors, ThrowOnError>({ url: '/raids/{code}', ...options });
 
 /**
+ * `GET /raids/{code}/leaderboard`
+ *
  * Get Raid Leaderboard
  *
  * Retrieve the leaderboard for the active or latest raid instance.
@@ -1076,6 +1268,8 @@ export const getRaidRaidsCodeGet = <ThrowOnError extends boolean = false>(option
 export const getRaidLeaderboardRaidsCodeLeaderboardGet = <ThrowOnError extends boolean = false>(options: Options<GetRaidLeaderboardRaidsCodeLeaderboardGetData, ThrowOnError>): RequestResult<GetRaidLeaderboardRaidsCodeLeaderboardGetResponses, unknown, ThrowOnError> => (options.client ?? client).get<GetRaidLeaderboardRaidsCodeLeaderboardGetResponses, unknown, ThrowOnError>({ url: '/raids/{code}/leaderboard', ...options });
 
 /**
+ * `GET /resources`
+ *
  * Get All Resources
  *
  * Fetch resources details.
@@ -1083,6 +1277,8 @@ export const getRaidLeaderboardRaidsCodeLeaderboardGet = <ThrowOnError extends b
 export const getAllResourcesResourcesGet = <ThrowOnError extends boolean = false>(options?: Options<GetAllResourcesResourcesGetData, ThrowOnError>): RequestResult<GetAllResourcesResourcesGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllResourcesResourcesGetResponses, unknown, ThrowOnError>({ url: '/resources', ...options });
 
 /**
+ * `GET /resources/{code}`
+ *
  * Get Resource
  *
  * Retrieve the details of a resource.
@@ -1090,6 +1286,8 @@ export const getAllResourcesResourcesGet = <ThrowOnError extends boolean = false
 export const getResourceResourcesCodeGet = <ThrowOnError extends boolean = false>(options: Options<GetResourceResourcesCodeGetData, ThrowOnError>): RequestResult<GetResourceResourcesCodeGetResponses, GetResourceResourcesCodeGetErrors, ThrowOnError> => (options.client ?? client).get<GetResourceResourcesCodeGetResponses, GetResourceResourcesCodeGetErrors, ThrowOnError>({ url: '/resources/{code}', ...options });
 
 /**
+ * `GET /tasks/list`
+ *
  * Get All Tasks
  *
  * Fetch the list of all tasks.
@@ -1097,6 +1295,8 @@ export const getResourceResourcesCodeGet = <ThrowOnError extends boolean = false
 export const getAllTasksTasksListGet = <ThrowOnError extends boolean = false>(options?: Options<GetAllTasksTasksListGetData, ThrowOnError>): RequestResult<GetAllTasksTasksListGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllTasksTasksListGetResponses, unknown, ThrowOnError>({ url: '/tasks/list', ...options });
 
 /**
+ * `GET /tasks/list/{code}`
+ *
  * Get Task
  *
  * Retrieve the details of a task.
@@ -1104,6 +1304,8 @@ export const getAllTasksTasksListGet = <ThrowOnError extends boolean = false>(op
 export const getTaskTasksListCodeGet = <ThrowOnError extends boolean = false>(options: Options<GetTaskTasksListCodeGetData, ThrowOnError>): RequestResult<GetTaskTasksListCodeGetResponses, GetTaskTasksListCodeGetErrors, ThrowOnError> => (options.client ?? client).get<GetTaskTasksListCodeGetResponses, GetTaskTasksListCodeGetErrors, ThrowOnError>({ url: '/tasks/list/{code}', ...options });
 
 /**
+ * `GET /tasks/rewards`
+ *
  * Get All Tasks Rewards
  *
  * Fetch the list of all tasks rewards. To obtain these rewards, you must exchange 6 task coins with a tasks master.
@@ -1111,6 +1313,8 @@ export const getTaskTasksListCodeGet = <ThrowOnError extends boolean = false>(op
 export const getAllTasksRewardsTasksRewardsGet = <ThrowOnError extends boolean = false>(options?: Options<GetAllTasksRewardsTasksRewardsGetData, ThrowOnError>): RequestResult<GetAllTasksRewardsTasksRewardsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllTasksRewardsTasksRewardsGetResponses, unknown, ThrowOnError>({ url: '/tasks/rewards', ...options });
 
 /**
+ * `GET /tasks/rewards/{code}`
+ *
  * Get Tasks Reward
  *
  * Retrieve the details of a tasks reward.
@@ -1118,6 +1322,8 @@ export const getAllTasksRewardsTasksRewardsGet = <ThrowOnError extends boolean =
 export const getTasksRewardTasksRewardsCodeGet = <ThrowOnError extends boolean = false>(options: Options<GetTasksRewardTasksRewardsCodeGetData, ThrowOnError>): RequestResult<GetTasksRewardTasksRewardsCodeGetResponses, GetTasksRewardTasksRewardsCodeGetErrors, ThrowOnError> => (options.client ?? client).get<GetTasksRewardTasksRewardsCodeGetResponses, GetTasksRewardTasksRewardsCodeGetErrors, ThrowOnError>({ url: '/tasks/rewards/{code}', ...options });
 
 /**
+ * `POST /simulation/fight`
+ *
  * Fight Simulation
  *
  * Simulate combat with fake characters against a monster multiple times.
@@ -1134,6 +1340,8 @@ export const fightSimulationSimulationFightPost = <ThrowOnError extends boolean 
 });
 
 /**
+ * `POST /token`
+ *
  * Generate Token
  *
  * Use your account as HTTPBasic Auth to generate your token to use the API. You can also generate your token directly on the website.
@@ -1145,6 +1353,8 @@ export const generateTokenTokenPost = <ThrowOnError extends boolean = false>(opt
 });
 
 /**
+ * `GET /gems_shop/`
+ *
  * Get Catalog
  *
  * Return the gems shop catalog.
@@ -1152,6 +1362,8 @@ export const generateTokenTokenPost = <ThrowOnError extends boolean = false>(opt
 export const getCatalogGemsShopGet = <ThrowOnError extends boolean = false>(options?: Options<GetCatalogGemsShopGetData, ThrowOnError>): RequestResult<GetCatalogGemsShopGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetCatalogGemsShopGetResponses, unknown, ThrowOnError>({ url: '/gems_shop/', ...options });
 
 /**
+ * `POST /gems_shop/skin`
+ *
  * Buy Skin
  *
  * Buy a skin from the gems shop using gems.
@@ -1167,6 +1379,8 @@ export const buySkinGemsShopSkinPost = <ThrowOnError extends boolean = false>(op
 });
 
 /**
+ * `POST /gems_shop/spawn_event`
+ *
  * Buy Spawn Event
  *
  * Spawn an event from the gems shop using gems.
@@ -1182,6 +1396,8 @@ export const buySpawnEventGemsShopSpawnEventPost = <ThrowOnError extends boolean
 });
 
 /**
+ * `POST /gems_shop/subscription`
+ *
  * Buy Subscription
  *
  * Buy or extend membership by 30 days using gems. Unavailable while a Stripe subscription is active.
@@ -1193,6 +1409,8 @@ export const buySubscriptionGemsShopSubscriptionPost = <ThrowOnError extends boo
 });
 
 /**
+ * `POST /gems_shop/buy_custom_design`
+ *
  * Buy Custom Design
  *
  * Buy a custom design using gems.
@@ -1208,6 +1426,8 @@ export const buyCustomDesignGemsShopBuyCustomDesignPost = <ThrowOnError extends 
 });
 
 /**
+ * `POST /game_assistant/ask`
+ *
  * Ask Game Assistant
  *
  * Ask the game assistant a question about game mechanics or public API usage.
