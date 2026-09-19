@@ -1,4 +1,4 @@
-import Fastify, {LogController} from 'fastify';
+import Fastify, {LogController, type FastifyReply, type FastifyRequest} from 'fastify';
 import type {ApiResult, HealthStatus} from '@artifacts/shared';
 import {
     getActiveCharactersCharactersActiveGet, getMapByPositionMapsLayerXYGet,
@@ -9,12 +9,33 @@ import {MyCharacters} from "@/adapters/myCharacters";
 import {STATUS_CODES} from 'node:http';
 import {httpMessage, logger, payloadPreview} from '@/util/logger';
 
+// Default request logging is two JSON-heavy lines per request; the onResponse
+// hook below emits a single readable one instead. disableRequestLogging would
+// also silence error/404/stream logs, so only the noisy methods are muted.
+class QuietRequestLogController extends LogController {
+    override incomingRequest(): void {}
+
+    override requestCompleted(error: Error | null | undefined, request: FastifyRequest, reply: FastifyReply): void {
+        // Success line comes from the onResponse hook; response-stream errors
+        // still deserve theirs.
+        if (error) super.requestCompleted(error, request, reply);
+    }
+
+    override defaultErrorLog(error: Error, request: FastifyRequest, reply: FastifyReply): void {
+        // The default line drags full req/res dumps along; the onResponse
+        // line and debug wire dumps already cover those.
+        if (reply.statusCode >= 500) {
+            reply.log.error({err: error}, error.message);
+        } else {
+            reply.log.info({err: error}, error.message);
+        }
+    }
+}
+
 export function buildServer() {
     const server = Fastify({
         loggerInstance: logger,
-        // Default request logging is two JSON-heavy lines per request;
-        // the onResponse hook below emits a single readable one instead.
-        logController: new LogController({disableRequestLogging: true}),
+        logController: new QuietRequestLogController(),
     });
 
     server.addHook('onResponse', async (request, reply) => {
@@ -77,7 +98,6 @@ export function buildServer() {
             }
         })
 
-        // console.log("map", map.data)
 
         return {
             ok: true, data: {
@@ -86,6 +106,10 @@ export function buildServer() {
                 cooldown: kat.cooldown(),
             }
         }
+    })
+
+    server.get('/error', async (): Promise<ApiResult<unknown>> => {
+        throw new Error('test error')
     })
 
     return server;
