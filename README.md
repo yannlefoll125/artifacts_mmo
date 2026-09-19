@@ -22,9 +22,13 @@ directly (no build step anywhere — everything runs through tsx/Vite-style tool
 
 ```sh
 yarn install
-cp packages/server/.env.example packages/server/.env   # paste your token (https://artifactsmmo.com/account)
-yarn generate                                          # regenerate ArtifactsMMO types from the live spec
+mkdir -p ~/.config/artifacts_mmo && echo '{ "artifactsToken": "..." }' > ~/.config/artifacts_mmo/config.json
+# paste your token (https://artifactsmmo.com/account) into that file
+yarn generate    # regenerate ArtifactsMMO types from the live spec
 ```
+
+The API token is read from `~/.config/artifacts_mmo/config.json` (see `packages/server/src/config.ts`).
+Other settings (e.g. `PORT`) come from the environment; an optional `packages/server/.env` is loaded if present.
 
 ## Scripts (run from the repo root)
 
