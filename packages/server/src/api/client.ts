@@ -1,11 +1,14 @@
-import createClient from 'openapi-fetch';
-import type { paths } from '@generated/artifactsmmo';
+import { client } from '@generated/artifactsmmo/client.gen';
 import { config } from '@/config';
 
-// Typed client for the ArtifactsMMO API. Regenerate types with `yarn generate`.
-export const api = createClient<paths>({
+// Configures the generated ArtifactsMMO client and re-exports the typed
+// per-operation stubs. Import stubs from this module, not from @generated
+// directly — that would skip this configuration.
+// Regenerate stubs with `yarn generate` (see openapi-ts.config.ts); refresh
+// the vendored spec with `yarn spec:fetch`.
+client.setConfig({
     baseUrl: 'https://api.artifactsmmo.com',
-    headers: {
-        Authorization: `Bearer ${config.artifactsToken}`,
-    },
+    auth: () => config.artifactsToken,
 });
+
+export * from '@generated/artifactsmmo';

@@ -6,19 +6,19 @@
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "start": "tsx src/index.ts",
-    "generate": "openapi-typescript https://api.artifactsmmo.com/openapi.json -o generated-src/artifactsmmo.d.ts",
+    "spec:fetch": "node scripts/fetch-spec.mjs",
+    "generate": "openapi-ts",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest"
   },
   "dependencies": {
     "@artifacts/shared": "*",
-    "fastify": "^5.2.0",
-    "openapi-fetch": "^0.13.4"
+    "fastify": "^5.2.0"
   },
   "devDependencies": {
+    "@hey-api/openapi-ts": "0.99.0",
     "@types/node": "^24.0.0",
-    "openapi-typescript": "^7.5.0",
     "tsx": "^4.19.0",
     "typescript": "^5.7.0",
     "vitest": "^3.0.0"

@@ -11,6 +11,7 @@
   "scripts": {
     "dev": "yarn workspace @artifacts/server dev",
     "start": "yarn workspace @artifacts/server start",
+    "spec:fetch": "yarn workspace @artifacts/server spec:fetch",
     "generate": "yarn workspace @artifacts/server generate",
     "typecheck": "yarn workspaces run typecheck",
     "test": "yarn workspace @artifacts/server test"
