@@ -4,6 +4,7 @@
     "module": "esnext",
     "moduleResolution": "bundler",
     "strict": true,
+    "strictNullChecks": false,
     "noImplicitThis": true,
     "verbatimModuleSyntax": true,
     "esModuleInterop": true,
