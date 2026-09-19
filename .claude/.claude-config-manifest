@@ -1,0 +1,11 @@
+# claude-config 3feb6e6-SNAPSHOT
+output-styles/eli5.md
+scripts/git-hooks/commit-msg
+scripts/git-hooks/enable
+scripts/statusline.sh
+skills/commit-plan/SKILL.md
+skills/commit/SKILL.md
+skills/install-mattpocock/SKILL.md
+skills/one-by-one/SKILL.md
+skills/self-handoff/SKILL.md
+skills/setup-claude-config/SKILL.md
