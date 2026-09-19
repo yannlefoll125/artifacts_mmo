@@ -1,19 +1,25 @@
 import Fastify, {LogController, type FastifyReply, type FastifyRequest} from 'fastify';
 import type {ApiResult, HealthStatus} from '@artifacts/shared';
 import {
-    getActiveCharactersCharactersActiveGet, getMapByPositionMapsLayerXYGet,
+    type CraftSchema, type CraftSkill,
+    getActiveCharactersCharactersActiveGet, getAllItemsItemsGet, getMapByPositionMapsLayerXYGet,
     getMyCharactersMyCharactersGet,
     getServerDetailsGet, type MyCharactersListSchema
 } from '@/api/client';
 import {MyCharacters} from "@/adapters/myCharacters";
 import {STATUS_CODES} from 'node:http';
 import {httpMessage, logger, payloadPreview} from '@/util/logger';
+import {waitCooldown} from "@/util/cooldown";
+import {CHICKEN} from "@/util/locations";
+import {Type} from "typebox";
+import type {TypeBoxTypeProvider} from "@fastify/type-provider-typebox";
 
 // Default request logging is two JSON-heavy lines per request; the onResponse
 // hook below emits a single readable one instead. disableRequestLogging would
 // also silence error/404/stream logs, so only the noisy methods are muted.
 class QuietRequestLogController extends LogController {
-    override incomingRequest(): void {}
+    override incomingRequest(): void {
+    }
 
     override requestCompleted(error: Error | null | undefined, request: FastifyRequest, reply: FastifyReply): void {
         // Success line comes from the onResponse hook; response-stream errors
@@ -36,7 +42,7 @@ export function buildServer() {
     const server = Fastify({
         loggerInstance: logger,
         logController: new QuietRequestLogController(),
-    });
+    }).withTypeProvider<TypeBoxTypeProvider>();
 
     server.addHook('onResponse', async (request, reply) => {
         request.log.info(
@@ -84,12 +90,14 @@ export function buildServer() {
         return {ok: true, data: data.data};
     });
 
-    server.get('/test', async (): Promise<ApiResult<unknown>> => {
+    server.get('/test', async (request): Promise<ApiResult<unknown>> => {
 
         const characters = await MyCharacters.getCharacters();
         const kat = characters.find(c => c.name() === 'Kat');
 
-        await kat.moveTo({x: 1, y: 1})
+        const moveResult = await kat.moveTo({x: 1, y: 1})
+
+        logger.debug("Move result: %o", moveResult)
 
         const map = await getMapByPositionMapsLayerXYGet({
             path: {
@@ -107,6 +115,48 @@ export function buildServer() {
             }
         }
     })
+
+    server.get('/fight-chicken', async (): Promise<ApiResult<unknown>> => {
+        const characters = await MyCharacters.getCharacters();
+        const kat = characters.find(c => c.name() === 'Kat');
+
+        const lg = logger.child({scope: 'fight-chicken'});
+
+        await kat.moveTo(CHICKEN)
+        await kat.waitForCooldown()
+
+        await kat.rest()
+        await kat.waitForCooldown()
+
+        await kat.fight()
+        await kat.waitForCooldown()
+
+        await kat.rest()
+        await kat.waitForCooldown()
+
+        await kat.gather()
+        await kat.waitForCooldown()
+
+        return {ok: true, data: "ok"}
+    })
+
+    server.get('/items', {
+            schema: {
+                querystring: Type.Object({
+                    skill: Type.Optional(Type.String())
+                })
+            }
+        }, async (request) => {
+            const {skill = "cooking"} = request.query
+
+            const result = await getAllItemsItemsGet({
+                query: {
+                    craft_skill: skill as CraftSkill
+                }
+            })
+
+            return { ok: true, data: result.data }
+        })
 
     server.get('/error', async (): Promise<ApiResult<unknown>> => {
         throw new Error('test error')

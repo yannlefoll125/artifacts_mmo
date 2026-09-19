@@ -1,0 +1,12 @@
+export const CHICKEN = {x: 0, y: 1};
+export const COOKING = {x: 1, y: 1};
+export const WEAPON_CRAFTING = {x: 2, y: 1};
+export const GEAR_CRAFTING = {x: 3, y: 1};
+export const BANK = {x: 4, y: 1};
+export const GRAND_EXCHANGE = {x: 5, y: 1};
+export const COW = {x: 0, y: 2};
+export const MONSTERS = {x: 1, y: 2};
+export const SUNFLOWER_FIELD = {x: 2, y: 2};
+export const JEWELRY_CRAFTING = {x: 1, y: 3};
+export const ALCHEMY = {x: 2, y: 3};
+export const TAILOR = {x: 3, y: 3};

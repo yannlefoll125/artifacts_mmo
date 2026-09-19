@@ -1,20 +1,19 @@
-import {getMyCharactersMyCharactersGet, type MyCharactersListSchema} from "@generated/artifactsmmo";
+import {getMyCharactersMyCharactersGet} from "@generated/artifactsmmo";
+import {Character} from "@/model/character.class";
 
 export class MyCharacters {
 
-    async getList(): Promise<MyCharactersListSchema> {
+    static async getCharacters(): Promise<Character[]> {
 
-       const {data, error} = await getMyCharactersMyCharactersGet();
+        const {data, error} = await getMyCharactersMyCharactersGet();
 
-       if(!data) {
-           return null;
-       }
+        if (!data) {
+            return [];
+        }
 
-       return data;
-        
+        return data.data.map(characterSchema => new Character(characterSchema));
 
     }
-
 
 
 }
