@@ -17,7 +17,9 @@ export default defineConfigWithVueTs(
     files: ['**/*.{vue,ts,mts,tsx}'],
   },
 
-  globalIgnores(['**/dist/**', '**/dist-ssr/**', '**/coverage/**']),
+  // generated-src is machine-written (see openapi-ts.config.ts) — lint fixes
+  // there would be overwritten by the next `yarn generate`.
+  globalIgnores(['**/dist/**', '**/dist-ssr/**', '**/coverage/**', '**/generated-src/**']),
 
   ...pluginVue.configs['flat/essential'],
   vueTsConfigs.recommended,
