@@ -2,7 +2,7 @@
   // Base brings the repo conventions (notably strictNullChecks: false);
   // @vue/tsconfig comes last so its DOM/Vue-specific settings (lib, jsx) win.
   "extends": ["../../tsconfig.base.json", "@vue/tsconfig/tsconfig.dom.json"],
-  "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
+  "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "generated-src/**/*"],
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
     // Extra safety for array and object lookups, but may have false positives.
@@ -10,7 +10,8 @@
 
     // Path mapping for cleaner imports.
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@generated/*": ["./generated-src/*"]
     },
 
     // `vue-tsc --build` produces a .tsbuildinfo file for incremental type-checking.
