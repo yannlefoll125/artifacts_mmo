@@ -13,6 +13,7 @@ import {waitCooldown} from "@/util/cooldown";
 import {CHICKEN} from "@/util/locations";
 import {Type} from "typebox";
 import type {TypeBoxTypeProvider} from "@fastify/type-provider-typebox";
+import {itemsRoutes} from "@/routes/items.routes";
 
 // Default request logging is two JSON-heavy lines per request; the onResponse
 // hook below emits a single readable one instead. disableRequestLogging would
@@ -77,6 +78,7 @@ export function buildServer() {
         }
         return payload;
     });
+    server.register(itemsRoutes, {prefix: '/items'});
 
     server.get('/health', async (): Promise<HealthStatus> => ({status: 'ok'}));
 
@@ -125,38 +127,31 @@ export function buildServer() {
         await kat.moveTo(CHICKEN)
         await kat.waitForCooldown()
 
-        await kat.rest()
-        await kat.waitForCooldown()
+        while (kat.level() < 5) {
+            await kat.rest()
+            await kat.waitForCooldown()
 
-        await kat.fight()
-        await kat.waitForCooldown()
+            while (true) {
+                if (kat.hp() < 30 || kat.level() >= 5) {
+                    break;
+                }
+                await kat.fight()
+                await kat.waitForCooldown()
 
-        await kat.rest()
-        await kat.waitForCooldown()
+            }
 
-        await kat.gather()
-        await kat.waitForCooldown()
+            await kat.rest()
+            await kat.waitForCooldown()
+
+        }
+
+        // await kat.gather()
+        // await kat.waitForCooldown()
 
         return {ok: true, data: "ok"}
     })
 
-    server.get('/items', {
-            schema: {
-                querystring: Type.Object({
-                    skill: Type.Optional(Type.String())
-                })
-            }
-        }, async (request) => {
-            const {skill = "cooking"} = request.query
 
-            const result = await getAllItemsItemsGet({
-                query: {
-                    craft_skill: skill as CraftSkill
-                }
-            })
-
-            return { ok: true, data: result.data }
-        })
 
     server.get('/error', async (): Promise<ApiResult<unknown>> => {
         throw new Error('test error')

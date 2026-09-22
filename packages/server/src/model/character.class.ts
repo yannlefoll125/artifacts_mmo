@@ -56,6 +56,10 @@ export class Character {
         return this._characterSchema.max_hp;
     }
 
+    level(): number {
+        return this._characterSchema.level;
+    }
+
     health(): string {
         return `${this.hp()} / ${this.max_hp()}`
     }
