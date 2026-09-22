@@ -1,5 +1,5 @@
 import Fastify, {LogController, type FastifyReply, type FastifyRequest} from 'fastify';
-import type {ApiResult, HealthStatus} from '@artifacts/shared';
+import {ApiResultSchema, HealthStatusSchema, type ApiResult, type HealthStatus} from '@artifacts/shared';
 import {
     type CraftSchema, type CraftSkill,
     getActiveCharactersCharactersActiveGet, getAllItemsItemsGet, getMapByPositionMapsLayerXYGet,
@@ -80,11 +80,15 @@ export function buildServer() {
     });
     server.register(itemsRoutes, {prefix: '/items'});
 
-    server.get('/health', async (): Promise<HealthStatus> => ({status: 'ok'}));
+    server.get('/health', {
+        schema: {response: {200: HealthStatusSchema}},
+    }, async (): Promise<HealthStatus> => ({status: 'ok'}));
 
     // Example of wrapping an ArtifactsMMO endpoint in the shared ApiResult
     // envelope — the pattern clients can rely on. Replace/extend as you build.
-    server.get('/server-status', async (): Promise<ApiResult<unknown>> => {
+    server.get('/server-status', {
+        schema: {response: {200: ApiResultSchema(Type.Unknown())}},
+    }, async (): Promise<ApiResult<unknown>> => {
         const {data, response} = await getServerDetailsGet();
         if (!data) {
             return {ok: false, error: {message: 'upstream error', upstreamCode: response?.status}};
