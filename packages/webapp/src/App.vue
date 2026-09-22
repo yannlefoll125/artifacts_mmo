@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import ServerHealth from './components/ServerHealth.vue'
+import {RouterLink, RouterView} from 'vue-router'
 </script>
 
 <template>
@@ -9,7 +8,7 @@ import ServerHealth from './components/ServerHealth.vue'
       <RouterLink to="/">Home</RouterLink>
     </nav>
 
-    <ServerHealth />
+<!--    <ServerHealth />-->
   </header>
 
   <RouterView />
