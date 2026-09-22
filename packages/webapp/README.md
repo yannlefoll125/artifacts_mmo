@@ -11,7 +11,7 @@ yarn dev          # dev server; proxies /api to the local Fastify server
 yarn build        # typecheck + production build
 yarn test:unit    # Vitest component tests
 yarn test:e2e     # Playwright e2e (stubbed /api; see playwright.config.ts)
-yarn generate     # regenerate the API client from the OpenAPI spec
+yarn api:client   # regenerate the API client from the OpenAPI spec
 yarn lint         # oxlint + eslint
 ```
 

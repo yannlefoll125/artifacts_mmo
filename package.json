@@ -13,9 +13,10 @@
     "dev:web": "yarn workspace @artifacts/webapp dev",
     "build:web": "yarn workspace @artifacts/webapp build",
     "start": "yarn workspace @artifacts/server start",
-    "spec:fetch": "yarn workspace @artifacts/server spec:fetch",
-    "spec:generate": "yarn workspace @artifacts/server spec:generate",
-    "generate": "yarn workspace @artifacts/server generate",
+    "mmo:spec": "yarn workspace @artifacts/server mmo:spec",
+    "mmo:sdk": "yarn workspace @artifacts/server mmo:sdk",
+    "api:spec": "yarn workspace @artifacts/server api:spec",
+    "api:client": "yarn workspace @artifacts/webapp api:client",
     "typecheck": "yarn workspaces run typecheck",
     "test": "yarn workspace @artifacts/server test"
   }

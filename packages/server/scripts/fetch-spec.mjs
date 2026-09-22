@@ -1,5 +1,5 @@
 // Downloads the ArtifactsMMO OpenAPI spec and vendors it into spec/openapi.json.
-// This is the only step that touches the network; `yarn generate` works offline
+// This is the only step that touches the network; `yarn mmo:sdk` works offline
 // from the committed spec, so codegen output is reproducible.
 import { mkdir, writeFile } from 'node:fs/promises';
 

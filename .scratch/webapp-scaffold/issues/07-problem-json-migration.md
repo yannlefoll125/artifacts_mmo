@@ -17,8 +17,7 @@ Scope:
 - Server routes (`items.routes.ts`, `/server-status`, `/health` as applicable):
   2xx declares the bare payload schema; error statuses declare `ProblemSchema`
   and reply with content-type `application/problem+json` (resolves issue 01).
-- Regenerate: `yarn spec:generate`, then `yarn workspace @artifacts/webapp
-  generate`; commit both outputs.
+- Regenerate: `yarn api:spec`, then `yarn api:client`; commit both outputs.
 - Webapp call sites (`ServerHealth.vue` etc.): drop `ok` narrowing, use
   status/error from the generated client.
 - Docs: amend ADR-0001 and ADR-0003 wording that names the `ApiResult<T>`

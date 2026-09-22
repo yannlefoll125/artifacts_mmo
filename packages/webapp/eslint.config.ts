@@ -18,7 +18,7 @@ export default defineConfigWithVueTs(
   },
 
   // generated-src is machine-written (see openapi-ts.config.ts) — lint fixes
-  // there would be overwritten by the next `yarn generate`.
+  // there would be overwritten by the next `yarn api:client`.
   globalIgnores(['**/dist/**', '**/dist-ssr/**', '**/coverage/**', '**/generated-src/**']),
 
   ...pluginVue.configs['flat/essential'],

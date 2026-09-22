@@ -27,7 +27,7 @@ pipeline:
   response validation/fast-serialization: fields outside the schema are **stripped from
   responses**. Routes must live in plugins (not directly on the instance) so
   spec-generation can observe them.
-- `yarn spec:generate` registers `@fastify/swagger` over `buildServer()` and writes
+- `yarn api:spec` registers `@fastify/swagger` over `buildServer()` and writes
   `packages/shared/spec/openapi.yaml`, committed like the vendored game spec.
 - The webapp never imports `@artifacts/shared` types for API calls; it generates its
   client from that yaml with the same pinned `@hey-api/openapi-ts` setup the server
@@ -36,8 +36,8 @@ pipeline:
 ## Consequences
 
 - One schema edit ripples through validation, serialization, the spec, and the webapp
-  client — but only after re-running `yarn spec:generate` then the webapp's
-  `yarn generate`; forgetting either leaves the client stale. Both outputs are committed,
+  client — but only after re-running `yarn api:spec` then `yarn api:client`;
+  forgetting either leaves the client stale. Both outputs are committed,
   so staleness shows up as a reviewable diff.
 - Response stripping means an out-of-schema field silently disappears from responses —
   schema-first, not code-first, when adding fields.

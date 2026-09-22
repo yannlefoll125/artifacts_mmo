@@ -3,7 +3,8 @@
 // and don't typecheck under this repo's compiler settings. Opting them out
 // mirrors what skipLibCheck does for .d.ts files; the stubs and types
 // (sdk.gen.ts, types.gen.ts) stay fully checked, and their types still flow
-// to consumers. Chained into each package's `yarn generate`. Idempotent.
+// to consumers. Chained into each package's codegen script (`mmo:sdk` in the
+// server, `api:client` in the webapp). Idempotent.
 //
 // Usage: node scripts/nocheck-runtime.mjs <generated-dir>
 import { readdirSync, readFileSync, writeFileSync } from 'node:fs';

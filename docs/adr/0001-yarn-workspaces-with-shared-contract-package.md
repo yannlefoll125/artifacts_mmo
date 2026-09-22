@@ -41,5 +41,5 @@ Everything runs through tsx (dev and start); `tsc --noEmit` is typecheck-only.
   Zod option — schemas could move into `shared` without changing the architecture.
 - No build/dist pipeline exists; anything that later needs compiled output (e.g. deploying
   without tsx) must add one.
-- Game-API types are regenerated from the live spec (`yarn generate`) and must never be
+- Game-API types are regenerated from the live spec (`yarn mmo:sdk`) and must never be
   hand-edited or leaked into the client contract.

@@ -1,7 +1,7 @@
 // Prepends the endpoint (e.g. `POST /my/{name}/action/move`) to each stub's
 // JSDoc in the generated sdk.gen.ts. @hey-api/openapi-ts has no option for
 // this (its comments are hardcoded to summary/description/@deprecated), so
-// `yarn generate` chains this step after codegen. Method and URL are read
+// `yarn mmo:sdk` chains this step after codegen. Method and URL are read
 // from each stub's own body, so no naming logic is duplicated. Idempotent.
 import { readFileSync, writeFileSync } from 'node:fs';
 

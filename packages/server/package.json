@@ -6,9 +6,9 @@
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "start": "tsx src/index.ts",
-    "spec:fetch": "node scripts/fetch-spec.mjs",
-    "spec:generate": "tsx scripts/generate-openapi.ts",
-    "generate": "openapi-ts && node scripts/annotate-sdk.mjs && node ../../scripts/nocheck-runtime.mjs generated-src/artifactsmmo",
+    "mmo:spec": "node scripts/fetch-spec.mjs",
+    "mmo:sdk": "openapi-ts && node scripts/annotate-sdk.mjs && node ../../scripts/nocheck-runtime.mjs generated-src/artifactsmmo",
+    "api:spec": "tsx scripts/generate-openapi.ts",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest"

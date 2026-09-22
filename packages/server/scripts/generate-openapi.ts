@@ -6,7 +6,7 @@ import {buildServer} from '@/server';
 
 // Generates the server's own OpenAPI document from the route schemas and
 // writes it to packages/shared/spec/openapi.yaml (checked in — regenerate
-// with `yarn spec:generate` whenever routes or schemas change). The webapp
+// with `yarn api:spec` whenever routes or schemas change). The webapp
 // generates its REST client from that file.
 const server = buildServer((s) => {
     s.register(fastifySwagger, {

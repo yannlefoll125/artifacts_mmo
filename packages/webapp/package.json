@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "test:unit": "vitest",
     "test:e2e": "playwright test",
-    "generate": "openapi-ts && node ../../scripts/nocheck-runtime.mjs generated-src/api",
+    "api:client": "openapi-ts && node ../../scripts/nocheck-runtime.mjs generated-src/api",
     "build-only": "vite build",
     "typecheck": "vue-tsc --build",
     "lint": "run-s \"lint:*\"",
