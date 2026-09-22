@@ -1,9 +1,10 @@
 import {Type, type FastifyPluginAsyncTypebox} from '@fastify/type-provider-typebox'
-import {PROBLEM_CONTENT_TYPE, ProblemSchema} from '@artifacts/shared';
+import {PROBLEM_CONTENT_TYPE, ProblemRef} from '@artifacts/shared';
 import {type CraftSkill, getAllItemsItemsGet} from "@generated/artifactsmmo";
 import {CraftSkillSchema} from "@/schema/schema";
 import {CRAFT_SKILL} from "@/constants";
 import {isApiError} from "@/util/utils";
+import {ItemRef} from "@artifacts/shared/dto/items";
 
 export const itemsRoutes: FastifyPluginAsyncTypebox = async (fastify) => {
     fastify.get('/', {
@@ -13,10 +14,8 @@ export const itemsRoutes: FastifyPluginAsyncTypebox = async (fastify) => {
                 level: Type.Optional(Type.Number()),
             }),
             response: {
-                // Items pass through from the game API unshaped for now, so
-                // the payload schema stays Unknown.
-                200: Type.Array(Type.Unknown()),
-                500: {content: {[PROBLEM_CONTENT_TYPE]: {schema: ProblemSchema}}},
+                200: Type.Array(ItemRef),
+                500: {content: {[PROBLEM_CONTENT_TYPE]: {schema: ProblemRef}}},
             },
         }
     }, async (request, reply) => {
@@ -31,7 +30,11 @@ export const itemsRoutes: FastifyPluginAsyncTypebox = async (fastify) => {
                 }
             })
             const data = result.data.data;
-            return data.filter(item => !level || item.level <= level)
+            return data.filter(item => !level || item.level <= level).map(item => ({
+                name: item.name,
+                level: item.level,
+                description: item.description,
+            }))
         } catch (e) {
             reply.statusCode = 500
             reply.type(PROBLEM_CONTENT_TYPE)

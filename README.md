@@ -64,7 +64,12 @@ Output is pretty-printed unless `NODE_ENV=production`; force with `LOG_PRETTY=0/
   of truth for the server's API (ADR-0003). Server routes declare them as `response`
   schemas — Fastify then strips out-of-schema fields from responses — and routes must
   live in plugins so `yarn api:spec` can see them. Clients consume the contract
-  via the generated spec, not by duplicating shapes.
+  via the generated spec, not by duplicating shapes. Within the workspace, DTO
+  modules are imported as `@artifacts/shared/dto/<name>` (exports-map subpath);
+  cross-cutting pieces (problem details, health) come from the package root.
+  Note: a schema mistake like `Type.String` (missing `()`) passes `tsc` — it only
+  surfaces when Fastify compiles serializers, so `yarn api:spec` is the effective
+  schema validator after contract edits.
 - **`packages/server/src/api/client.ts`** — configures the generated game-API client
   (base URL + auth) and re-exports one typed stub per endpoint. Import stubs from this
   module (e.g. `getMyCharactersMyCharactersGet()`), never from `@generated` directly.

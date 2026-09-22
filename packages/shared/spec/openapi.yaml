@@ -3,7 +3,45 @@ info:
   title: artifacts_mmo server
   version: 0.1.0
 components:
-  schemas: {}
+  schemas:
+    Item:
+      type: object
+      required:
+        - name
+        - level
+        - description
+      properties:
+        name:
+          type: string
+        level:
+          type: number
+        description:
+          type: string
+    Problem:
+      type: object
+      required:
+        - title
+        - status
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        status:
+          type: number
+        detail:
+          type: string
+        upstreamCode:
+          type: number
+    HealthStatus:
+      type: object
+      required:
+        - status
+      properties:
+        status:
+          type: string
+          enum:
+            - ok
 paths:
   /items/:
     get:
@@ -46,27 +84,14 @@ paths:
             application/json:
               schema:
                 type: array
-                items: {}
+                items:
+                  $ref: "#/components/schemas/Item"
         "500":
           description: Default Response
           content:
             application/problem+json:
               schema:
-                type: object
-                required:
-                  - title
-                  - status
-                properties:
-                  type:
-                    type: string
-                  title:
-                    type: string
-                  status:
-                    type: number
-                  detail:
-                    type: string
-                  upstreamCode:
-                    type: number
+                $ref: "#/components/schemas/Problem"
   /health:
     get:
       responses:
@@ -75,14 +100,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                required:
-                  - status
-                properties:
-                  status:
-                    type: string
-                    enum:
-                      - ok
+                $ref: "#/components/schemas/HealthStatus"
   /server-status:
     get:
       responses:
@@ -96,21 +114,7 @@ paths:
           content:
             application/problem+json:
               schema:
-                type: object
-                required:
-                  - title
-                  - status
-                properties:
-                  type:
-                    type: string
-                  title:
-                    type: string
-                  status:
-                    type: number
-                  detail:
-                    type: string
-                  upstreamCode:
-                    type: number
+                $ref: "#/components/schemas/Problem"
   /test:
     get:
       responses:

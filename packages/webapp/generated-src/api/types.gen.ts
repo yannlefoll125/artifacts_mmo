@@ -4,6 +4,24 @@ export type ClientOptions = {
     baseUrl: `${string}://${string}` | (string & {});
 };
 
+export type Item = {
+    name: string;
+    level: number;
+    description: string;
+};
+
+export type Problem = {
+    type?: string;
+    title: string;
+    status: number;
+    detail?: string;
+    upstreamCode?: number;
+};
+
+export type HealthStatus = {
+    status: 'ok';
+};
+
 export type GetItemsData = {
     body?: never;
     path?: never;
@@ -18,13 +36,7 @@ export type GetItemsErrors = {
     /**
      * Default Response
      */
-    500: {
-        type?: string;
-        title: string;
-        status: number;
-        detail?: string;
-        upstreamCode?: number;
-    };
+    500: Problem;
 };
 
 export type GetItemsError = GetItemsErrors[keyof GetItemsErrors];
@@ -33,7 +45,7 @@ export type GetItemsResponses = {
     /**
      * Default Response
      */
-    200: Array<unknown>;
+    200: Array<Item>;
 };
 
 export type GetItemsResponse = GetItemsResponses[keyof GetItemsResponses];
@@ -49,9 +61,7 @@ export type GetHealthResponses = {
     /**
      * Default Response
      */
-    200: {
-        status: 'ok';
-    };
+    200: HealthStatus;
 };
 
 export type GetHealthResponse = GetHealthResponses[keyof GetHealthResponses];
@@ -67,13 +77,7 @@ export type GetServerStatusErrors = {
     /**
      * Default Response
      */
-    500: {
-        type?: string;
-        title: string;
-        status: number;
-        detail?: string;
-        upstreamCode?: number;
-    };
+    500: Problem;
 };
 
 export type GetServerStatusError = GetServerStatusErrors[keyof GetServerStatusErrors];

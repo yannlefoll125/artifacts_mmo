@@ -1,5 +1,6 @@
 import Fastify, {LogController, type FastifyInstance, type FastifyReply, type FastifyRequest} from 'fastify';
-import {HealthStatusSchema, PROBLEM_CONTENT_TYPE, ProblemSchema, type HealthStatus} from '@artifacts/shared';
+import {HealthStatusRef, HealthStatusSchema, PROBLEM_CONTENT_TYPE, ProblemRef, ProblemSchema, type HealthStatus} from '@artifacts/shared';
+import {ItemSchema} from '@artifacts/shared/dto/items';
 import {
     type CraftSchema, type CraftSkill,
     getActiveCharactersCharactersActiveGet, getAllItemsItemsGet, getMapByPositionMapsLayerXYGet,
@@ -54,6 +55,13 @@ export function buildServer(configure?: (server: FastifyInstance) => void) {
     // that only register plugins.
     configure?.(server as unknown as FastifyInstance);
 
+    // Shared DTO schemas, registered by $id so route schemas can $ref them
+    // and the emitted OpenAPI spec gets named components instead of inline
+    // copies (which the generated webapp client turns into named types).
+    server.addSchema(ItemSchema);
+    server.addSchema(ProblemSchema);
+    server.addSchema(HealthStatusSchema);
+
     server.addHook('onResponse', async (request, reply) => {
         request.log.info(
             `${request.method} ${request.url} ${reply.statusCode} ${reply.elapsedTime.toFixed(0)}ms`,
@@ -98,7 +106,7 @@ export function buildServer(configure?: (server: FastifyInstance) => void) {
 
 const rootRoutes: FastifyPluginAsyncTypebox = async (server) => {
     server.get('/health', {
-        schema: {response: {200: HealthStatusSchema}},
+        schema: {response: {200: HealthStatusRef}},
     }, async (): Promise<HealthStatus> => ({status: 'ok'}));
 
     // Example of wrapping an ArtifactsMMO endpoint in the shared response
@@ -108,7 +116,7 @@ const rootRoutes: FastifyPluginAsyncTypebox = async (server) => {
         schema: {
             response: {
                 200: Type.Unknown(),
-                500: {content: {[PROBLEM_CONTENT_TYPE]: {schema: ProblemSchema}}},
+                500: {content: {[PROBLEM_CONTENT_TYPE]: {schema: ProblemRef}}},
             },
         },
     }, async (request, reply) => {

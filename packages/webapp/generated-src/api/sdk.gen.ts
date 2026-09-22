@@ -18,14 +18,14 @@ export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends 
     meta?: keyof ClientMeta extends never ? Record<string, unknown> : ClientMeta;
 };
 
-export const getItems = <ThrowOnError extends boolean = false>(options?: Options<GetItemsData, ThrowOnError>): RequestResult<GetItemsResponses, GetItemsErrors, ThrowOnError> => (options?.client ?? client).get<GetItemsResponses, GetItemsErrors, ThrowOnError>({ url: '/items/', ...options });
+export const getItems = <ThrowOnError extends boolean = true>(options?: Options<GetItemsData, ThrowOnError>): RequestResult<GetItemsResponses, GetItemsErrors, ThrowOnError> => (options?.client ?? client).get<GetItemsResponses, GetItemsErrors, ThrowOnError>({ url: '/items/', ...options });
 
-export const getHealth = <ThrowOnError extends boolean = false>(options?: Options<GetHealthData, ThrowOnError>): RequestResult<GetHealthResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetHealthResponses, unknown, ThrowOnError>({ url: '/health', ...options });
+export const getHealth = <ThrowOnError extends boolean = true>(options?: Options<GetHealthData, ThrowOnError>): RequestResult<GetHealthResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetHealthResponses, unknown, ThrowOnError>({ url: '/health', ...options });
 
-export const getServerStatus = <ThrowOnError extends boolean = false>(options?: Options<GetServerStatusData, ThrowOnError>): RequestResult<GetServerStatusResponses, GetServerStatusErrors, ThrowOnError> => (options?.client ?? client).get<GetServerStatusResponses, GetServerStatusErrors, ThrowOnError>({ url: '/server-status', ...options });
+export const getServerStatus = <ThrowOnError extends boolean = true>(options?: Options<GetServerStatusData, ThrowOnError>): RequestResult<GetServerStatusResponses, GetServerStatusErrors, ThrowOnError> => (options?.client ?? client).get<GetServerStatusResponses, GetServerStatusErrors, ThrowOnError>({ url: '/server-status', ...options });
 
-export const getTest = <ThrowOnError extends boolean = false>(options?: Options<GetTestData, ThrowOnError>): RequestResult<GetTestResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetTestResponses, unknown, ThrowOnError>({ url: '/test', ...options });
+export const getTest = <ThrowOnError extends boolean = true>(options?: Options<GetTestData, ThrowOnError>): RequestResult<GetTestResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetTestResponses, unknown, ThrowOnError>({ url: '/test', ...options });
 
-export const getFightChicken = <ThrowOnError extends boolean = false>(options?: Options<GetFightChickenData, ThrowOnError>): RequestResult<GetFightChickenResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetFightChickenResponses, unknown, ThrowOnError>({ url: '/fight-chicken', ...options });
+export const getFightChicken = <ThrowOnError extends boolean = true>(options?: Options<GetFightChickenData, ThrowOnError>): RequestResult<GetFightChickenResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetFightChickenResponses, unknown, ThrowOnError>({ url: '/fight-chicken', ...options });
 
-export const getError = <ThrowOnError extends boolean = false>(options?: Options<GetErrorData, ThrowOnError>): RequestResult<GetErrorResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetErrorResponses, unknown, ThrowOnError>({ url: '/error', ...options });
+export const getError = <ThrowOnError extends boolean = true>(options?: Options<GetErrorData, ThrowOnError>): RequestResult<GetErrorResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetErrorResponses, unknown, ThrowOnError>({ url: '/error', ...options });

@@ -16,6 +16,13 @@ const server = buildServer((s) => {
                 version: '0.1.0',
             },
         },
+        // Name components after their schema $id ("Item") instead of the
+        // default positional "def-0" — the generated client derives its
+        // exported type names from these.
+        refResolver: {
+            buildLocalReference: (json, _baseUri, _fragment, i) =>
+                typeof json.$id === 'string' ? json.$id : `def-${i}`,
+        },
     });
 });
 
