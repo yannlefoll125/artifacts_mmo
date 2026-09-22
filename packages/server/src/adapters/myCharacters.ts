@@ -5,11 +5,7 @@ export class MyCharacters {
 
     static async getCharacters(): Promise<Character[]> {
 
-        const {data, error} = await getMyCharactersMyCharactersGet();
-
-        if (!data) {
-            return [];
-        }
+        const {data} = await getMyCharactersMyCharactersGet();
 
         return data.data.map(characterSchema => new Character(characterSchema));
 

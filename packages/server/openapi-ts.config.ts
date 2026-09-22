@@ -6,5 +6,5 @@ import { defineConfig } from '@hey-api/openapi-ts';
 export default defineConfig({
     input: './spec/openapi.json',
     output: './generated-src/artifactsmmo',
-    plugins: ['@hey-api/client-fetch'],
+    plugins: [{ name: '@hey-api/client-fetch', throwOnError: true }],
 });

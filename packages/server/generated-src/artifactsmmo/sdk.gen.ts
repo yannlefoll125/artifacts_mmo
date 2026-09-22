@@ -25,7 +25,7 @@ export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends 
  *
  * Return the status of the game server.
  */
-export const getServerDetailsGet = <ThrowOnError extends boolean = false>(options?: Options<GetServerDetailsGetData, ThrowOnError>): RequestResult<GetServerDetailsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetServerDetailsGetResponses, unknown, ThrowOnError>({ url: '/', ...options });
+export const getServerDetailsGet = <ThrowOnError extends boolean = true>(options?: Options<GetServerDetailsGetData, ThrowOnError>): RequestResult<GetServerDetailsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetServerDetailsGetResponses, unknown, ThrowOnError>({ url: '/', ...options });
 
 /**
  * `GET /my/bank`
@@ -34,7 +34,7 @@ export const getServerDetailsGet = <ThrowOnError extends boolean = false>(option
  *
  * Fetch bank details.
  */
-export const getBankDetailsMyBankGet = <ThrowOnError extends boolean = false>(options?: Options<GetBankDetailsMyBankGetData, ThrowOnError>): RequestResult<GetBankDetailsMyBankGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetBankDetailsMyBankGetResponses, unknown, ThrowOnError>({
+export const getBankDetailsMyBankGet = <ThrowOnError extends boolean = true>(options?: Options<GetBankDetailsMyBankGetData, ThrowOnError>): RequestResult<GetBankDetailsMyBankGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetBankDetailsMyBankGetResponses, unknown, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/bank',
     ...options
@@ -47,7 +47,7 @@ export const getBankDetailsMyBankGet = <ThrowOnError extends boolean = false>(op
  *
  * Fetch all items in your bank.
  */
-export const getBankItemsMyBankItemsGet = <ThrowOnError extends boolean = false>(options?: Options<GetBankItemsMyBankItemsGetData, ThrowOnError>): RequestResult<GetBankItemsMyBankItemsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetBankItemsMyBankItemsGetResponses, unknown, ThrowOnError>({
+export const getBankItemsMyBankItemsGet = <ThrowOnError extends boolean = true>(options?: Options<GetBankItemsMyBankItemsGetData, ThrowOnError>): RequestResult<GetBankItemsMyBankItemsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetBankItemsMyBankItemsGetResponses, unknown, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/bank/items',
     ...options
@@ -60,7 +60,7 @@ export const getBankItemsMyBankItemsGet = <ThrowOnError extends boolean = false>
  *
  * Fetch your orders details (sell and buy orders).
  */
-export const getGeOrdersMyGrandexchangeOrdersGet = <ThrowOnError extends boolean = false>(options?: Options<GetGeOrdersMyGrandexchangeOrdersGetData, ThrowOnError>): RequestResult<GetGeOrdersMyGrandexchangeOrdersGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetGeOrdersMyGrandexchangeOrdersGetResponses, unknown, ThrowOnError>({
+export const getGeOrdersMyGrandexchangeOrdersGet = <ThrowOnError extends boolean = true>(options?: Options<GetGeOrdersMyGrandexchangeOrdersGetData, ThrowOnError>): RequestResult<GetGeOrdersMyGrandexchangeOrdersGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetGeOrdersMyGrandexchangeOrdersGetResponses, unknown, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/grandexchange/orders',
     ...options
@@ -73,7 +73,7 @@ export const getGeOrdersMyGrandexchangeOrdersGet = <ThrowOnError extends boolean
  *
  * Fetch your transaction history of the last 7 days (buy and sell orders).
  */
-export const getGeHistoryMyGrandexchangeHistoryGet = <ThrowOnError extends boolean = false>(options?: Options<GetGeHistoryMyGrandexchangeHistoryGetData, ThrowOnError>): RequestResult<GetGeHistoryMyGrandexchangeHistoryGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetGeHistoryMyGrandexchangeHistoryGetResponses, unknown, ThrowOnError>({
+export const getGeHistoryMyGrandexchangeHistoryGet = <ThrowOnError extends boolean = true>(options?: Options<GetGeHistoryMyGrandexchangeHistoryGetData, ThrowOnError>): RequestResult<GetGeHistoryMyGrandexchangeHistoryGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetGeHistoryMyGrandexchangeHistoryGetResponses, unknown, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/grandexchange/history',
     ...options
@@ -86,7 +86,7 @@ export const getGeHistoryMyGrandexchangeHistoryGet = <ThrowOnError extends boole
  *
  * Fetch account details.
  */
-export const getAccountDetailsMyDetailsGet = <ThrowOnError extends boolean = false>(options?: Options<GetAccountDetailsMyDetailsGetData, ThrowOnError>): RequestResult<GetAccountDetailsMyDetailsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAccountDetailsMyDetailsGetResponses, unknown, ThrowOnError>({
+export const getAccountDetailsMyDetailsGet = <ThrowOnError extends boolean = true>(options?: Options<GetAccountDetailsMyDetailsGetData, ThrowOnError>): RequestResult<GetAccountDetailsMyDetailsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAccountDetailsMyDetailsGetResponses, unknown, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/details',
     ...options
@@ -102,7 +102,7 @@ export const getAccountDetailsMyDetailsGet = <ThrowOnError extends boolean = fal
  * These are items from various sources (achievements, grand exchange, events, etc.)
  * that can be claimed by any character on your account using /my/{name}/action/claim/{id}.
  */
-export const getPendingItemsMyPendingItemsGet = <ThrowOnError extends boolean = false>(options?: Options<GetPendingItemsMyPendingItemsGetData, ThrowOnError>): RequestResult<GetPendingItemsMyPendingItemsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetPendingItemsMyPendingItemsGetResponses, unknown, ThrowOnError>({
+export const getPendingItemsMyPendingItemsGet = <ThrowOnError extends boolean = true>(options?: Options<GetPendingItemsMyPendingItemsGetData, ThrowOnError>): RequestResult<GetPendingItemsMyPendingItemsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetPendingItemsMyPendingItemsGetResponses, unknown, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/pending_items',
     ...options
@@ -115,7 +115,7 @@ export const getPendingItemsMyPendingItemsGet = <ThrowOnError extends boolean = 
  *
  * Get all rate limits.
  */
-export const getRateLimitsMyRatesGet = <ThrowOnError extends boolean = false>(options?: Options<GetRateLimitsMyRatesGetData, ThrowOnError>): RequestResult<GetRateLimitsMyRatesGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetRateLimitsMyRatesGetResponses, unknown, ThrowOnError>({
+export const getRateLimitsMyRatesGet = <ThrowOnError extends boolean = true>(options?: Options<GetRateLimitsMyRatesGetData, ThrowOnError>): RequestResult<GetRateLimitsMyRatesGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetRateLimitsMyRatesGetResponses, unknown, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/rates',
     ...options
@@ -128,7 +128,7 @@ export const getRateLimitsMyRatesGet = <ThrowOnError extends boolean = false>(op
  *
  * Change your account password. Changing the password reset the account token.
  */
-export const changePasswordMyChangePasswordPost = <ThrowOnError extends boolean = false>(options: Options<ChangePasswordMyChangePasswordPostData, ThrowOnError>): RequestResult<ChangePasswordMyChangePasswordPostResponses, ChangePasswordMyChangePasswordPostErrors, ThrowOnError> => (options.client ?? client).post<ChangePasswordMyChangePasswordPostResponses, ChangePasswordMyChangePasswordPostErrors, ThrowOnError>({
+export const changePasswordMyChangePasswordPost = <ThrowOnError extends boolean = true>(options: Options<ChangePasswordMyChangePasswordPostData, ThrowOnError>): RequestResult<ChangePasswordMyChangePasswordPostResponses, ChangePasswordMyChangePasswordPostErrors, ThrowOnError> => (options.client ?? client).post<ChangePasswordMyChangePasswordPostResponses, ChangePasswordMyChangePasswordPostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/change_password',
     ...options,
@@ -145,7 +145,7 @@ export const changePasswordMyChangePasswordPost = <ThrowOnError extends boolean 
  *
  * Change your account email.
  */
-export const changeEmailMyChangeEmailPost = <ThrowOnError extends boolean = false>(options: Options<ChangeEmailMyChangeEmailPostData, ThrowOnError>): RequestResult<ChangeEmailMyChangeEmailPostResponses, ChangeEmailMyChangeEmailPostErrors, ThrowOnError> => (options.client ?? client).post<ChangeEmailMyChangeEmailPostResponses, ChangeEmailMyChangeEmailPostErrors, ThrowOnError>({
+export const changeEmailMyChangeEmailPost = <ThrowOnError extends boolean = true>(options: Options<ChangeEmailMyChangeEmailPostData, ThrowOnError>): RequestResult<ChangeEmailMyChangeEmailPostResponses, ChangeEmailMyChangeEmailPostErrors, ThrowOnError> => (options.client ?? client).post<ChangeEmailMyChangeEmailPostResponses, ChangeEmailMyChangeEmailPostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/change_email',
     ...options,
@@ -162,7 +162,7 @@ export const changeEmailMyChangeEmailPost = <ThrowOnError extends boolean = fals
  *
  * Get current subscription details.
  */
-export const getMySubscriptionMySubscriptionGet = <ThrowOnError extends boolean = false>(options?: Options<GetMySubscriptionMySubscriptionGetData, ThrowOnError>): RequestResult<GetMySubscriptionMySubscriptionGetResponses, GetMySubscriptionMySubscriptionGetErrors, ThrowOnError> => (options?.client ?? client).get<GetMySubscriptionMySubscriptionGetResponses, GetMySubscriptionMySubscriptionGetErrors, ThrowOnError>({
+export const getMySubscriptionMySubscriptionGet = <ThrowOnError extends boolean = true>(options?: Options<GetMySubscriptionMySubscriptionGetData, ThrowOnError>): RequestResult<GetMySubscriptionMySubscriptionGetResponses, GetMySubscriptionMySubscriptionGetErrors, ThrowOnError> => (options?.client ?? client).get<GetMySubscriptionMySubscriptionGetResponses, GetMySubscriptionMySubscriptionGetErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/subscription',
     ...options
@@ -176,7 +176,7 @@ export const getMySubscriptionMySubscriptionGet = <ThrowOnError extends boolean 
  * Subscribe to become a member and unlock the benefits tied to your selected plan.
  * You will receive a secure Stripe checkout URL to complete the payment.
  */
-export const buySubscriptionMySubscribeStripePost = <ThrowOnError extends boolean = false>(options: Options<BuySubscriptionMySubscribeStripePostData, ThrowOnError>): RequestResult<BuySubscriptionMySubscribeStripePostResponses, BuySubscriptionMySubscribeStripePostErrors, ThrowOnError> => (options.client ?? client).post<BuySubscriptionMySubscribeStripePostResponses, BuySubscriptionMySubscribeStripePostErrors, ThrowOnError>({
+export const buySubscriptionMySubscribeStripePost = <ThrowOnError extends boolean = true>(options: Options<BuySubscriptionMySubscribeStripePostData, ThrowOnError>): RequestResult<BuySubscriptionMySubscribeStripePostResponses, BuySubscriptionMySubscribeStripePostErrors, ThrowOnError> => (options.client ?? client).post<BuySubscriptionMySubscribeStripePostResponses, BuySubscriptionMySubscribeStripePostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/subscribe/stripe',
     ...options,
@@ -195,7 +195,7 @@ export const buySubscriptionMySubscribeStripePost = <ThrowOnError extends boolea
  * Member tokens are manually granted as rewards for events.
  * Member tokens cannot be redeemed while a Stripe subscription is active.
  */
-export const subscribeWithMemberTokenMySubscribeMemberTokenPost = <ThrowOnError extends boolean = false>(options?: Options<SubscribeWithMemberTokenMySubscribeMemberTokenPostData, ThrowOnError>): RequestResult<SubscribeWithMemberTokenMySubscribeMemberTokenPostResponses, SubscribeWithMemberTokenMySubscribeMemberTokenPostErrors, ThrowOnError> => (options?.client ?? client).post<SubscribeWithMemberTokenMySubscribeMemberTokenPostResponses, SubscribeWithMemberTokenMySubscribeMemberTokenPostErrors, ThrowOnError>({
+export const subscribeWithMemberTokenMySubscribeMemberTokenPost = <ThrowOnError extends boolean = true>(options?: Options<SubscribeWithMemberTokenMySubscribeMemberTokenPostData, ThrowOnError>): RequestResult<SubscribeWithMemberTokenMySubscribeMemberTokenPostResponses, SubscribeWithMemberTokenMySubscribeMemberTokenPostErrors, ThrowOnError> => (options?.client ?? client).post<SubscribeWithMemberTokenMySubscribeMemberTokenPostResponses, SubscribeWithMemberTokenMySubscribeMemberTokenPostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/subscribe/member_token',
     ...options
@@ -208,7 +208,7 @@ export const subscribeWithMemberTokenMySubscribeMemberTokenPost = <ThrowOnError 
  *
  * Cancel subscription at the end of the current billing period.
  */
-export const cancelSubscriptionMySubscribeCancelPost = <ThrowOnError extends boolean = false>(options?: Options<CancelSubscriptionMySubscribeCancelPostData, ThrowOnError>): RequestResult<CancelSubscriptionMySubscribeCancelPostResponses, CancelSubscriptionMySubscribeCancelPostErrors, ThrowOnError> => (options?.client ?? client).post<CancelSubscriptionMySubscribeCancelPostResponses, CancelSubscriptionMySubscribeCancelPostErrors, ThrowOnError>({
+export const cancelSubscriptionMySubscribeCancelPost = <ThrowOnError extends boolean = true>(options?: Options<CancelSubscriptionMySubscribeCancelPostData, ThrowOnError>): RequestResult<CancelSubscriptionMySubscribeCancelPostResponses, CancelSubscriptionMySubscribeCancelPostErrors, ThrowOnError> => (options?.client ?? client).post<CancelSubscriptionMySubscribeCancelPostResponses, CancelSubscriptionMySubscribeCancelPostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/subscribe/cancel',
     ...options
@@ -221,7 +221,7 @@ export const cancelSubscriptionMySubscribeCancelPost = <ThrowOnError extends boo
  *
  * List all purchases (subscriptions and gem packs).
  */
-export const getMyPurchaseHistoryMyPurchaseHistoryGet = <ThrowOnError extends boolean = false>(options?: Options<GetMyPurchaseHistoryMyPurchaseHistoryGetData, ThrowOnError>): RequestResult<GetMyPurchaseHistoryMyPurchaseHistoryGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetMyPurchaseHistoryMyPurchaseHistoryGetResponses, unknown, ThrowOnError>({
+export const getMyPurchaseHistoryMyPurchaseHistoryGet = <ThrowOnError extends boolean = true>(options?: Options<GetMyPurchaseHistoryMyPurchaseHistoryGetData, ThrowOnError>): RequestResult<GetMyPurchaseHistoryMyPurchaseHistoryGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetMyPurchaseHistoryMyPurchaseHistoryGetResponses, unknown, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/purchase_history',
     ...options
@@ -234,7 +234,7 @@ export const getMyPurchaseHistoryMyPurchaseHistoryGet = <ThrowOnError extends bo
  *
  * List all gem credits and debits.
  */
-export const getMyGemsHistoryMyGemsHistoryGet = <ThrowOnError extends boolean = false>(options?: Options<GetMyGemsHistoryMyGemsHistoryGetData, ThrowOnError>): RequestResult<GetMyGemsHistoryMyGemsHistoryGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetMyGemsHistoryMyGemsHistoryGetResponses, unknown, ThrowOnError>({
+export const getMyGemsHistoryMyGemsHistoryGet = <ThrowOnError extends boolean = true>(options?: Options<GetMyGemsHistoryMyGemsHistoryGetData, ThrowOnError>): RequestResult<GetMyGemsHistoryMyGemsHistoryGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetMyGemsHistoryMyGemsHistoryGetResponses, unknown, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/gems_history',
     ...options
@@ -247,7 +247,7 @@ export const getMyGemsHistoryMyGemsHistoryGet = <ThrowOnError extends boolean = 
  *
  * Purchase gems. Returns a Stripe checkout URL for payment.
  */
-export const buyGemsMyBuyGemsPost = <ThrowOnError extends boolean = false>(options: Options<BuyGemsMyBuyGemsPostData, ThrowOnError>): RequestResult<BuyGemsMyBuyGemsPostResponses, BuyGemsMyBuyGemsPostErrors, ThrowOnError> => (options.client ?? client).post<BuyGemsMyBuyGemsPostResponses, BuyGemsMyBuyGemsPostErrors, ThrowOnError>({
+export const buyGemsMyBuyGemsPost = <ThrowOnError extends boolean = true>(options: Options<BuyGemsMyBuyGemsPostData, ThrowOnError>): RequestResult<BuyGemsMyBuyGemsPostResponses, BuyGemsMyBuyGemsPostErrors, ThrowOnError> => (options.client ?? client).post<BuyGemsMyBuyGemsPostResponses, BuyGemsMyBuyGemsPostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/buy_gems',
     ...options,
@@ -265,7 +265,7 @@ export const buyGemsMyBuyGemsPost = <ThrowOnError extends boolean = false>(optio
  * Moves a character on the map using either the map's ID or X and Y position.
  * Provide either 'map_id' or both 'x' and 'y' coordinates in the request body.
  */
-export const actionMoveMyNameActionMovePost = <ThrowOnError extends boolean = false>(options: Options<ActionMoveMyNameActionMovePostData, ThrowOnError>): RequestResult<ActionMoveMyNameActionMovePostResponses, ActionMoveMyNameActionMovePostErrors, ThrowOnError> => (options.client ?? client).post<ActionMoveMyNameActionMovePostResponses, ActionMoveMyNameActionMovePostErrors, ThrowOnError>({
+export const actionMoveMyNameActionMovePost = <ThrowOnError extends boolean = true>(options: Options<ActionMoveMyNameActionMovePostData, ThrowOnError>): RequestResult<ActionMoveMyNameActionMovePostResponses, ActionMoveMyNameActionMovePostErrors, ThrowOnError> => (options.client ?? client).post<ActionMoveMyNameActionMovePostResponses, ActionMoveMyNameActionMovePostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/{name}/action/move',
     ...options,
@@ -283,7 +283,7 @@ export const actionMoveMyNameActionMovePost = <ThrowOnError extends boolean = fa
  * Execute a transition from the current map to another layer.
  * The character must be on a map that has a transition available.
  */
-export const actionTransitionMyNameActionTransitionPost = <ThrowOnError extends boolean = false>(options: Options<ActionTransitionMyNameActionTransitionPostData, ThrowOnError>): RequestResult<ActionTransitionMyNameActionTransitionPostResponses, ActionTransitionMyNameActionTransitionPostErrors, ThrowOnError> => (options.client ?? client).post<ActionTransitionMyNameActionTransitionPostResponses, ActionTransitionMyNameActionTransitionPostErrors, ThrowOnError>({
+export const actionTransitionMyNameActionTransitionPost = <ThrowOnError extends boolean = true>(options: Options<ActionTransitionMyNameActionTransitionPostData, ThrowOnError>): RequestResult<ActionTransitionMyNameActionTransitionPostResponses, ActionTransitionMyNameActionTransitionPostErrors, ThrowOnError> => (options.client ?? client).post<ActionTransitionMyNameActionTransitionPostResponses, ActionTransitionMyNameActionTransitionPostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/{name}/action/transition',
     ...options
@@ -296,7 +296,7 @@ export const actionTransitionMyNameActionTransitionPost = <ThrowOnError extends 
  *
  * Recovers hit points by resting. (1 second per 5 HP, minimum 3 seconds)
  */
-export const actionRestMyNameActionRestPost = <ThrowOnError extends boolean = false>(options: Options<ActionRestMyNameActionRestPostData, ThrowOnError>): RequestResult<ActionRestMyNameActionRestPostResponses, ActionRestMyNameActionRestPostErrors, ThrowOnError> => (options.client ?? client).post<ActionRestMyNameActionRestPostResponses, ActionRestMyNameActionRestPostErrors, ThrowOnError>({
+export const actionRestMyNameActionRestPost = <ThrowOnError extends boolean = true>(options: Options<ActionRestMyNameActionRestPostData, ThrowOnError>): RequestResult<ActionRestMyNameActionRestPostResponses, ActionRestMyNameActionRestPostErrors, ThrowOnError> => (options.client ?? client).post<ActionRestMyNameActionRestPostResponses, ActionRestMyNameActionRestPostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/{name}/action/rest',
     ...options
@@ -310,7 +310,7 @@ export const actionRestMyNameActionRestPost = <ThrowOnError extends boolean = fa
  * Equip multiple items on your character.
  * The cooldown will be 3 seconds multiplied by the number of different items equipped.
  */
-export const actionEquipItemMyNameActionEquipPost = <ThrowOnError extends boolean = false>(options: Options<ActionEquipItemMyNameActionEquipPostData, ThrowOnError>): RequestResult<ActionEquipItemMyNameActionEquipPostResponses, ActionEquipItemMyNameActionEquipPostErrors, ThrowOnError> => (options.client ?? client).post<ActionEquipItemMyNameActionEquipPostResponses, ActionEquipItemMyNameActionEquipPostErrors, ThrowOnError>({
+export const actionEquipItemMyNameActionEquipPost = <ThrowOnError extends boolean = true>(options: Options<ActionEquipItemMyNameActionEquipPostData, ThrowOnError>): RequestResult<ActionEquipItemMyNameActionEquipPostResponses, ActionEquipItemMyNameActionEquipPostErrors, ThrowOnError> => (options.client ?? client).post<ActionEquipItemMyNameActionEquipPostResponses, ActionEquipItemMyNameActionEquipPostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/{name}/action/equip',
     ...options,
@@ -328,7 +328,7 @@ export const actionEquipItemMyNameActionEquipPost = <ThrowOnError extends boolea
  * Unequip multiple items on your character.
  * The cooldown will be 3 seconds multiplied by the number of different items unequipped.
  */
-export const actionUnequipItemMyNameActionUnequipPost = <ThrowOnError extends boolean = false>(options: Options<ActionUnequipItemMyNameActionUnequipPostData, ThrowOnError>): RequestResult<ActionUnequipItemMyNameActionUnequipPostResponses, ActionUnequipItemMyNameActionUnequipPostErrors, ThrowOnError> => (options.client ?? client).post<ActionUnequipItemMyNameActionUnequipPostResponses, ActionUnequipItemMyNameActionUnequipPostErrors, ThrowOnError>({
+export const actionUnequipItemMyNameActionUnequipPost = <ThrowOnError extends boolean = true>(options: Options<ActionUnequipItemMyNameActionUnequipPostData, ThrowOnError>): RequestResult<ActionUnequipItemMyNameActionUnequipPostResponses, ActionUnequipItemMyNameActionUnequipPostErrors, ThrowOnError> => (options.client ?? client).post<ActionUnequipItemMyNameActionUnequipPostResponses, ActionUnequipItemMyNameActionUnequipPostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/{name}/action/unequip',
     ...options,
@@ -345,7 +345,7 @@ export const actionUnequipItemMyNameActionUnequipPost = <ThrowOnError extends bo
  *
  * Use an item as a consumable.
  */
-export const actionUseItemMyNameActionUsePost = <ThrowOnError extends boolean = false>(options: Options<ActionUseItemMyNameActionUsePostData, ThrowOnError>): RequestResult<ActionUseItemMyNameActionUsePostResponses, ActionUseItemMyNameActionUsePostErrors, ThrowOnError> => (options.client ?? client).post<ActionUseItemMyNameActionUsePostResponses, ActionUseItemMyNameActionUsePostErrors, ThrowOnError>({
+export const actionUseItemMyNameActionUsePost = <ThrowOnError extends boolean = true>(options: Options<ActionUseItemMyNameActionUsePostData, ThrowOnError>): RequestResult<ActionUseItemMyNameActionUsePostResponses, ActionUseItemMyNameActionUsePostErrors, ThrowOnError> => (options.client ?? client).post<ActionUseItemMyNameActionUsePostResponses, ActionUseItemMyNameActionUsePostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/{name}/action/use',
     ...options,
@@ -363,7 +363,7 @@ export const actionUseItemMyNameActionUsePost = <ThrowOnError extends boolean = 
  * Start a fight against a monster on the character's map.
  * Add participants for multi-character fights (up to 3 characters, only for boss).
  */
-export const actionFightMyNameActionFightPost = <ThrowOnError extends boolean = false>(options: Options<ActionFightMyNameActionFightPostData, ThrowOnError>): RequestResult<ActionFightMyNameActionFightPostResponses, ActionFightMyNameActionFightPostErrors, ThrowOnError> => (options.client ?? client).post<ActionFightMyNameActionFightPostResponses, ActionFightMyNameActionFightPostErrors, ThrowOnError>({
+export const actionFightMyNameActionFightPost = <ThrowOnError extends boolean = true>(options: Options<ActionFightMyNameActionFightPostData, ThrowOnError>): RequestResult<ActionFightMyNameActionFightPostResponses, ActionFightMyNameActionFightPostErrors, ThrowOnError> => (options.client ?? client).post<ActionFightMyNameActionFightPostResponses, ActionFightMyNameActionFightPostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/{name}/action/fight',
     ...options,
@@ -380,7 +380,7 @@ export const actionFightMyNameActionFightPost = <ThrowOnError extends boolean = 
  *
  * Harvest a resource on the character's map.
  */
-export const actionGatheringMyNameActionGatheringPost = <ThrowOnError extends boolean = false>(options: Options<ActionGatheringMyNameActionGatheringPostData, ThrowOnError>): RequestResult<ActionGatheringMyNameActionGatheringPostResponses, ActionGatheringMyNameActionGatheringPostErrors, ThrowOnError> => (options.client ?? client).post<ActionGatheringMyNameActionGatheringPostResponses, ActionGatheringMyNameActionGatheringPostErrors, ThrowOnError>({
+export const actionGatheringMyNameActionGatheringPost = <ThrowOnError extends boolean = true>(options: Options<ActionGatheringMyNameActionGatheringPostData, ThrowOnError>): RequestResult<ActionGatheringMyNameActionGatheringPostResponses, ActionGatheringMyNameActionGatheringPostErrors, ThrowOnError> => (options.client ?? client).post<ActionGatheringMyNameActionGatheringPostResponses, ActionGatheringMyNameActionGatheringPostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/{name}/action/gathering',
     ...options
@@ -393,7 +393,7 @@ export const actionGatheringMyNameActionGatheringPost = <ThrowOnError extends bo
  *
  * Craft an item. The character must be on a map with a workshop.
  */
-export const actionCraftingMyNameActionCraftingPost = <ThrowOnError extends boolean = false>(options: Options<ActionCraftingMyNameActionCraftingPostData, ThrowOnError>): RequestResult<ActionCraftingMyNameActionCraftingPostResponses, ActionCraftingMyNameActionCraftingPostErrors, ThrowOnError> => (options.client ?? client).post<ActionCraftingMyNameActionCraftingPostResponses, ActionCraftingMyNameActionCraftingPostErrors, ThrowOnError>({
+export const actionCraftingMyNameActionCraftingPost = <ThrowOnError extends boolean = true>(options: Options<ActionCraftingMyNameActionCraftingPostData, ThrowOnError>): RequestResult<ActionCraftingMyNameActionCraftingPostResponses, ActionCraftingMyNameActionCraftingPostErrors, ThrowOnError> => (options.client ?? client).post<ActionCraftingMyNameActionCraftingPostResponses, ActionCraftingMyNameActionCraftingPostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/{name}/action/crafting',
     ...options,
@@ -410,7 +410,7 @@ export const actionCraftingMyNameActionCraftingPost = <ThrowOnError extends bool
  *
  * Deposit gold in a bank on the character's map.
  */
-export const actionDepositBankGoldMyNameActionBankDepositGoldPost = <ThrowOnError extends boolean = false>(options: Options<ActionDepositBankGoldMyNameActionBankDepositGoldPostData, ThrowOnError>): RequestResult<ActionDepositBankGoldMyNameActionBankDepositGoldPostResponses, ActionDepositBankGoldMyNameActionBankDepositGoldPostErrors, ThrowOnError> => (options.client ?? client).post<ActionDepositBankGoldMyNameActionBankDepositGoldPostResponses, ActionDepositBankGoldMyNameActionBankDepositGoldPostErrors, ThrowOnError>({
+export const actionDepositBankGoldMyNameActionBankDepositGoldPost = <ThrowOnError extends boolean = true>(options: Options<ActionDepositBankGoldMyNameActionBankDepositGoldPostData, ThrowOnError>): RequestResult<ActionDepositBankGoldMyNameActionBankDepositGoldPostResponses, ActionDepositBankGoldMyNameActionBankDepositGoldPostErrors, ThrowOnError> => (options.client ?? client).post<ActionDepositBankGoldMyNameActionBankDepositGoldPostResponses, ActionDepositBankGoldMyNameActionBankDepositGoldPostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/{name}/action/bank/deposit/gold',
     ...options,
@@ -428,7 +428,7 @@ export const actionDepositBankGoldMyNameActionBankDepositGoldPost = <ThrowOnErro
  * Deposit multiple items in a bank on the character's map.
  * The cooldown will be 3 seconds multiplied by the number of different items deposited.
  */
-export const actionDepositBankItemMyNameActionBankDepositItemPost = <ThrowOnError extends boolean = false>(options: Options<ActionDepositBankItemMyNameActionBankDepositItemPostData, ThrowOnError>): RequestResult<ActionDepositBankItemMyNameActionBankDepositItemPostResponses, ActionDepositBankItemMyNameActionBankDepositItemPostErrors, ThrowOnError> => (options.client ?? client).post<ActionDepositBankItemMyNameActionBankDepositItemPostResponses, ActionDepositBankItemMyNameActionBankDepositItemPostErrors, ThrowOnError>({
+export const actionDepositBankItemMyNameActionBankDepositItemPost = <ThrowOnError extends boolean = true>(options: Options<ActionDepositBankItemMyNameActionBankDepositItemPostData, ThrowOnError>): RequestResult<ActionDepositBankItemMyNameActionBankDepositItemPostResponses, ActionDepositBankItemMyNameActionBankDepositItemPostErrors, ThrowOnError> => (options.client ?? client).post<ActionDepositBankItemMyNameActionBankDepositItemPostResponses, ActionDepositBankItemMyNameActionBankDepositItemPostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/{name}/action/bank/deposit/item',
     ...options,
@@ -446,7 +446,7 @@ export const actionDepositBankItemMyNameActionBankDepositItemPost = <ThrowOnErro
  * Take items from your bank and put them in the character's inventory.
  * The cooldown will be 3 seconds multiplied by the number of different items withdrawn.
  */
-export const actionWithdrawBankItemMyNameActionBankWithdrawItemPost = <ThrowOnError extends boolean = false>(options: Options<ActionWithdrawBankItemMyNameActionBankWithdrawItemPostData, ThrowOnError>): RequestResult<ActionWithdrawBankItemMyNameActionBankWithdrawItemPostResponses, ActionWithdrawBankItemMyNameActionBankWithdrawItemPostErrors, ThrowOnError> => (options.client ?? client).post<ActionWithdrawBankItemMyNameActionBankWithdrawItemPostResponses, ActionWithdrawBankItemMyNameActionBankWithdrawItemPostErrors, ThrowOnError>({
+export const actionWithdrawBankItemMyNameActionBankWithdrawItemPost = <ThrowOnError extends boolean = true>(options: Options<ActionWithdrawBankItemMyNameActionBankWithdrawItemPostData, ThrowOnError>): RequestResult<ActionWithdrawBankItemMyNameActionBankWithdrawItemPostResponses, ActionWithdrawBankItemMyNameActionBankWithdrawItemPostErrors, ThrowOnError> => (options.client ?? client).post<ActionWithdrawBankItemMyNameActionBankWithdrawItemPostResponses, ActionWithdrawBankItemMyNameActionBankWithdrawItemPostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/{name}/action/bank/withdraw/item',
     ...options,
@@ -463,7 +463,7 @@ export const actionWithdrawBankItemMyNameActionBankWithdrawItemPost = <ThrowOnEr
  *
  * Withdraw gold from your bank.
  */
-export const actionWithdrawBankGoldMyNameActionBankWithdrawGoldPost = <ThrowOnError extends boolean = false>(options: Options<ActionWithdrawBankGoldMyNameActionBankWithdrawGoldPostData, ThrowOnError>): RequestResult<ActionWithdrawBankGoldMyNameActionBankWithdrawGoldPostResponses, ActionWithdrawBankGoldMyNameActionBankWithdrawGoldPostErrors, ThrowOnError> => (options.client ?? client).post<ActionWithdrawBankGoldMyNameActionBankWithdrawGoldPostResponses, ActionWithdrawBankGoldMyNameActionBankWithdrawGoldPostErrors, ThrowOnError>({
+export const actionWithdrawBankGoldMyNameActionBankWithdrawGoldPost = <ThrowOnError extends boolean = true>(options: Options<ActionWithdrawBankGoldMyNameActionBankWithdrawGoldPostData, ThrowOnError>): RequestResult<ActionWithdrawBankGoldMyNameActionBankWithdrawGoldPostResponses, ActionWithdrawBankGoldMyNameActionBankWithdrawGoldPostErrors, ThrowOnError> => (options.client ?? client).post<ActionWithdrawBankGoldMyNameActionBankWithdrawGoldPostResponses, ActionWithdrawBankGoldMyNameActionBankWithdrawGoldPostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/{name}/action/bank/withdraw/gold',
     ...options,
@@ -480,7 +480,7 @@ export const actionWithdrawBankGoldMyNameActionBankWithdrawGoldPost = <ThrowOnEr
  *
  * Buy a 20 slots bank expansion.
  */
-export const actionBuyBankExpansionMyNameActionBankBuyExpansionPost = <ThrowOnError extends boolean = false>(options: Options<ActionBuyBankExpansionMyNameActionBankBuyExpansionPostData, ThrowOnError>): RequestResult<ActionBuyBankExpansionMyNameActionBankBuyExpansionPostResponses, ActionBuyBankExpansionMyNameActionBankBuyExpansionPostErrors, ThrowOnError> => (options.client ?? client).post<ActionBuyBankExpansionMyNameActionBankBuyExpansionPostResponses, ActionBuyBankExpansionMyNameActionBankBuyExpansionPostErrors, ThrowOnError>({
+export const actionBuyBankExpansionMyNameActionBankBuyExpansionPost = <ThrowOnError extends boolean = true>(options: Options<ActionBuyBankExpansionMyNameActionBankBuyExpansionPostData, ThrowOnError>): RequestResult<ActionBuyBankExpansionMyNameActionBankBuyExpansionPostResponses, ActionBuyBankExpansionMyNameActionBankBuyExpansionPostErrors, ThrowOnError> => (options.client ?? client).post<ActionBuyBankExpansionMyNameActionBankBuyExpansionPostResponses, ActionBuyBankExpansionMyNameActionBankBuyExpansionPostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/{name}/action/bank/buy_expansion',
     ...options
@@ -493,7 +493,7 @@ export const actionBuyBankExpansionMyNameActionBankBuyExpansionPost = <ThrowOnEr
  *
  * Buy an item from an NPC on the character's map.
  */
-export const actionNpcBuyItemMyNameActionNpcBuyPost = <ThrowOnError extends boolean = false>(options: Options<ActionNpcBuyItemMyNameActionNpcBuyPostData, ThrowOnError>): RequestResult<ActionNpcBuyItemMyNameActionNpcBuyPostResponses, ActionNpcBuyItemMyNameActionNpcBuyPostErrors, ThrowOnError> => (options.client ?? client).post<ActionNpcBuyItemMyNameActionNpcBuyPostResponses, ActionNpcBuyItemMyNameActionNpcBuyPostErrors, ThrowOnError>({
+export const actionNpcBuyItemMyNameActionNpcBuyPost = <ThrowOnError extends boolean = true>(options: Options<ActionNpcBuyItemMyNameActionNpcBuyPostData, ThrowOnError>): RequestResult<ActionNpcBuyItemMyNameActionNpcBuyPostResponses, ActionNpcBuyItemMyNameActionNpcBuyPostErrors, ThrowOnError> => (options.client ?? client).post<ActionNpcBuyItemMyNameActionNpcBuyPostResponses, ActionNpcBuyItemMyNameActionNpcBuyPostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/{name}/action/npc/buy',
     ...options,
@@ -510,7 +510,7 @@ export const actionNpcBuyItemMyNameActionNpcBuyPost = <ThrowOnError extends bool
  *
  * Sell an item to an NPC on the character's map.
  */
-export const actionNpcSellItemMyNameActionNpcSellPost = <ThrowOnError extends boolean = false>(options: Options<ActionNpcSellItemMyNameActionNpcSellPostData, ThrowOnError>): RequestResult<ActionNpcSellItemMyNameActionNpcSellPostResponses, ActionNpcSellItemMyNameActionNpcSellPostErrors, ThrowOnError> => (options.client ?? client).post<ActionNpcSellItemMyNameActionNpcSellPostResponses, ActionNpcSellItemMyNameActionNpcSellPostErrors, ThrowOnError>({
+export const actionNpcSellItemMyNameActionNpcSellPost = <ThrowOnError extends boolean = true>(options: Options<ActionNpcSellItemMyNameActionNpcSellPostData, ThrowOnError>): RequestResult<ActionNpcSellItemMyNameActionNpcSellPostResponses, ActionNpcSellItemMyNameActionNpcSellPostErrors, ThrowOnError> => (options.client ?? client).post<ActionNpcSellItemMyNameActionNpcSellPostResponses, ActionNpcSellItemMyNameActionNpcSellPostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/{name}/action/npc/sell',
     ...options,
@@ -527,7 +527,7 @@ export const actionNpcSellItemMyNameActionNpcSellPost = <ThrowOnError extends bo
  *
  * Recycling an item. The character must be on a map with a workshop (only for equipments and weapons).
  */
-export const actionRecyclingMyNameActionRecyclingPost = <ThrowOnError extends boolean = false>(options: Options<ActionRecyclingMyNameActionRecyclingPostData, ThrowOnError>): RequestResult<ActionRecyclingMyNameActionRecyclingPostResponses, ActionRecyclingMyNameActionRecyclingPostErrors, ThrowOnError> => (options.client ?? client).post<ActionRecyclingMyNameActionRecyclingPostResponses, ActionRecyclingMyNameActionRecyclingPostErrors, ThrowOnError>({
+export const actionRecyclingMyNameActionRecyclingPost = <ThrowOnError extends boolean = true>(options: Options<ActionRecyclingMyNameActionRecyclingPostData, ThrowOnError>): RequestResult<ActionRecyclingMyNameActionRecyclingPostResponses, ActionRecyclingMyNameActionRecyclingPostErrors, ThrowOnError> => (options.client ?? client).post<ActionRecyclingMyNameActionRecyclingPostResponses, ActionRecyclingMyNameActionRecyclingPostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/{name}/action/recycling',
     ...options,
@@ -544,7 +544,7 @@ export const actionRecyclingMyNameActionRecyclingPost = <ThrowOnError extends bo
  *
  * Buy an item at the Grand Exchange on the character's map.
  */
-export const actionGeBuyItemMyNameActionGrandexchangeBuyPost = <ThrowOnError extends boolean = false>(options: Options<ActionGeBuyItemMyNameActionGrandexchangeBuyPostData, ThrowOnError>): RequestResult<ActionGeBuyItemMyNameActionGrandexchangeBuyPostResponses, ActionGeBuyItemMyNameActionGrandexchangeBuyPostErrors, ThrowOnError> => (options.client ?? client).post<ActionGeBuyItemMyNameActionGrandexchangeBuyPostResponses, ActionGeBuyItemMyNameActionGrandexchangeBuyPostErrors, ThrowOnError>({
+export const actionGeBuyItemMyNameActionGrandexchangeBuyPost = <ThrowOnError extends boolean = true>(options: Options<ActionGeBuyItemMyNameActionGrandexchangeBuyPostData, ThrowOnError>): RequestResult<ActionGeBuyItemMyNameActionGrandexchangeBuyPostResponses, ActionGeBuyItemMyNameActionGrandexchangeBuyPostErrors, ThrowOnError> => (options.client ?? client).post<ActionGeBuyItemMyNameActionGrandexchangeBuyPostResponses, ActionGeBuyItemMyNameActionGrandexchangeBuyPostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/{name}/action/grandexchange/buy',
     ...options,
@@ -561,7 +561,7 @@ export const actionGeBuyItemMyNameActionGrandexchangeBuyPost = <ThrowOnError ext
  *
  * Create a sell order at the Grand Exchange on the character's map.
  */
-export const actionGeCreateSellOrderMyNameActionGrandexchangeCreateSellOrderPost = <ThrowOnError extends boolean = false>(options: Options<ActionGeCreateSellOrderMyNameActionGrandexchangeCreateSellOrderPostData, ThrowOnError>): RequestResult<ActionGeCreateSellOrderMyNameActionGrandexchangeCreateSellOrderPostResponses, ActionGeCreateSellOrderMyNameActionGrandexchangeCreateSellOrderPostErrors, ThrowOnError> => (options.client ?? client).post<ActionGeCreateSellOrderMyNameActionGrandexchangeCreateSellOrderPostResponses, ActionGeCreateSellOrderMyNameActionGrandexchangeCreateSellOrderPostErrors, ThrowOnError>({
+export const actionGeCreateSellOrderMyNameActionGrandexchangeCreateSellOrderPost = <ThrowOnError extends boolean = true>(options: Options<ActionGeCreateSellOrderMyNameActionGrandexchangeCreateSellOrderPostData, ThrowOnError>): RequestResult<ActionGeCreateSellOrderMyNameActionGrandexchangeCreateSellOrderPostResponses, ActionGeCreateSellOrderMyNameActionGrandexchangeCreateSellOrderPostErrors, ThrowOnError> => (options.client ?? client).post<ActionGeCreateSellOrderMyNameActionGrandexchangeCreateSellOrderPostResponses, ActionGeCreateSellOrderMyNameActionGrandexchangeCreateSellOrderPostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/{name}/action/grandexchange/create_sell_order',
     ...options,
@@ -581,7 +581,7 @@ export const actionGeCreateSellOrderMyNameActionGrandexchangeCreateSellOrderPost
  * For sell orders: Items are returned to your inventory.
  * For buy orders: Gold is refunded to your character.
  */
-export const actionGeCancelOrderMyNameActionGrandexchangeCancelPost = <ThrowOnError extends boolean = false>(options: Options<ActionGeCancelOrderMyNameActionGrandexchangeCancelPostData, ThrowOnError>): RequestResult<ActionGeCancelOrderMyNameActionGrandexchangeCancelPostResponses, ActionGeCancelOrderMyNameActionGrandexchangeCancelPostErrors, ThrowOnError> => (options.client ?? client).post<ActionGeCancelOrderMyNameActionGrandexchangeCancelPostResponses, ActionGeCancelOrderMyNameActionGrandexchangeCancelPostErrors, ThrowOnError>({
+export const actionGeCancelOrderMyNameActionGrandexchangeCancelPost = <ThrowOnError extends boolean = true>(options: Options<ActionGeCancelOrderMyNameActionGrandexchangeCancelPostData, ThrowOnError>): RequestResult<ActionGeCancelOrderMyNameActionGrandexchangeCancelPostResponses, ActionGeCancelOrderMyNameActionGrandexchangeCancelPostErrors, ThrowOnError> => (options.client ?? client).post<ActionGeCancelOrderMyNameActionGrandexchangeCancelPostResponses, ActionGeCancelOrderMyNameActionGrandexchangeCancelPostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/{name}/action/grandexchange/cancel',
     ...options,
@@ -602,7 +602,7 @@ export const actionGeCancelOrderMyNameActionGrandexchangeCancelPost = <ThrowOnEr
  * Other players can then sell items to fulfill your order.
  * Items will be delivered to your pending items when the order is filled.
  */
-export const actionGeCreateBuyOrderMyNameActionGrandexchangeCreateBuyOrderPost = <ThrowOnError extends boolean = false>(options: Options<ActionGeCreateBuyOrderMyNameActionGrandexchangeCreateBuyOrderPostData, ThrowOnError>): RequestResult<ActionGeCreateBuyOrderMyNameActionGrandexchangeCreateBuyOrderPostResponses, ActionGeCreateBuyOrderMyNameActionGrandexchangeCreateBuyOrderPostErrors, ThrowOnError> => (options.client ?? client).post<ActionGeCreateBuyOrderMyNameActionGrandexchangeCreateBuyOrderPostResponses, ActionGeCreateBuyOrderMyNameActionGrandexchangeCreateBuyOrderPostErrors, ThrowOnError>({
+export const actionGeCreateBuyOrderMyNameActionGrandexchangeCreateBuyOrderPost = <ThrowOnError extends boolean = true>(options: Options<ActionGeCreateBuyOrderMyNameActionGrandexchangeCreateBuyOrderPostData, ThrowOnError>): RequestResult<ActionGeCreateBuyOrderMyNameActionGrandexchangeCreateBuyOrderPostResponses, ActionGeCreateBuyOrderMyNameActionGrandexchangeCreateBuyOrderPostErrors, ThrowOnError> => (options.client ?? client).post<ActionGeCreateBuyOrderMyNameActionGrandexchangeCreateBuyOrderPostResponses, ActionGeCreateBuyOrderMyNameActionGrandexchangeCreateBuyOrderPostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/{name}/action/grandexchange/create_buy_order',
     ...options,
@@ -622,7 +622,7 @@ export const actionGeCreateBuyOrderMyNameActionGrandexchangeCreateBuyOrderPost =
  * You will receive the gold immediately.
  * The buyer will receive the items in their pending items.
  */
-export const actionGeFillMyNameActionGrandexchangeFillPost = <ThrowOnError extends boolean = false>(options: Options<ActionGeFillMyNameActionGrandexchangeFillPostData, ThrowOnError>): RequestResult<ActionGeFillMyNameActionGrandexchangeFillPostResponses, ActionGeFillMyNameActionGrandexchangeFillPostErrors, ThrowOnError> => (options.client ?? client).post<ActionGeFillMyNameActionGrandexchangeFillPostResponses, ActionGeFillMyNameActionGrandexchangeFillPostErrors, ThrowOnError>({
+export const actionGeFillMyNameActionGrandexchangeFillPost = <ThrowOnError extends boolean = true>(options: Options<ActionGeFillMyNameActionGrandexchangeFillPostData, ThrowOnError>): RequestResult<ActionGeFillMyNameActionGrandexchangeFillPostResponses, ActionGeFillMyNameActionGrandexchangeFillPostErrors, ThrowOnError> => (options.client ?? client).post<ActionGeFillMyNameActionGrandexchangeFillPostResponses, ActionGeFillMyNameActionGrandexchangeFillPostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/{name}/action/grandexchange/fill',
     ...options,
@@ -639,7 +639,7 @@ export const actionGeFillMyNameActionGrandexchangeFillPost = <ThrowOnError exten
  *
  * Complete a task.
  */
-export const actionCompleteTaskMyNameActionTaskCompletePost = <ThrowOnError extends boolean = false>(options: Options<ActionCompleteTaskMyNameActionTaskCompletePostData, ThrowOnError>): RequestResult<ActionCompleteTaskMyNameActionTaskCompletePostResponses, ActionCompleteTaskMyNameActionTaskCompletePostErrors, ThrowOnError> => (options.client ?? client).post<ActionCompleteTaskMyNameActionTaskCompletePostResponses, ActionCompleteTaskMyNameActionTaskCompletePostErrors, ThrowOnError>({
+export const actionCompleteTaskMyNameActionTaskCompletePost = <ThrowOnError extends boolean = true>(options: Options<ActionCompleteTaskMyNameActionTaskCompletePostData, ThrowOnError>): RequestResult<ActionCompleteTaskMyNameActionTaskCompletePostResponses, ActionCompleteTaskMyNameActionTaskCompletePostErrors, ThrowOnError> => (options.client ?? client).post<ActionCompleteTaskMyNameActionTaskCompletePostResponses, ActionCompleteTaskMyNameActionTaskCompletePostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/{name}/action/task/complete',
     ...options
@@ -652,7 +652,7 @@ export const actionCompleteTaskMyNameActionTaskCompletePost = <ThrowOnError exte
  *
  * Exchange 6 tasks coins for a random reward. Rewards are exclusive items or resources.
  */
-export const actionTaskExchangeMyNameActionTaskExchangePost = <ThrowOnError extends boolean = false>(options: Options<ActionTaskExchangeMyNameActionTaskExchangePostData, ThrowOnError>): RequestResult<ActionTaskExchangeMyNameActionTaskExchangePostResponses, ActionTaskExchangeMyNameActionTaskExchangePostErrors, ThrowOnError> => (options.client ?? client).post<ActionTaskExchangeMyNameActionTaskExchangePostResponses, ActionTaskExchangeMyNameActionTaskExchangePostErrors, ThrowOnError>({
+export const actionTaskExchangeMyNameActionTaskExchangePost = <ThrowOnError extends boolean = true>(options: Options<ActionTaskExchangeMyNameActionTaskExchangePostData, ThrowOnError>): RequestResult<ActionTaskExchangeMyNameActionTaskExchangePostResponses, ActionTaskExchangeMyNameActionTaskExchangePostErrors, ThrowOnError> => (options.client ?? client).post<ActionTaskExchangeMyNameActionTaskExchangePostResponses, ActionTaskExchangeMyNameActionTaskExchangePostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/{name}/action/task/exchange',
     ...options
@@ -665,7 +665,7 @@ export const actionTaskExchangeMyNameActionTaskExchangePost = <ThrowOnError exte
  *
  * Accepting a new task.
  */
-export const actionAcceptNewTaskMyNameActionTaskNewPost = <ThrowOnError extends boolean = false>(options: Options<ActionAcceptNewTaskMyNameActionTaskNewPostData, ThrowOnError>): RequestResult<ActionAcceptNewTaskMyNameActionTaskNewPostResponses, ActionAcceptNewTaskMyNameActionTaskNewPostErrors, ThrowOnError> => (options.client ?? client).post<ActionAcceptNewTaskMyNameActionTaskNewPostResponses, ActionAcceptNewTaskMyNameActionTaskNewPostErrors, ThrowOnError>({
+export const actionAcceptNewTaskMyNameActionTaskNewPost = <ThrowOnError extends boolean = true>(options: Options<ActionAcceptNewTaskMyNameActionTaskNewPostData, ThrowOnError>): RequestResult<ActionAcceptNewTaskMyNameActionTaskNewPostResponses, ActionAcceptNewTaskMyNameActionTaskNewPostErrors, ThrowOnError> => (options.client ?? client).post<ActionAcceptNewTaskMyNameActionTaskNewPostResponses, ActionAcceptNewTaskMyNameActionTaskNewPostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/{name}/action/task/new',
     ...options
@@ -678,7 +678,7 @@ export const actionAcceptNewTaskMyNameActionTaskNewPost = <ThrowOnError extends 
  *
  * Trading items with a Tasks Master.
  */
-export const actionTaskTradeMyNameActionTaskTradePost = <ThrowOnError extends boolean = false>(options: Options<ActionTaskTradeMyNameActionTaskTradePostData, ThrowOnError>): RequestResult<ActionTaskTradeMyNameActionTaskTradePostResponses, ActionTaskTradeMyNameActionTaskTradePostErrors, ThrowOnError> => (options.client ?? client).post<ActionTaskTradeMyNameActionTaskTradePostResponses, ActionTaskTradeMyNameActionTaskTradePostErrors, ThrowOnError>({
+export const actionTaskTradeMyNameActionTaskTradePost = <ThrowOnError extends boolean = true>(options: Options<ActionTaskTradeMyNameActionTaskTradePostData, ThrowOnError>): RequestResult<ActionTaskTradeMyNameActionTaskTradePostResponses, ActionTaskTradeMyNameActionTaskTradePostErrors, ThrowOnError> => (options.client ?? client).post<ActionTaskTradeMyNameActionTaskTradePostResponses, ActionTaskTradeMyNameActionTaskTradePostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/{name}/action/task/trade',
     ...options,
@@ -695,7 +695,7 @@ export const actionTaskTradeMyNameActionTaskTradePost = <ThrowOnError extends bo
  *
  * Cancel a task for 1 tasks coin.
  */
-export const actionTaskCancelMyNameActionTaskCancelPost = <ThrowOnError extends boolean = false>(options: Options<ActionTaskCancelMyNameActionTaskCancelPostData, ThrowOnError>): RequestResult<ActionTaskCancelMyNameActionTaskCancelPostResponses, ActionTaskCancelMyNameActionTaskCancelPostErrors, ThrowOnError> => (options.client ?? client).post<ActionTaskCancelMyNameActionTaskCancelPostResponses, ActionTaskCancelMyNameActionTaskCancelPostErrors, ThrowOnError>({
+export const actionTaskCancelMyNameActionTaskCancelPost = <ThrowOnError extends boolean = true>(options: Options<ActionTaskCancelMyNameActionTaskCancelPostData, ThrowOnError>): RequestResult<ActionTaskCancelMyNameActionTaskCancelPostResponses, ActionTaskCancelMyNameActionTaskCancelPostErrors, ThrowOnError> => (options.client ?? client).post<ActionTaskCancelMyNameActionTaskCancelPostResponses, ActionTaskCancelMyNameActionTaskCancelPostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/{name}/action/task/cancel',
     ...options
@@ -708,7 +708,7 @@ export const actionTaskCancelMyNameActionTaskCancelPost = <ThrowOnError extends 
  *
  * Give gold to another character in your account on the same map.
  */
-export const actionGiveGoldMyNameActionGiveGoldPost = <ThrowOnError extends boolean = false>(options: Options<ActionGiveGoldMyNameActionGiveGoldPostData, ThrowOnError>): RequestResult<ActionGiveGoldMyNameActionGiveGoldPostResponses, ActionGiveGoldMyNameActionGiveGoldPostErrors, ThrowOnError> => (options.client ?? client).post<ActionGiveGoldMyNameActionGiveGoldPostResponses, ActionGiveGoldMyNameActionGiveGoldPostErrors, ThrowOnError>({
+export const actionGiveGoldMyNameActionGiveGoldPost = <ThrowOnError extends boolean = true>(options: Options<ActionGiveGoldMyNameActionGiveGoldPostData, ThrowOnError>): RequestResult<ActionGiveGoldMyNameActionGiveGoldPostResponses, ActionGiveGoldMyNameActionGiveGoldPostErrors, ThrowOnError> => (options.client ?? client).post<ActionGiveGoldMyNameActionGiveGoldPostResponses, ActionGiveGoldMyNameActionGiveGoldPostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/{name}/action/give/gold',
     ...options,
@@ -726,7 +726,7 @@ export const actionGiveGoldMyNameActionGiveGoldPost = <ThrowOnError extends bool
  * Give items to another character in your account on the same map.
  * The cooldown will be 3 seconds multiplied by the number of different items given.
  */
-export const actionGiveItemsMyNameActionGiveItemPost = <ThrowOnError extends boolean = false>(options: Options<ActionGiveItemsMyNameActionGiveItemPostData, ThrowOnError>): RequestResult<ActionGiveItemsMyNameActionGiveItemPostResponses, ActionGiveItemsMyNameActionGiveItemPostErrors, ThrowOnError> => (options.client ?? client).post<ActionGiveItemsMyNameActionGiveItemPostResponses, ActionGiveItemsMyNameActionGiveItemPostErrors, ThrowOnError>({
+export const actionGiveItemsMyNameActionGiveItemPost = <ThrowOnError extends boolean = true>(options: Options<ActionGiveItemsMyNameActionGiveItemPostData, ThrowOnError>): RequestResult<ActionGiveItemsMyNameActionGiveItemPostResponses, ActionGiveItemsMyNameActionGiveItemPostErrors, ThrowOnError> => (options.client ?? client).post<ActionGiveItemsMyNameActionGiveItemPostResponses, ActionGiveItemsMyNameActionGiveItemPostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/{name}/action/give/item',
     ...options,
@@ -743,7 +743,7 @@ export const actionGiveItemsMyNameActionGiveItemPost = <ThrowOnError extends boo
  *
  * Claim a pending item with a specific character.
  */
-export const actionClaimPendingItemMyNameActionClaimItemIdPost = <ThrowOnError extends boolean = false>(options: Options<ActionClaimPendingItemMyNameActionClaimItemIdPostData, ThrowOnError>): RequestResult<ActionClaimPendingItemMyNameActionClaimItemIdPostResponses, ActionClaimPendingItemMyNameActionClaimItemIdPostErrors, ThrowOnError> => (options.client ?? client).post<ActionClaimPendingItemMyNameActionClaimItemIdPostResponses, ActionClaimPendingItemMyNameActionClaimItemIdPostErrors, ThrowOnError>({
+export const actionClaimPendingItemMyNameActionClaimItemIdPost = <ThrowOnError extends boolean = true>(options: Options<ActionClaimPendingItemMyNameActionClaimItemIdPostData, ThrowOnError>): RequestResult<ActionClaimPendingItemMyNameActionClaimItemIdPostResponses, ActionClaimPendingItemMyNameActionClaimItemIdPostErrors, ThrowOnError> => (options.client ?? client).post<ActionClaimPendingItemMyNameActionClaimItemIdPostResponses, ActionClaimPendingItemMyNameActionClaimItemIdPostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/{name}/action/claim_item/{id}',
     ...options
@@ -756,7 +756,7 @@ export const actionClaimPendingItemMyNameActionClaimItemIdPost = <ThrowOnError e
  *
  * Delete an item from your character's inventory.
  */
-export const actionDeleteItemMyNameActionDeletePost = <ThrowOnError extends boolean = false>(options: Options<ActionDeleteItemMyNameActionDeletePostData, ThrowOnError>): RequestResult<ActionDeleteItemMyNameActionDeletePostResponses, ActionDeleteItemMyNameActionDeletePostErrors, ThrowOnError> => (options.client ?? client).post<ActionDeleteItemMyNameActionDeletePostResponses, ActionDeleteItemMyNameActionDeletePostErrors, ThrowOnError>({
+export const actionDeleteItemMyNameActionDeletePost = <ThrowOnError extends boolean = true>(options: Options<ActionDeleteItemMyNameActionDeletePostData, ThrowOnError>): RequestResult<ActionDeleteItemMyNameActionDeletePostResponses, ActionDeleteItemMyNameActionDeletePostErrors, ThrowOnError> => (options.client ?? client).post<ActionDeleteItemMyNameActionDeletePostResponses, ActionDeleteItemMyNameActionDeletePostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/{name}/action/delete',
     ...options,
@@ -773,7 +773,7 @@ export const actionDeleteItemMyNameActionDeletePost = <ThrowOnError extends bool
  *
  * Change the skin of your character.
  */
-export const actionChangeSkinMyNameActionChangeSkinPost = <ThrowOnError extends boolean = false>(options: Options<ActionChangeSkinMyNameActionChangeSkinPostData, ThrowOnError>): RequestResult<ActionChangeSkinMyNameActionChangeSkinPostResponses, ActionChangeSkinMyNameActionChangeSkinPostErrors, ThrowOnError> => (options.client ?? client).post<ActionChangeSkinMyNameActionChangeSkinPostResponses, ActionChangeSkinMyNameActionChangeSkinPostErrors, ThrowOnError>({
+export const actionChangeSkinMyNameActionChangeSkinPost = <ThrowOnError extends boolean = true>(options: Options<ActionChangeSkinMyNameActionChangeSkinPostData, ThrowOnError>): RequestResult<ActionChangeSkinMyNameActionChangeSkinPostResponses, ActionChangeSkinMyNameActionChangeSkinPostErrors, ThrowOnError> => (options.client ?? client).post<ActionChangeSkinMyNameActionChangeSkinPostResponses, ActionChangeSkinMyNameActionChangeSkinPostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/{name}/action/change_skin',
     ...options,
@@ -790,7 +790,7 @@ export const actionChangeSkinMyNameActionChangeSkinPost = <ThrowOnError extends 
  *
  * Rename a character. An active membership is required.
  */
-export const actionRenameMyNameActionRenamePost = <ThrowOnError extends boolean = false>(options: Options<ActionRenameMyNameActionRenamePostData, ThrowOnError>): RequestResult<ActionRenameMyNameActionRenamePostResponses, ActionRenameMyNameActionRenamePostErrors, ThrowOnError> => (options.client ?? client).post<ActionRenameMyNameActionRenamePostResponses, ActionRenameMyNameActionRenamePostErrors, ThrowOnError>({
+export const actionRenameMyNameActionRenamePost = <ThrowOnError extends boolean = true>(options: Options<ActionRenameMyNameActionRenamePostData, ThrowOnError>): RequestResult<ActionRenameMyNameActionRenamePostResponses, ActionRenameMyNameActionRenamePostErrors, ThrowOnError> => (options.client ?? client).post<ActionRenameMyNameActionRenamePostResponses, ActionRenameMyNameActionRenamePostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/{name}/action/rename',
     ...options,
@@ -807,7 +807,7 @@ export const actionRenameMyNameActionRenamePost = <ThrowOnError extends boolean 
  *
  * History of the last 5000 actions of all your characters.
  */
-export const getAllCharactersLogsMyLogsGet = <ThrowOnError extends boolean = false>(options?: Options<GetAllCharactersLogsMyLogsGetData, ThrowOnError>): RequestResult<GetAllCharactersLogsMyLogsGetResponses, GetAllCharactersLogsMyLogsGetErrors, ThrowOnError> => (options?.client ?? client).get<GetAllCharactersLogsMyLogsGetResponses, GetAllCharactersLogsMyLogsGetErrors, ThrowOnError>({
+export const getAllCharactersLogsMyLogsGet = <ThrowOnError extends boolean = true>(options?: Options<GetAllCharactersLogsMyLogsGetData, ThrowOnError>): RequestResult<GetAllCharactersLogsMyLogsGetResponses, GetAllCharactersLogsMyLogsGetErrors, ThrowOnError> => (options?.client ?? client).get<GetAllCharactersLogsMyLogsGetResponses, GetAllCharactersLogsMyLogsGetErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/logs',
     ...options
@@ -820,7 +820,7 @@ export const getAllCharactersLogsMyLogsGet = <ThrowOnError extends boolean = fal
  *
  * History of the last actions of your character.
  */
-export const getCharacterLogsMyLogsNameGet = <ThrowOnError extends boolean = false>(options: Options<GetCharacterLogsMyLogsNameGetData, ThrowOnError>): RequestResult<GetCharacterLogsMyLogsNameGetResponses, GetCharacterLogsMyLogsNameGetErrors, ThrowOnError> => (options.client ?? client).get<GetCharacterLogsMyLogsNameGetResponses, GetCharacterLogsMyLogsNameGetErrors, ThrowOnError>({
+export const getCharacterLogsMyLogsNameGet = <ThrowOnError extends boolean = true>(options: Options<GetCharacterLogsMyLogsNameGetData, ThrowOnError>): RequestResult<GetCharacterLogsMyLogsNameGetResponses, GetCharacterLogsMyLogsNameGetErrors, ThrowOnError> => (options.client ?? client).get<GetCharacterLogsMyLogsNameGetResponses, GetCharacterLogsMyLogsNameGetErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/logs/{name}',
     ...options
@@ -833,7 +833,7 @@ export const getCharacterLogsMyLogsNameGet = <ThrowOnError extends boolean = fal
  *
  * List of your characters.
  */
-export const getMyCharactersMyCharactersGet = <ThrowOnError extends boolean = false>(options?: Options<GetMyCharactersMyCharactersGetData, ThrowOnError>): RequestResult<GetMyCharactersMyCharactersGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetMyCharactersMyCharactersGetResponses, unknown, ThrowOnError>({
+export const getMyCharactersMyCharactersGet = <ThrowOnError extends boolean = true>(options?: Options<GetMyCharactersMyCharactersGetData, ThrowOnError>): RequestResult<GetMyCharactersMyCharactersGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetMyCharactersMyCharactersGetResponses, unknown, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/my/characters',
     ...options
@@ -846,7 +846,7 @@ export const getMyCharactersMyCharactersGet = <ThrowOnError extends boolean = fa
  *
  * Retrieve the achievements of a account.
  */
-export const getAccountAchievementsAccountsAccountAchievementsGet = <ThrowOnError extends boolean = false>(options: Options<GetAccountAchievementsAccountsAccountAchievementsGetData, ThrowOnError>): RequestResult<GetAccountAchievementsAccountsAccountAchievementsGetResponses, GetAccountAchievementsAccountsAccountAchievementsGetErrors, ThrowOnError> => (options.client ?? client).get<GetAccountAchievementsAccountsAccountAchievementsGetResponses, GetAccountAchievementsAccountsAccountAchievementsGetErrors, ThrowOnError>({ url: '/accounts/{account}/achievements', ...options });
+export const getAccountAchievementsAccountsAccountAchievementsGet = <ThrowOnError extends boolean = true>(options: Options<GetAccountAchievementsAccountsAccountAchievementsGetData, ThrowOnError>): RequestResult<GetAccountAchievementsAccountsAccountAchievementsGetResponses, GetAccountAchievementsAccountsAccountAchievementsGetErrors, ThrowOnError> => (options.client ?? client).get<GetAccountAchievementsAccountsAccountAchievementsGetResponses, GetAccountAchievementsAccountsAccountAchievementsGetErrors, ThrowOnError>({ url: '/accounts/{account}/achievements', ...options });
 
 /**
  * `GET /accounts/{account}/characters`
@@ -855,14 +855,14 @@ export const getAccountAchievementsAccountsAccountAchievementsGet = <ThrowOnErro
  *
  * Account character lists.
  */
-export const getAccountCharactersAccountsAccountCharactersGet = <ThrowOnError extends boolean = false>(options: Options<GetAccountCharactersAccountsAccountCharactersGetData, ThrowOnError>): RequestResult<GetAccountCharactersAccountsAccountCharactersGetResponses, unknown, ThrowOnError> => (options.client ?? client).get<GetAccountCharactersAccountsAccountCharactersGetResponses, unknown, ThrowOnError>({ url: '/accounts/{account}/characters', ...options });
+export const getAccountCharactersAccountsAccountCharactersGet = <ThrowOnError extends boolean = true>(options: Options<GetAccountCharactersAccountsAccountCharactersGetData, ThrowOnError>): RequestResult<GetAccountCharactersAccountsAccountCharactersGetResponses, unknown, ThrowOnError> => (options.client ?? client).get<GetAccountCharactersAccountsAccountCharactersGetResponses, unknown, ThrowOnError>({ url: '/accounts/{account}/characters', ...options });
 
 /**
  * `POST /accounts/create`
  *
  * Create Account
  */
-export const createAccountAccountsCreatePost = <ThrowOnError extends boolean = false>(options: Options<CreateAccountAccountsCreatePostData, ThrowOnError>): RequestResult<CreateAccountAccountsCreatePostResponses, CreateAccountAccountsCreatePostErrors, ThrowOnError> => (options.client ?? client).post<CreateAccountAccountsCreatePostResponses, CreateAccountAccountsCreatePostErrors, ThrowOnError>({
+export const createAccountAccountsCreatePost = <ThrowOnError extends boolean = true>(options: Options<CreateAccountAccountsCreatePostData, ThrowOnError>): RequestResult<CreateAccountAccountsCreatePostResponses, CreateAccountAccountsCreatePostErrors, ThrowOnError> => (options.client ?? client).post<CreateAccountAccountsCreatePostResponses, CreateAccountAccountsCreatePostErrors, ThrowOnError>({
     url: '/accounts/create',
     ...options,
     headers: {
@@ -878,7 +878,7 @@ export const createAccountAccountsCreatePost = <ThrowOnError extends boolean = f
  *
  * Request a password reset.
  */
-export const forgotPasswordAccountsForgotPasswordPost = <ThrowOnError extends boolean = false>(options: Options<ForgotPasswordAccountsForgotPasswordPostData, ThrowOnError>): RequestResult<ForgotPasswordAccountsForgotPasswordPostResponses, ForgotPasswordAccountsForgotPasswordPostErrors, ThrowOnError> => (options.client ?? client).post<ForgotPasswordAccountsForgotPasswordPostResponses, ForgotPasswordAccountsForgotPasswordPostErrors, ThrowOnError>({
+export const forgotPasswordAccountsForgotPasswordPost = <ThrowOnError extends boolean = true>(options: Options<ForgotPasswordAccountsForgotPasswordPostData, ThrowOnError>): RequestResult<ForgotPasswordAccountsForgotPasswordPostResponses, ForgotPasswordAccountsForgotPasswordPostErrors, ThrowOnError> => (options.client ?? client).post<ForgotPasswordAccountsForgotPasswordPostResponses, ForgotPasswordAccountsForgotPasswordPostErrors, ThrowOnError>({
     url: '/accounts/forgot_password',
     ...options,
     headers: {
@@ -894,7 +894,7 @@ export const forgotPasswordAccountsForgotPasswordPost = <ThrowOnError extends bo
  *
  * Reset password with a token. Use /forgot_password to get a token by email.
  */
-export const resetPasswordAccountsResetPasswordPost = <ThrowOnError extends boolean = false>(options: Options<ResetPasswordAccountsResetPasswordPostData, ThrowOnError>): RequestResult<ResetPasswordAccountsResetPasswordPostResponses, ResetPasswordAccountsResetPasswordPostErrors, ThrowOnError> => (options.client ?? client).post<ResetPasswordAccountsResetPasswordPostResponses, ResetPasswordAccountsResetPasswordPostErrors, ThrowOnError>({
+export const resetPasswordAccountsResetPasswordPost = <ThrowOnError extends boolean = true>(options: Options<ResetPasswordAccountsResetPasswordPostData, ThrowOnError>): RequestResult<ResetPasswordAccountsResetPasswordPostResponses, ResetPasswordAccountsResetPasswordPostErrors, ThrowOnError> => (options.client ?? client).post<ResetPasswordAccountsResetPasswordPostResponses, ResetPasswordAccountsResetPasswordPostErrors, ThrowOnError>({
     url: '/accounts/reset_password',
     ...options,
     headers: {
@@ -910,7 +910,7 @@ export const resetPasswordAccountsResetPasswordPost = <ThrowOnError extends bool
  *
  * Retrieve the details of an account.
  */
-export const getAccountAccountsAccountGet = <ThrowOnError extends boolean = false>(options: Options<GetAccountAccountsAccountGetData, ThrowOnError>): RequestResult<GetAccountAccountsAccountGetResponses, GetAccountAccountsAccountGetErrors, ThrowOnError> => (options.client ?? client).get<GetAccountAccountsAccountGetResponses, GetAccountAccountsAccountGetErrors, ThrowOnError>({ url: '/accounts/{account}', ...options });
+export const getAccountAccountsAccountGet = <ThrowOnError extends boolean = true>(options: Options<GetAccountAccountsAccountGetData, ThrowOnError>): RequestResult<GetAccountAccountsAccountGetResponses, GetAccountAccountsAccountGetErrors, ThrowOnError> => (options.client ?? client).get<GetAccountAccountsAccountGetResponses, GetAccountAccountsAccountGetErrors, ThrowOnError>({ url: '/accounts/{account}', ...options });
 
 /**
  * `GET /achievements`
@@ -919,7 +919,7 @@ export const getAccountAccountsAccountGet = <ThrowOnError extends boolean = fals
  *
  * List of all achievements.
  */
-export const getAllAchievementsAchievementsGet = <ThrowOnError extends boolean = false>(options?: Options<GetAllAchievementsAchievementsGetData, ThrowOnError>): RequestResult<GetAllAchievementsAchievementsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllAchievementsAchievementsGetResponses, unknown, ThrowOnError>({ url: '/achievements', ...options });
+export const getAllAchievementsAchievementsGet = <ThrowOnError extends boolean = true>(options?: Options<GetAllAchievementsAchievementsGetData, ThrowOnError>): RequestResult<GetAllAchievementsAchievementsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllAchievementsAchievementsGetResponses, unknown, ThrowOnError>({ url: '/achievements', ...options });
 
 /**
  * `GET /achievements/{code}`
@@ -928,7 +928,7 @@ export const getAllAchievementsAchievementsGet = <ThrowOnError extends boolean =
  *
  * Retrieve the details of an achievement.
  */
-export const getAchievementAchievementsCodeGet = <ThrowOnError extends boolean = false>(options: Options<GetAchievementAchievementsCodeGetData, ThrowOnError>): RequestResult<GetAchievementAchievementsCodeGetResponses, GetAchievementAchievementsCodeGetErrors, ThrowOnError> => (options.client ?? client).get<GetAchievementAchievementsCodeGetResponses, GetAchievementAchievementsCodeGetErrors, ThrowOnError>({ url: '/achievements/{code}', ...options });
+export const getAchievementAchievementsCodeGet = <ThrowOnError extends boolean = true>(options: Options<GetAchievementAchievementsCodeGetData, ThrowOnError>): RequestResult<GetAchievementAchievementsCodeGetResponses, GetAchievementAchievementsCodeGetErrors, ThrowOnError> => (options.client ?? client).get<GetAchievementAchievementsCodeGetResponses, GetAchievementAchievementsCodeGetErrors, ThrowOnError>({ url: '/achievements/{code}', ...options });
 
 /**
  * `GET /badges`
@@ -937,7 +937,7 @@ export const getAchievementAchievementsCodeGet = <ThrowOnError extends boolean =
  *
  * List of all badges.
  */
-export const getAllBadgesBadgesGet = <ThrowOnError extends boolean = false>(options?: Options<GetAllBadgesBadgesGetData, ThrowOnError>): RequestResult<GetAllBadgesBadgesGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllBadgesBadgesGetResponses, unknown, ThrowOnError>({ url: '/badges', ...options });
+export const getAllBadgesBadgesGet = <ThrowOnError extends boolean = true>(options?: Options<GetAllBadgesBadgesGetData, ThrowOnError>): RequestResult<GetAllBadgesBadgesGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllBadgesBadgesGetResponses, unknown, ThrowOnError>({ url: '/badges', ...options });
 
 /**
  * `GET /badges/{code}`
@@ -946,7 +946,7 @@ export const getAllBadgesBadgesGet = <ThrowOnError extends boolean = false>(opti
  *
  * Retrieve the details of a badge.
  */
-export const getBadgeBadgesCodeGet = <ThrowOnError extends boolean = false>(options: Options<GetBadgeBadgesCodeGetData, ThrowOnError>): RequestResult<GetBadgeBadgesCodeGetResponses, GetBadgeBadgesCodeGetErrors, ThrowOnError> => (options.client ?? client).get<GetBadgeBadgesCodeGetResponses, GetBadgeBadgesCodeGetErrors, ThrowOnError>({ url: '/badges/{code}', ...options });
+export const getBadgeBadgesCodeGet = <ThrowOnError extends boolean = true>(options: Options<GetBadgeBadgesCodeGetData, ThrowOnError>): RequestResult<GetBadgeBadgesCodeGetResponses, GetBadgeBadgesCodeGetErrors, ThrowOnError> => (options.client ?? client).get<GetBadgeBadgesCodeGetResponses, GetBadgeBadgesCodeGetErrors, ThrowOnError>({ url: '/badges/{code}', ...options });
 
 /**
  * `GET /skins`
@@ -955,7 +955,7 @@ export const getBadgeBadgesCodeGet = <ThrowOnError extends boolean = false>(opti
  *
  * List of all skins available in the game.
  */
-export const getAllSkinsSkinsGet = <ThrowOnError extends boolean = false>(options?: Options<GetAllSkinsSkinsGetData, ThrowOnError>): RequestResult<GetAllSkinsSkinsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllSkinsSkinsGetResponses, unknown, ThrowOnError>({ url: '/skins', ...options });
+export const getAllSkinsSkinsGet = <ThrowOnError extends boolean = true>(options?: Options<GetAllSkinsSkinsGetData, ThrowOnError>): RequestResult<GetAllSkinsSkinsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllSkinsSkinsGetResponses, unknown, ThrowOnError>({ url: '/skins', ...options });
 
 /**
  * `GET /skins/{code}`
@@ -964,7 +964,7 @@ export const getAllSkinsSkinsGet = <ThrowOnError extends boolean = false>(option
  *
  * Retrieve the details of a skin.
  */
-export const getSkinSkinsCodeGet = <ThrowOnError extends boolean = false>(options: Options<GetSkinSkinsCodeGetData, ThrowOnError>): RequestResult<GetSkinSkinsCodeGetResponses, GetSkinSkinsCodeGetErrors, ThrowOnError> => (options.client ?? client).get<GetSkinSkinsCodeGetResponses, GetSkinSkinsCodeGetErrors, ThrowOnError>({ url: '/skins/{code}', ...options });
+export const getSkinSkinsCodeGet = <ThrowOnError extends boolean = true>(options: Options<GetSkinSkinsCodeGetData, ThrowOnError>): RequestResult<GetSkinSkinsCodeGetResponses, GetSkinSkinsCodeGetErrors, ThrowOnError> => (options.client ?? client).get<GetSkinSkinsCodeGetResponses, GetSkinSkinsCodeGetErrors, ThrowOnError>({ url: '/skins/{code}', ...options });
 
 /**
  * `GET /season_rewards`
@@ -973,7 +973,7 @@ export const getSkinSkinsCodeGet = <ThrowOnError extends boolean = false>(option
  *
  * List of all rewards for the current season.
  */
-export const getAllSeasonRewardsSeasonRewardsGet = <ThrowOnError extends boolean = false>(options?: Options<GetAllSeasonRewardsSeasonRewardsGetData, ThrowOnError>): RequestResult<GetAllSeasonRewardsSeasonRewardsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllSeasonRewardsSeasonRewardsGetResponses, unknown, ThrowOnError>({ url: '/season_rewards', ...options });
+export const getAllSeasonRewardsSeasonRewardsGet = <ThrowOnError extends boolean = true>(options?: Options<GetAllSeasonRewardsSeasonRewardsGetData, ThrowOnError>): RequestResult<GetAllSeasonRewardsSeasonRewardsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllSeasonRewardsSeasonRewardsGetResponses, unknown, ThrowOnError>({ url: '/season_rewards', ...options });
 
 /**
  * `GET /season_rewards/{code}`
@@ -982,7 +982,7 @@ export const getAllSeasonRewardsSeasonRewardsGet = <ThrowOnError extends boolean
  *
  * List all season rewards matching a specific code.
  */
-export const getSeasonRewardsByCodeSeasonRewardsCodeGet = <ThrowOnError extends boolean = false>(options: Options<GetSeasonRewardsByCodeSeasonRewardsCodeGetData, ThrowOnError>): RequestResult<GetSeasonRewardsByCodeSeasonRewardsCodeGetResponses, unknown, ThrowOnError> => (options.client ?? client).get<GetSeasonRewardsByCodeSeasonRewardsCodeGetResponses, unknown, ThrowOnError>({ url: '/season_rewards/{code}', ...options });
+export const getSeasonRewardsByCodeSeasonRewardsCodeGet = <ThrowOnError extends boolean = true>(options: Options<GetSeasonRewardsByCodeSeasonRewardsCodeGetData, ThrowOnError>): RequestResult<GetSeasonRewardsByCodeSeasonRewardsCodeGetResponses, unknown, ThrowOnError> => (options.client ?? client).get<GetSeasonRewardsByCodeSeasonRewardsCodeGetResponses, unknown, ThrowOnError>({ url: '/season_rewards/{code}', ...options });
 
 /**
  * `POST /characters/create`
@@ -991,7 +991,7 @@ export const getSeasonRewardsByCodeSeasonRewardsCodeGet = <ThrowOnError extends 
  *
  * Create new character on your account. You can create up to 5 characters.
  */
-export const createCharacterCharactersCreatePost = <ThrowOnError extends boolean = false>(options: Options<CreateCharacterCharactersCreatePostData, ThrowOnError>): RequestResult<CreateCharacterCharactersCreatePostResponses, CreateCharacterCharactersCreatePostErrors, ThrowOnError> => (options.client ?? client).post<CreateCharacterCharactersCreatePostResponses, CreateCharacterCharactersCreatePostErrors, ThrowOnError>({
+export const createCharacterCharactersCreatePost = <ThrowOnError extends boolean = true>(options: Options<CreateCharacterCharactersCreatePostData, ThrowOnError>): RequestResult<CreateCharacterCharactersCreatePostResponses, CreateCharacterCharactersCreatePostErrors, ThrowOnError> => (options.client ?? client).post<CreateCharacterCharactersCreatePostResponses, CreateCharacterCharactersCreatePostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/characters/create',
     ...options,
@@ -1008,7 +1008,7 @@ export const createCharacterCharactersCreatePost = <ThrowOnError extends boolean
  *
  * Delete character on your account.
  */
-export const deleteCharacterCharactersDeletePost = <ThrowOnError extends boolean = false>(options: Options<DeleteCharacterCharactersDeletePostData, ThrowOnError>): RequestResult<DeleteCharacterCharactersDeletePostResponses, DeleteCharacterCharactersDeletePostErrors, ThrowOnError> => (options.client ?? client).post<DeleteCharacterCharactersDeletePostResponses, DeleteCharacterCharactersDeletePostErrors, ThrowOnError>({
+export const deleteCharacterCharactersDeletePost = <ThrowOnError extends boolean = true>(options: Options<DeleteCharacterCharactersDeletePostData, ThrowOnError>): RequestResult<DeleteCharacterCharactersDeletePostResponses, DeleteCharacterCharactersDeletePostErrors, ThrowOnError> => (options.client ?? client).post<DeleteCharacterCharactersDeletePostResponses, DeleteCharacterCharactersDeletePostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/characters/delete',
     ...options,
@@ -1028,7 +1028,7 @@ export const deleteCharacterCharactersDeletePost = <ThrowOnError extends boolean
  * Stats are only visible if the character's account has an active subscription.
  * Statistics are still collected for all accounts regardless of subscription status.
  */
-export const getCharacterStatsCharactersNameStatsGet = <ThrowOnError extends boolean = false>(options: Options<GetCharacterStatsCharactersNameStatsGetData, ThrowOnError>): RequestResult<GetCharacterStatsCharactersNameStatsGetResponses, GetCharacterStatsCharactersNameStatsGetErrors, ThrowOnError> => (options.client ?? client).get<GetCharacterStatsCharactersNameStatsGetResponses, GetCharacterStatsCharactersNameStatsGetErrors, ThrowOnError>({ url: '/characters/{name}/stats', ...options });
+export const getCharacterStatsCharactersNameStatsGet = <ThrowOnError extends boolean = true>(options: Options<GetCharacterStatsCharactersNameStatsGetData, ThrowOnError>): RequestResult<GetCharacterStatsCharactersNameStatsGetResponses, GetCharacterStatsCharactersNameStatsGetErrors, ThrowOnError> => (options.client ?? client).get<GetCharacterStatsCharactersNameStatsGetResponses, GetCharacterStatsCharactersNameStatsGetErrors, ThrowOnError>({ url: '/characters/{name}/stats', ...options });
 
 /**
  * `GET /characters/active`
@@ -1037,7 +1037,7 @@ export const getCharacterStatsCharactersNameStatsGet = <ThrowOnError extends boo
  *
  * Fetch active characters details.
  */
-export const getActiveCharactersCharactersActiveGet = <ThrowOnError extends boolean = false>(options?: Options<GetActiveCharactersCharactersActiveGetData, ThrowOnError>): RequestResult<GetActiveCharactersCharactersActiveGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetActiveCharactersCharactersActiveGetResponses, unknown, ThrowOnError>({ url: '/characters/active', ...options });
+export const getActiveCharactersCharactersActiveGet = <ThrowOnError extends boolean = true>(options?: Options<GetActiveCharactersCharactersActiveGetData, ThrowOnError>): RequestResult<GetActiveCharactersCharactersActiveGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetActiveCharactersCharactersActiveGetResponses, unknown, ThrowOnError>({ url: '/characters/active', ...options });
 
 /**
  * `GET /characters/{name}`
@@ -1046,7 +1046,7 @@ export const getActiveCharactersCharactersActiveGet = <ThrowOnError extends bool
  *
  * Retrieve the details of a character.
  */
-export const getCharacterCharactersNameGet = <ThrowOnError extends boolean = false>(options: Options<GetCharacterCharactersNameGetData, ThrowOnError>): RequestResult<GetCharacterCharactersNameGetResponses, GetCharacterCharactersNameGetErrors, ThrowOnError> => (options.client ?? client).get<GetCharacterCharactersNameGetResponses, GetCharacterCharactersNameGetErrors, ThrowOnError>({ url: '/characters/{name}', ...options });
+export const getCharacterCharactersNameGet = <ThrowOnError extends boolean = true>(options: Options<GetCharacterCharactersNameGetData, ThrowOnError>): RequestResult<GetCharacterCharactersNameGetResponses, GetCharacterCharactersNameGetErrors, ThrowOnError> => (options.client ?? client).get<GetCharacterCharactersNameGetResponses, GetCharacterCharactersNameGetErrors, ThrowOnError>({ url: '/characters/{name}', ...options });
 
 /**
  * `GET /effects`
@@ -1055,7 +1055,7 @@ export const getCharacterCharactersNameGet = <ThrowOnError extends boolean = fal
  *
  * List of all effects. Effects are used by equipment, tools, runes, consumables and monsters. An effect is an action that produces an effect on the game.
  */
-export const getAllEffectsEffectsGet = <ThrowOnError extends boolean = false>(options?: Options<GetAllEffectsEffectsGetData, ThrowOnError>): RequestResult<GetAllEffectsEffectsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllEffectsEffectsGetResponses, unknown, ThrowOnError>({ url: '/effects', ...options });
+export const getAllEffectsEffectsGet = <ThrowOnError extends boolean = true>(options?: Options<GetAllEffectsEffectsGetData, ThrowOnError>): RequestResult<GetAllEffectsEffectsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllEffectsEffectsGetResponses, unknown, ThrowOnError>({ url: '/effects', ...options });
 
 /**
  * `GET /effects/{code}`
@@ -1064,7 +1064,7 @@ export const getAllEffectsEffectsGet = <ThrowOnError extends boolean = false>(op
  *
  * Retrieve the details of an effect.
  */
-export const getEffectEffectsCodeGet = <ThrowOnError extends boolean = false>(options: Options<GetEffectEffectsCodeGetData, ThrowOnError>): RequestResult<GetEffectEffectsCodeGetResponses, GetEffectEffectsCodeGetErrors, ThrowOnError> => (options.client ?? client).get<GetEffectEffectsCodeGetResponses, GetEffectEffectsCodeGetErrors, ThrowOnError>({ url: '/effects/{code}', ...options });
+export const getEffectEffectsCodeGet = <ThrowOnError extends boolean = true>(options: Options<GetEffectEffectsCodeGetData, ThrowOnError>): RequestResult<GetEffectEffectsCodeGetResponses, GetEffectEffectsCodeGetErrors, ThrowOnError> => (options.client ?? client).get<GetEffectEffectsCodeGetResponses, GetEffectEffectsCodeGetErrors, ThrowOnError>({ url: '/effects/{code}', ...options });
 
 /**
  * `GET /events/active`
@@ -1073,7 +1073,7 @@ export const getEffectEffectsCodeGet = <ThrowOnError extends boolean = false>(op
  *
  * Fetch active events details.
  */
-export const getAllActiveEventsEventsActiveGet = <ThrowOnError extends boolean = false>(options?: Options<GetAllActiveEventsEventsActiveGetData, ThrowOnError>): RequestResult<GetAllActiveEventsEventsActiveGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllActiveEventsEventsActiveGetResponses, unknown, ThrowOnError>({ url: '/events/active', ...options });
+export const getAllActiveEventsEventsActiveGet = <ThrowOnError extends boolean = true>(options?: Options<GetAllActiveEventsEventsActiveGetData, ThrowOnError>): RequestResult<GetAllActiveEventsEventsActiveGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllActiveEventsEventsActiveGetResponses, unknown, ThrowOnError>({ url: '/events/active', ...options });
 
 /**
  * `GET /events`
@@ -1082,7 +1082,7 @@ export const getAllActiveEventsEventsActiveGet = <ThrowOnError extends boolean =
  *
  * Fetch events details.
  */
-export const getAllEventsEventsGet = <ThrowOnError extends boolean = false>(options?: Options<GetAllEventsEventsGetData, ThrowOnError>): RequestResult<GetAllEventsEventsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllEventsEventsGetResponses, unknown, ThrowOnError>({ url: '/events', ...options });
+export const getAllEventsEventsGet = <ThrowOnError extends boolean = true>(options?: Options<GetAllEventsEventsGetData, ThrowOnError>): RequestResult<GetAllEventsEventsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllEventsEventsGetResponses, unknown, ThrowOnError>({ url: '/events', ...options });
 
 /**
  * `GET /grandexchange/history/{code}`
@@ -1091,7 +1091,7 @@ export const getAllEventsEventsGet = <ThrowOnError extends boolean = false>(opti
  *
  * Fetch the transaction history of the item for the last 7 days (buy and sell orders).
  */
-export const getGeHistoryGrandexchangeHistoryCodeGet = <ThrowOnError extends boolean = false>(options: Options<GetGeHistoryGrandexchangeHistoryCodeGetData, ThrowOnError>): RequestResult<GetGeHistoryGrandexchangeHistoryCodeGetResponses, GetGeHistoryGrandexchangeHistoryCodeGetErrors, ThrowOnError> => (options.client ?? client).get<GetGeHistoryGrandexchangeHistoryCodeGetResponses, GetGeHistoryGrandexchangeHistoryCodeGetErrors, ThrowOnError>({ url: '/grandexchange/history/{code}', ...options });
+export const getGeHistoryGrandexchangeHistoryCodeGet = <ThrowOnError extends boolean = true>(options: Options<GetGeHistoryGrandexchangeHistoryCodeGetData, ThrowOnError>): RequestResult<GetGeHistoryGrandexchangeHistoryCodeGetResponses, GetGeHistoryGrandexchangeHistoryCodeGetErrors, ThrowOnError> => (options.client ?? client).get<GetGeHistoryGrandexchangeHistoryCodeGetResponses, GetGeHistoryGrandexchangeHistoryCodeGetErrors, ThrowOnError>({ url: '/grandexchange/history/{code}', ...options });
 
 /**
  * `GET /grandexchange/orders`
@@ -1103,7 +1103,7 @@ export const getGeHistoryGrandexchangeHistoryCodeGet = <ThrowOnError extends boo
  * Use the `type` parameter to filter by order type; when using `account`, `type`
  * is required to keep account searches explicit.
  */
-export const getGeOrdersGrandexchangeOrdersGet = <ThrowOnError extends boolean = false>(options?: Options<GetGeOrdersGrandexchangeOrdersGetData, ThrowOnError>): RequestResult<GetGeOrdersGrandexchangeOrdersGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetGeOrdersGrandexchangeOrdersGetResponses, unknown, ThrowOnError>({ url: '/grandexchange/orders', ...options });
+export const getGeOrdersGrandexchangeOrdersGet = <ThrowOnError extends boolean = true>(options?: Options<GetGeOrdersGrandexchangeOrdersGetData, ThrowOnError>): RequestResult<GetGeOrdersGrandexchangeOrdersGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetGeOrdersGrandexchangeOrdersGetResponses, unknown, ThrowOnError>({ url: '/grandexchange/orders', ...options });
 
 /**
  * `GET /grandexchange/orders/{id}`
@@ -1112,7 +1112,7 @@ export const getGeOrdersGrandexchangeOrdersGet = <ThrowOnError extends boolean =
  *
  * Retrieve a specific order by ID.
  */
-export const getGeOrderGrandexchangeOrdersIdGet = <ThrowOnError extends boolean = false>(options: Options<GetGeOrderGrandexchangeOrdersIdGetData, ThrowOnError>): RequestResult<GetGeOrderGrandexchangeOrdersIdGetResponses, GetGeOrderGrandexchangeOrdersIdGetErrors, ThrowOnError> => (options.client ?? client).get<GetGeOrderGrandexchangeOrdersIdGetResponses, GetGeOrderGrandexchangeOrdersIdGetErrors, ThrowOnError>({ url: '/grandexchange/orders/{id}', ...options });
+export const getGeOrderGrandexchangeOrdersIdGet = <ThrowOnError extends boolean = true>(options: Options<GetGeOrderGrandexchangeOrdersIdGetData, ThrowOnError>): RequestResult<GetGeOrderGrandexchangeOrdersIdGetResponses, GetGeOrderGrandexchangeOrdersIdGetErrors, ThrowOnError> => (options.client ?? client).get<GetGeOrderGrandexchangeOrdersIdGetResponses, GetGeOrderGrandexchangeOrdersIdGetErrors, ThrowOnError>({ url: '/grandexchange/orders/{id}', ...options });
 
 /**
  * `GET /items`
@@ -1121,7 +1121,7 @@ export const getGeOrderGrandexchangeOrdersIdGet = <ThrowOnError extends boolean 
  *
  * Fetch items details.
  */
-export const getAllItemsItemsGet = <ThrowOnError extends boolean = false>(options?: Options<GetAllItemsItemsGetData, ThrowOnError>): RequestResult<GetAllItemsItemsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllItemsItemsGetResponses, unknown, ThrowOnError>({ url: '/items', ...options });
+export const getAllItemsItemsGet = <ThrowOnError extends boolean = true>(options?: Options<GetAllItemsItemsGetData, ThrowOnError>): RequestResult<GetAllItemsItemsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllItemsItemsGetResponses, unknown, ThrowOnError>({ url: '/items', ...options });
 
 /**
  * `GET /items/{code}`
@@ -1130,7 +1130,7 @@ export const getAllItemsItemsGet = <ThrowOnError extends boolean = false>(option
  *
  * Retrieve the details of a item.
  */
-export const getItemItemsCodeGet = <ThrowOnError extends boolean = false>(options: Options<GetItemItemsCodeGetData, ThrowOnError>): RequestResult<GetItemItemsCodeGetResponses, GetItemItemsCodeGetErrors, ThrowOnError> => (options.client ?? client).get<GetItemItemsCodeGetResponses, GetItemItemsCodeGetErrors, ThrowOnError>({ url: '/items/{code}', ...options });
+export const getItemItemsCodeGet = <ThrowOnError extends boolean = true>(options: Options<GetItemItemsCodeGetData, ThrowOnError>): RequestResult<GetItemItemsCodeGetResponses, GetItemItemsCodeGetErrors, ThrowOnError> => (options.client ?? client).get<GetItemItemsCodeGetResponses, GetItemItemsCodeGetErrors, ThrowOnError>({ url: '/items/{code}', ...options });
 
 /**
  * `GET /leaderboard/characters`
@@ -1139,7 +1139,7 @@ export const getItemItemsCodeGet = <ThrowOnError extends boolean = false>(option
  *
  * Fetch leaderboard details.
  */
-export const getCharactersLeaderboardLeaderboardCharactersGet = <ThrowOnError extends boolean = false>(options?: Options<GetCharactersLeaderboardLeaderboardCharactersGetData, ThrowOnError>): RequestResult<GetCharactersLeaderboardLeaderboardCharactersGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetCharactersLeaderboardLeaderboardCharactersGetResponses, unknown, ThrowOnError>({ url: '/leaderboard/characters', ...options });
+export const getCharactersLeaderboardLeaderboardCharactersGet = <ThrowOnError extends boolean = true>(options?: Options<GetCharactersLeaderboardLeaderboardCharactersGetData, ThrowOnError>): RequestResult<GetCharactersLeaderboardLeaderboardCharactersGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetCharactersLeaderboardLeaderboardCharactersGetResponses, unknown, ThrowOnError>({ url: '/leaderboard/characters', ...options });
 
 /**
  * `GET /leaderboard/accounts`
@@ -1148,7 +1148,7 @@ export const getCharactersLeaderboardLeaderboardCharactersGet = <ThrowOnError ex
  *
  * Fetch leaderboard details.
  */
-export const getAccountsLeaderboardLeaderboardAccountsGet = <ThrowOnError extends boolean = false>(options?: Options<GetAccountsLeaderboardLeaderboardAccountsGetData, ThrowOnError>): RequestResult<GetAccountsLeaderboardLeaderboardAccountsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAccountsLeaderboardLeaderboardAccountsGetResponses, unknown, ThrowOnError>({ url: '/leaderboard/accounts', ...options });
+export const getAccountsLeaderboardLeaderboardAccountsGet = <ThrowOnError extends boolean = true>(options?: Options<GetAccountsLeaderboardLeaderboardAccountsGetData, ThrowOnError>): RequestResult<GetAccountsLeaderboardLeaderboardAccountsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAccountsLeaderboardLeaderboardAccountsGetResponses, unknown, ThrowOnError>({ url: '/leaderboard/accounts', ...options });
 
 /**
  * `GET /maps`
@@ -1157,7 +1157,7 @@ export const getAccountsLeaderboardLeaderboardAccountsGet = <ThrowOnError extend
  *
  * Fetch maps details.
  */
-export const getAllMapsMapsGet = <ThrowOnError extends boolean = false>(options?: Options<GetAllMapsMapsGetData, ThrowOnError>): RequestResult<GetAllMapsMapsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllMapsMapsGetResponses, unknown, ThrowOnError>({ url: '/maps', ...options });
+export const getAllMapsMapsGet = <ThrowOnError extends boolean = true>(options?: Options<GetAllMapsMapsGetData, ThrowOnError>): RequestResult<GetAllMapsMapsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllMapsMapsGetResponses, unknown, ThrowOnError>({ url: '/maps', ...options });
 
 /**
  * `GET /maps/{layer}`
@@ -1166,7 +1166,7 @@ export const getAllMapsMapsGet = <ThrowOnError extends boolean = false>(options?
  *
  * Fetch maps details.
  */
-export const getLayerMapsMapsLayerGet = <ThrowOnError extends boolean = false>(options: Options<GetLayerMapsMapsLayerGetData, ThrowOnError>): RequestResult<GetLayerMapsMapsLayerGetResponses, unknown, ThrowOnError> => (options.client ?? client).get<GetLayerMapsMapsLayerGetResponses, unknown, ThrowOnError>({ url: '/maps/{layer}', ...options });
+export const getLayerMapsMapsLayerGet = <ThrowOnError extends boolean = true>(options: Options<GetLayerMapsMapsLayerGetData, ThrowOnError>): RequestResult<GetLayerMapsMapsLayerGetResponses, unknown, ThrowOnError> => (options.client ?? client).get<GetLayerMapsMapsLayerGetResponses, unknown, ThrowOnError>({ url: '/maps/{layer}', ...options });
 
 /**
  * `GET /maps/{layer}/{x}/{y}`
@@ -1175,7 +1175,7 @@ export const getLayerMapsMapsLayerGet = <ThrowOnError extends boolean = false>(o
  *
  * Retrieve the details of a map by layer and coordinates.
  */
-export const getMapByPositionMapsLayerXYGet = <ThrowOnError extends boolean = false>(options: Options<GetMapByPositionMapsLayerXyGetData, ThrowOnError>): RequestResult<GetMapByPositionMapsLayerXyGetResponses, GetMapByPositionMapsLayerXyGetErrors, ThrowOnError> => (options.client ?? client).get<GetMapByPositionMapsLayerXyGetResponses, GetMapByPositionMapsLayerXyGetErrors, ThrowOnError>({ url: '/maps/{layer}/{x}/{y}', ...options });
+export const getMapByPositionMapsLayerXYGet = <ThrowOnError extends boolean = true>(options: Options<GetMapByPositionMapsLayerXyGetData, ThrowOnError>): RequestResult<GetMapByPositionMapsLayerXyGetResponses, GetMapByPositionMapsLayerXyGetErrors, ThrowOnError> => (options.client ?? client).get<GetMapByPositionMapsLayerXyGetResponses, GetMapByPositionMapsLayerXyGetErrors, ThrowOnError>({ url: '/maps/{layer}/{x}/{y}', ...options });
 
 /**
  * `GET /maps/id/{map_id}`
@@ -1184,7 +1184,7 @@ export const getMapByPositionMapsLayerXYGet = <ThrowOnError extends boolean = fa
  *
  * Retrieve the details of a map by its unique ID.
  */
-export const getMapByIdMapsIdMapIdGet = <ThrowOnError extends boolean = false>(options: Options<GetMapByIdMapsIdMapIdGetData, ThrowOnError>): RequestResult<GetMapByIdMapsIdMapIdGetResponses, GetMapByIdMapsIdMapIdGetErrors, ThrowOnError> => (options.client ?? client).get<GetMapByIdMapsIdMapIdGetResponses, GetMapByIdMapsIdMapIdGetErrors, ThrowOnError>({ url: '/maps/id/{map_id}', ...options });
+export const getMapByIdMapsIdMapIdGet = <ThrowOnError extends boolean = true>(options: Options<GetMapByIdMapsIdMapIdGetData, ThrowOnError>): RequestResult<GetMapByIdMapsIdMapIdGetResponses, GetMapByIdMapsIdMapIdGetErrors, ThrowOnError> => (options.client ?? client).get<GetMapByIdMapsIdMapIdGetResponses, GetMapByIdMapsIdMapIdGetErrors, ThrowOnError>({ url: '/maps/id/{map_id}', ...options });
 
 /**
  * `GET /monsters`
@@ -1193,7 +1193,7 @@ export const getMapByIdMapsIdMapIdGet = <ThrowOnError extends boolean = false>(o
  *
  * Fetch monsters details.
  */
-export const getAllMonstersMonstersGet = <ThrowOnError extends boolean = false>(options?: Options<GetAllMonstersMonstersGetData, ThrowOnError>): RequestResult<GetAllMonstersMonstersGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllMonstersMonstersGetResponses, unknown, ThrowOnError>({ url: '/monsters', ...options });
+export const getAllMonstersMonstersGet = <ThrowOnError extends boolean = true>(options?: Options<GetAllMonstersMonstersGetData, ThrowOnError>): RequestResult<GetAllMonstersMonstersGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllMonstersMonstersGetResponses, unknown, ThrowOnError>({ url: '/monsters', ...options });
 
 /**
  * `GET /monsters/{code}`
@@ -1202,7 +1202,7 @@ export const getAllMonstersMonstersGet = <ThrowOnError extends boolean = false>(
  *
  * Retrieve the details of a monster.
  */
-export const getMonsterMonstersCodeGet = <ThrowOnError extends boolean = false>(options: Options<GetMonsterMonstersCodeGetData, ThrowOnError>): RequestResult<GetMonsterMonstersCodeGetResponses, GetMonsterMonstersCodeGetErrors, ThrowOnError> => (options.client ?? client).get<GetMonsterMonstersCodeGetResponses, GetMonsterMonstersCodeGetErrors, ThrowOnError>({ url: '/monsters/{code}', ...options });
+export const getMonsterMonstersCodeGet = <ThrowOnError extends boolean = true>(options: Options<GetMonsterMonstersCodeGetData, ThrowOnError>): RequestResult<GetMonsterMonstersCodeGetResponses, GetMonsterMonstersCodeGetErrors, ThrowOnError> => (options.client ?? client).get<GetMonsterMonstersCodeGetResponses, GetMonsterMonstersCodeGetErrors, ThrowOnError>({ url: '/monsters/{code}', ...options });
 
 /**
  * `GET /npcs/details`
@@ -1211,7 +1211,7 @@ export const getMonsterMonstersCodeGet = <ThrowOnError extends boolean = false>(
  *
  * Fetch NPCs details.
  */
-export const getAllNpcsNpcsDetailsGet = <ThrowOnError extends boolean = false>(options?: Options<GetAllNpcsNpcsDetailsGetData, ThrowOnError>): RequestResult<GetAllNpcsNpcsDetailsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllNpcsNpcsDetailsGetResponses, unknown, ThrowOnError>({ url: '/npcs/details', ...options });
+export const getAllNpcsNpcsDetailsGet = <ThrowOnError extends boolean = true>(options?: Options<GetAllNpcsNpcsDetailsGetData, ThrowOnError>): RequestResult<GetAllNpcsNpcsDetailsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllNpcsNpcsDetailsGetResponses, unknown, ThrowOnError>({ url: '/npcs/details', ...options });
 
 /**
  * `GET /npcs/details/{code}`
@@ -1220,7 +1220,7 @@ export const getAllNpcsNpcsDetailsGet = <ThrowOnError extends boolean = false>(o
  *
  * Retrieve the details of a NPC.
  */
-export const getNpcNpcsDetailsCodeGet = <ThrowOnError extends boolean = false>(options: Options<GetNpcNpcsDetailsCodeGetData, ThrowOnError>): RequestResult<GetNpcNpcsDetailsCodeGetResponses, GetNpcNpcsDetailsCodeGetErrors, ThrowOnError> => (options.client ?? client).get<GetNpcNpcsDetailsCodeGetResponses, GetNpcNpcsDetailsCodeGetErrors, ThrowOnError>({ url: '/npcs/details/{code}', ...options });
+export const getNpcNpcsDetailsCodeGet = <ThrowOnError extends boolean = true>(options: Options<GetNpcNpcsDetailsCodeGetData, ThrowOnError>): RequestResult<GetNpcNpcsDetailsCodeGetResponses, GetNpcNpcsDetailsCodeGetErrors, ThrowOnError> => (options.client ?? client).get<GetNpcNpcsDetailsCodeGetResponses, GetNpcNpcsDetailsCodeGetErrors, ThrowOnError>({ url: '/npcs/details/{code}', ...options });
 
 /**
  * `GET /npcs/items/{code}`
@@ -1229,7 +1229,7 @@ export const getNpcNpcsDetailsCodeGet = <ThrowOnError extends boolean = false>(o
  *
  * Retrieve the items list of a NPC. If the NPC has items to buy, sell or trade, they will be displayed.
  */
-export const getNpcItemsNpcsItemsCodeGet = <ThrowOnError extends boolean = false>(options: Options<GetNpcItemsNpcsItemsCodeGetData, ThrowOnError>): RequestResult<GetNpcItemsNpcsItemsCodeGetResponses, GetNpcItemsNpcsItemsCodeGetErrors, ThrowOnError> => (options.client ?? client).get<GetNpcItemsNpcsItemsCodeGetResponses, GetNpcItemsNpcsItemsCodeGetErrors, ThrowOnError>({ url: '/npcs/items/{code}', ...options });
+export const getNpcItemsNpcsItemsCodeGet = <ThrowOnError extends boolean = true>(options: Options<GetNpcItemsNpcsItemsCodeGetData, ThrowOnError>): RequestResult<GetNpcItemsNpcsItemsCodeGetResponses, GetNpcItemsNpcsItemsCodeGetErrors, ThrowOnError> => (options.client ?? client).get<GetNpcItemsNpcsItemsCodeGetResponses, GetNpcItemsNpcsItemsCodeGetErrors, ThrowOnError>({ url: '/npcs/items/{code}', ...options });
 
 /**
  * `GET /npcs/items`
@@ -1238,7 +1238,7 @@ export const getNpcItemsNpcsItemsCodeGet = <ThrowOnError extends boolean = false
  *
  * Retrieve the list of all NPC items.
  */
-export const getAllNpcsItemsNpcsItemsGet = <ThrowOnError extends boolean = false>(options?: Options<GetAllNpcsItemsNpcsItemsGetData, ThrowOnError>): RequestResult<GetAllNpcsItemsNpcsItemsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllNpcsItemsNpcsItemsGetResponses, unknown, ThrowOnError>({ url: '/npcs/items', ...options });
+export const getAllNpcsItemsNpcsItemsGet = <ThrowOnError extends boolean = true>(options?: Options<GetAllNpcsItemsNpcsItemsGetData, ThrowOnError>): RequestResult<GetAllNpcsItemsNpcsItemsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllNpcsItemsNpcsItemsGetResponses, unknown, ThrowOnError>({ url: '/npcs/items', ...options });
 
 /**
  * `GET /raids`
@@ -1247,7 +1247,7 @@ export const getAllNpcsItemsNpcsItemsGet = <ThrowOnError extends boolean = false
  *
  * Fetch the list of all raids.
  */
-export const getAllRaidsRaidsGet = <ThrowOnError extends boolean = false>(options?: Options<GetAllRaidsRaidsGetData, ThrowOnError>): RequestResult<GetAllRaidsRaidsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllRaidsRaidsGetResponses, unknown, ThrowOnError>({ url: '/raids', ...options });
+export const getAllRaidsRaidsGet = <ThrowOnError extends boolean = true>(options?: Options<GetAllRaidsRaidsGetData, ThrowOnError>): RequestResult<GetAllRaidsRaidsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllRaidsRaidsGetResponses, unknown, ThrowOnError>({ url: '/raids', ...options });
 
 /**
  * `GET /raids/{code}`
@@ -1256,7 +1256,7 @@ export const getAllRaidsRaidsGet = <ThrowOnError extends boolean = false>(option
  *
  * Retrieve the details of a specific raid.
  */
-export const getRaidRaidsCodeGet = <ThrowOnError extends boolean = false>(options: Options<GetRaidRaidsCodeGetData, ThrowOnError>): RequestResult<GetRaidRaidsCodeGetResponses, GetRaidRaidsCodeGetErrors, ThrowOnError> => (options.client ?? client).get<GetRaidRaidsCodeGetResponses, GetRaidRaidsCodeGetErrors, ThrowOnError>({ url: '/raids/{code}', ...options });
+export const getRaidRaidsCodeGet = <ThrowOnError extends boolean = true>(options: Options<GetRaidRaidsCodeGetData, ThrowOnError>): RequestResult<GetRaidRaidsCodeGetResponses, GetRaidRaidsCodeGetErrors, ThrowOnError> => (options.client ?? client).get<GetRaidRaidsCodeGetResponses, GetRaidRaidsCodeGetErrors, ThrowOnError>({ url: '/raids/{code}', ...options });
 
 /**
  * `GET /raids/{code}/leaderboard`
@@ -1265,7 +1265,7 @@ export const getRaidRaidsCodeGet = <ThrowOnError extends boolean = false>(option
  *
  * Retrieve the leaderboard for the active or latest raid instance.
  */
-export const getRaidLeaderboardRaidsCodeLeaderboardGet = <ThrowOnError extends boolean = false>(options: Options<GetRaidLeaderboardRaidsCodeLeaderboardGetData, ThrowOnError>): RequestResult<GetRaidLeaderboardRaidsCodeLeaderboardGetResponses, unknown, ThrowOnError> => (options.client ?? client).get<GetRaidLeaderboardRaidsCodeLeaderboardGetResponses, unknown, ThrowOnError>({ url: '/raids/{code}/leaderboard', ...options });
+export const getRaidLeaderboardRaidsCodeLeaderboardGet = <ThrowOnError extends boolean = true>(options: Options<GetRaidLeaderboardRaidsCodeLeaderboardGetData, ThrowOnError>): RequestResult<GetRaidLeaderboardRaidsCodeLeaderboardGetResponses, unknown, ThrowOnError> => (options.client ?? client).get<GetRaidLeaderboardRaidsCodeLeaderboardGetResponses, unknown, ThrowOnError>({ url: '/raids/{code}/leaderboard', ...options });
 
 /**
  * `GET /resources`
@@ -1274,7 +1274,7 @@ export const getRaidLeaderboardRaidsCodeLeaderboardGet = <ThrowOnError extends b
  *
  * Fetch resources details.
  */
-export const getAllResourcesResourcesGet = <ThrowOnError extends boolean = false>(options?: Options<GetAllResourcesResourcesGetData, ThrowOnError>): RequestResult<GetAllResourcesResourcesGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllResourcesResourcesGetResponses, unknown, ThrowOnError>({ url: '/resources', ...options });
+export const getAllResourcesResourcesGet = <ThrowOnError extends boolean = true>(options?: Options<GetAllResourcesResourcesGetData, ThrowOnError>): RequestResult<GetAllResourcesResourcesGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllResourcesResourcesGetResponses, unknown, ThrowOnError>({ url: '/resources', ...options });
 
 /**
  * `GET /resources/{code}`
@@ -1283,7 +1283,7 @@ export const getAllResourcesResourcesGet = <ThrowOnError extends boolean = false
  *
  * Retrieve the details of a resource.
  */
-export const getResourceResourcesCodeGet = <ThrowOnError extends boolean = false>(options: Options<GetResourceResourcesCodeGetData, ThrowOnError>): RequestResult<GetResourceResourcesCodeGetResponses, GetResourceResourcesCodeGetErrors, ThrowOnError> => (options.client ?? client).get<GetResourceResourcesCodeGetResponses, GetResourceResourcesCodeGetErrors, ThrowOnError>({ url: '/resources/{code}', ...options });
+export const getResourceResourcesCodeGet = <ThrowOnError extends boolean = true>(options: Options<GetResourceResourcesCodeGetData, ThrowOnError>): RequestResult<GetResourceResourcesCodeGetResponses, GetResourceResourcesCodeGetErrors, ThrowOnError> => (options.client ?? client).get<GetResourceResourcesCodeGetResponses, GetResourceResourcesCodeGetErrors, ThrowOnError>({ url: '/resources/{code}', ...options });
 
 /**
  * `GET /tasks/list`
@@ -1292,7 +1292,7 @@ export const getResourceResourcesCodeGet = <ThrowOnError extends boolean = false
  *
  * Fetch the list of all tasks.
  */
-export const getAllTasksTasksListGet = <ThrowOnError extends boolean = false>(options?: Options<GetAllTasksTasksListGetData, ThrowOnError>): RequestResult<GetAllTasksTasksListGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllTasksTasksListGetResponses, unknown, ThrowOnError>({ url: '/tasks/list', ...options });
+export const getAllTasksTasksListGet = <ThrowOnError extends boolean = true>(options?: Options<GetAllTasksTasksListGetData, ThrowOnError>): RequestResult<GetAllTasksTasksListGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllTasksTasksListGetResponses, unknown, ThrowOnError>({ url: '/tasks/list', ...options });
 
 /**
  * `GET /tasks/list/{code}`
@@ -1301,7 +1301,7 @@ export const getAllTasksTasksListGet = <ThrowOnError extends boolean = false>(op
  *
  * Retrieve the details of a task.
  */
-export const getTaskTasksListCodeGet = <ThrowOnError extends boolean = false>(options: Options<GetTaskTasksListCodeGetData, ThrowOnError>): RequestResult<GetTaskTasksListCodeGetResponses, GetTaskTasksListCodeGetErrors, ThrowOnError> => (options.client ?? client).get<GetTaskTasksListCodeGetResponses, GetTaskTasksListCodeGetErrors, ThrowOnError>({ url: '/tasks/list/{code}', ...options });
+export const getTaskTasksListCodeGet = <ThrowOnError extends boolean = true>(options: Options<GetTaskTasksListCodeGetData, ThrowOnError>): RequestResult<GetTaskTasksListCodeGetResponses, GetTaskTasksListCodeGetErrors, ThrowOnError> => (options.client ?? client).get<GetTaskTasksListCodeGetResponses, GetTaskTasksListCodeGetErrors, ThrowOnError>({ url: '/tasks/list/{code}', ...options });
 
 /**
  * `GET /tasks/rewards`
@@ -1310,7 +1310,7 @@ export const getTaskTasksListCodeGet = <ThrowOnError extends boolean = false>(op
  *
  * Fetch the list of all tasks rewards. To obtain these rewards, you must exchange 6 task coins with a tasks master.
  */
-export const getAllTasksRewardsTasksRewardsGet = <ThrowOnError extends boolean = false>(options?: Options<GetAllTasksRewardsTasksRewardsGetData, ThrowOnError>): RequestResult<GetAllTasksRewardsTasksRewardsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllTasksRewardsTasksRewardsGetResponses, unknown, ThrowOnError>({ url: '/tasks/rewards', ...options });
+export const getAllTasksRewardsTasksRewardsGet = <ThrowOnError extends boolean = true>(options?: Options<GetAllTasksRewardsTasksRewardsGetData, ThrowOnError>): RequestResult<GetAllTasksRewardsTasksRewardsGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllTasksRewardsTasksRewardsGetResponses, unknown, ThrowOnError>({ url: '/tasks/rewards', ...options });
 
 /**
  * `GET /tasks/rewards/{code}`
@@ -1319,7 +1319,7 @@ export const getAllTasksRewardsTasksRewardsGet = <ThrowOnError extends boolean =
  *
  * Retrieve the details of a tasks reward.
  */
-export const getTasksRewardTasksRewardsCodeGet = <ThrowOnError extends boolean = false>(options: Options<GetTasksRewardTasksRewardsCodeGetData, ThrowOnError>): RequestResult<GetTasksRewardTasksRewardsCodeGetResponses, GetTasksRewardTasksRewardsCodeGetErrors, ThrowOnError> => (options.client ?? client).get<GetTasksRewardTasksRewardsCodeGetResponses, GetTasksRewardTasksRewardsCodeGetErrors, ThrowOnError>({ url: '/tasks/rewards/{code}', ...options });
+export const getTasksRewardTasksRewardsCodeGet = <ThrowOnError extends boolean = true>(options: Options<GetTasksRewardTasksRewardsCodeGetData, ThrowOnError>): RequestResult<GetTasksRewardTasksRewardsCodeGetResponses, GetTasksRewardTasksRewardsCodeGetErrors, ThrowOnError> => (options.client ?? client).get<GetTasksRewardTasksRewardsCodeGetResponses, GetTasksRewardTasksRewardsCodeGetErrors, ThrowOnError>({ url: '/tasks/rewards/{code}', ...options });
 
 /**
  * `POST /simulation/fight`
@@ -1329,7 +1329,7 @@ export const getTasksRewardTasksRewardsCodeGet = <ThrowOnError extends boolean =
  * Simulate combat with fake characters against a monster multiple times.
  * Member or founder account required.
  */
-export const fightSimulationSimulationFightPost = <ThrowOnError extends boolean = false>(options: Options<FightSimulationSimulationFightPostData, ThrowOnError>): RequestResult<FightSimulationSimulationFightPostResponses, FightSimulationSimulationFightPostErrors, ThrowOnError> => (options.client ?? client).post<FightSimulationSimulationFightPostResponses, FightSimulationSimulationFightPostErrors, ThrowOnError>({
+export const fightSimulationSimulationFightPost = <ThrowOnError extends boolean = true>(options: Options<FightSimulationSimulationFightPostData, ThrowOnError>): RequestResult<FightSimulationSimulationFightPostResponses, FightSimulationSimulationFightPostErrors, ThrowOnError> => (options.client ?? client).post<FightSimulationSimulationFightPostResponses, FightSimulationSimulationFightPostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/simulation/fight',
     ...options,
@@ -1346,7 +1346,7 @@ export const fightSimulationSimulationFightPost = <ThrowOnError extends boolean 
  *
  * Use your account as HTTPBasic Auth to generate your token to use the API. You can also generate your token directly on the website.
  */
-export const generateTokenTokenPost = <ThrowOnError extends boolean = false>(options?: Options<GenerateTokenTokenPostData, ThrowOnError>): RequestResult<GenerateTokenTokenPostResponses, GenerateTokenTokenPostErrors, ThrowOnError> => (options?.client ?? client).post<GenerateTokenTokenPostResponses, GenerateTokenTokenPostErrors, ThrowOnError>({
+export const generateTokenTokenPost = <ThrowOnError extends boolean = true>(options?: Options<GenerateTokenTokenPostData, ThrowOnError>): RequestResult<GenerateTokenTokenPostResponses, GenerateTokenTokenPostErrors, ThrowOnError> => (options?.client ?? client).post<GenerateTokenTokenPostResponses, GenerateTokenTokenPostErrors, ThrowOnError>({
     security: [{ scheme: 'basic', type: 'http' }],
     url: '/token',
     ...options
@@ -1359,7 +1359,7 @@ export const generateTokenTokenPost = <ThrowOnError extends boolean = false>(opt
  *
  * Return the gems shop catalog.
  */
-export const getCatalogGemsShopGet = <ThrowOnError extends boolean = false>(options?: Options<GetCatalogGemsShopGetData, ThrowOnError>): RequestResult<GetCatalogGemsShopGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetCatalogGemsShopGetResponses, unknown, ThrowOnError>({ url: '/gems_shop/', ...options });
+export const getCatalogGemsShopGet = <ThrowOnError extends boolean = true>(options?: Options<GetCatalogGemsShopGetData, ThrowOnError>): RequestResult<GetCatalogGemsShopGetResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetCatalogGemsShopGetResponses, unknown, ThrowOnError>({ url: '/gems_shop/', ...options });
 
 /**
  * `POST /gems_shop/skin`
@@ -1368,7 +1368,7 @@ export const getCatalogGemsShopGet = <ThrowOnError extends boolean = false>(opti
  *
  * Buy a skin from the gems shop using gems.
  */
-export const buySkinGemsShopSkinPost = <ThrowOnError extends boolean = false>(options: Options<BuySkinGemsShopSkinPostData, ThrowOnError>): RequestResult<BuySkinGemsShopSkinPostResponses, BuySkinGemsShopSkinPostErrors, ThrowOnError> => (options.client ?? client).post<BuySkinGemsShopSkinPostResponses, BuySkinGemsShopSkinPostErrors, ThrowOnError>({
+export const buySkinGemsShopSkinPost = <ThrowOnError extends boolean = true>(options: Options<BuySkinGemsShopSkinPostData, ThrowOnError>): RequestResult<BuySkinGemsShopSkinPostResponses, BuySkinGemsShopSkinPostErrors, ThrowOnError> => (options.client ?? client).post<BuySkinGemsShopSkinPostResponses, BuySkinGemsShopSkinPostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/gems_shop/skin',
     ...options,
@@ -1385,7 +1385,7 @@ export const buySkinGemsShopSkinPost = <ThrowOnError extends boolean = false>(op
  *
  * Spawn an event from the gems shop using gems.
  */
-export const buySpawnEventGemsShopSpawnEventPost = <ThrowOnError extends boolean = false>(options: Options<BuySpawnEventGemsShopSpawnEventPostData, ThrowOnError>): RequestResult<BuySpawnEventGemsShopSpawnEventPostResponses, BuySpawnEventGemsShopSpawnEventPostErrors, ThrowOnError> => (options.client ?? client).post<BuySpawnEventGemsShopSpawnEventPostResponses, BuySpawnEventGemsShopSpawnEventPostErrors, ThrowOnError>({
+export const buySpawnEventGemsShopSpawnEventPost = <ThrowOnError extends boolean = true>(options: Options<BuySpawnEventGemsShopSpawnEventPostData, ThrowOnError>): RequestResult<BuySpawnEventGemsShopSpawnEventPostResponses, BuySpawnEventGemsShopSpawnEventPostErrors, ThrowOnError> => (options.client ?? client).post<BuySpawnEventGemsShopSpawnEventPostResponses, BuySpawnEventGemsShopSpawnEventPostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/gems_shop/spawn_event',
     ...options,
@@ -1402,7 +1402,7 @@ export const buySpawnEventGemsShopSpawnEventPost = <ThrowOnError extends boolean
  *
  * Buy or extend membership by 30 days using gems. Unavailable while a Stripe subscription is active.
  */
-export const buySubscriptionGemsShopSubscriptionPost = <ThrowOnError extends boolean = false>(options?: Options<BuySubscriptionGemsShopSubscriptionPostData, ThrowOnError>): RequestResult<BuySubscriptionGemsShopSubscriptionPostResponses, BuySubscriptionGemsShopSubscriptionPostErrors, ThrowOnError> => (options?.client ?? client).post<BuySubscriptionGemsShopSubscriptionPostResponses, BuySubscriptionGemsShopSubscriptionPostErrors, ThrowOnError>({
+export const buySubscriptionGemsShopSubscriptionPost = <ThrowOnError extends boolean = true>(options?: Options<BuySubscriptionGemsShopSubscriptionPostData, ThrowOnError>): RequestResult<BuySubscriptionGemsShopSubscriptionPostResponses, BuySubscriptionGemsShopSubscriptionPostErrors, ThrowOnError> => (options?.client ?? client).post<BuySubscriptionGemsShopSubscriptionPostResponses, BuySubscriptionGemsShopSubscriptionPostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/gems_shop/subscription',
     ...options
@@ -1415,7 +1415,7 @@ export const buySubscriptionGemsShopSubscriptionPost = <ThrowOnError extends boo
  *
  * Buy a custom design using gems.
  */
-export const buyCustomDesignGemsShopBuyCustomDesignPost = <ThrowOnError extends boolean = false>(options: Options<BuyCustomDesignGemsShopBuyCustomDesignPostData, ThrowOnError>): RequestResult<BuyCustomDesignGemsShopBuyCustomDesignPostResponses, BuyCustomDesignGemsShopBuyCustomDesignPostErrors, ThrowOnError> => (options.client ?? client).post<BuyCustomDesignGemsShopBuyCustomDesignPostResponses, BuyCustomDesignGemsShopBuyCustomDesignPostErrors, ThrowOnError>({
+export const buyCustomDesignGemsShopBuyCustomDesignPost = <ThrowOnError extends boolean = true>(options: Options<BuyCustomDesignGemsShopBuyCustomDesignPostData, ThrowOnError>): RequestResult<BuyCustomDesignGemsShopBuyCustomDesignPostResponses, BuyCustomDesignGemsShopBuyCustomDesignPostErrors, ThrowOnError> => (options.client ?? client).post<BuyCustomDesignGemsShopBuyCustomDesignPostResponses, BuyCustomDesignGemsShopBuyCustomDesignPostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/gems_shop/buy_custom_design',
     ...options,
@@ -1435,7 +1435,7 @@ export const buyCustomDesignGemsShopBuyCustomDesignPost = <ThrowOnError extends 
  * questions per day. When no free question is available, the request can spend
  * 1 gem with pay_with_gems=true.
  */
-export const askGameAssistantGameAssistantAskPost = <ThrowOnError extends boolean = false>(options: Options<AskGameAssistantGameAssistantAskPostData, ThrowOnError>): RequestResult<AskGameAssistantGameAssistantAskPostResponses, AskGameAssistantGameAssistantAskPostErrors, ThrowOnError> => (options.client ?? client).post<AskGameAssistantGameAssistantAskPostResponses, AskGameAssistantGameAssistantAskPostErrors, ThrowOnError>({
+export const askGameAssistantGameAssistantAskPost = <ThrowOnError extends boolean = true>(options: Options<AskGameAssistantGameAssistantAskPostData, ThrowOnError>): RequestResult<AskGameAssistantGameAssistantAskPostResponses, AskGameAssistantGameAssistantAskPostErrors, ThrowOnError> => (options.client ?? client).post<AskGameAssistantGameAssistantAskPostResponses, AskGameAssistantGameAssistantAskPostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/game_assistant/ask',
     ...options,

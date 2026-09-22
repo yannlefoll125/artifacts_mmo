@@ -10,7 +10,6 @@ import { httpMessage, logger, payloadPreview } from '@/util/logger';
 client.setConfig({
     baseUrl: 'https://api.artifactsmmo.com',
     auth: () => config.artifactsToken,
-    throwOnError: true,
 });
 
 // One log line per upstream call (URL + status + duration; never headers,
