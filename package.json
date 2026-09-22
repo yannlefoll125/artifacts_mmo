@@ -10,6 +10,8 @@
   },
   "scripts": {
     "dev": "yarn workspace @artifacts/server dev",
+    "dev:web": "yarn workspace @artifacts/webapp dev",
+    "build:web": "yarn workspace @artifacts/webapp build",
     "start": "yarn workspace @artifacts/server start",
     "spec:fetch": "yarn workspace @artifacts/server spec:fetch",
     "generate": "yarn workspace @artifacts/server generate",
