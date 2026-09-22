@@ -70,6 +70,18 @@ Output is pretty-printed unless `NODE_ENV=production`; force with `LOG_PRETTY=0/
   Note: a schema mistake like `Type.String` (missing `()`) passes `tsc` — it only
   surfaces when Fastify compiles serializers, so `yarn api:spec` is the effective
   schema validator after contract edits.
+- **DTO definition**: `defineDto('Name', Type.Object({...}))` in `@artifacts/shared`
+  returns `[NameSchema, NameRef]` — the `$id`-stamped schema and a `$ref` typed as its
+  `Static<>`. `buildServer()` registers each schema (`addSchema`); route schemas use the
+  Ref. That's what puts named `components/schemas` in the spec, which the generated
+  webapp client turns into named DTO types. After a contract edit: `yarn api:spec`
+  (server), then `yarn api:client` (webapp).
+- **Type direction**: server code types against `@artifacts/shared` (`Static<>`-derived,
+  e.g. `Item`); webapp code types against the generated client (`Item` from
+  `generated-src/api`). Both are derived from the same schema; nobody hand-writes shapes.
+- **Clients throw**: both generated clients are built with `throwOnError: true` (set in
+  each package's `openapi-ts.config.ts`), so calls resolve to `{data, request, response}`
+  with `data` guaranteed — failures throw; never destructure an `error` field.
 - **`packages/server/src/api/client.ts`** — configures the generated game-API client
   (base URL + auth) and re-exports one typed stub per endpoint. Import stubs from this
   module (e.g. `getMyCharactersMyCharactersGet()`), never from `@generated` directly.
