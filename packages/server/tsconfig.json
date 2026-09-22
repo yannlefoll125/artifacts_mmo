@@ -11,6 +11,7 @@
   "include": [
     "src/**/*.ts",
     "tests/**/*.ts",
+    "scripts/**/*.ts",
     "generated-src/**/*.ts",
     "vitest.config.ts"
   ],

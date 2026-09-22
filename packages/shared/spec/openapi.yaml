@@ -1,0 +1,182 @@
+openapi: 3.0.3
+info:
+  title: artifacts_mmo server
+  version: 0.1.0
+components:
+  schemas: {}
+paths:
+  /items/:
+    get:
+      parameters:
+        - schema:
+            anyOf:
+              - type: string
+                enum:
+                  - weaponcrafting
+              - type: string
+                enum:
+                  - gearcrafting
+              - type: string
+                enum:
+                  - jewelrycrafting
+              - type: string
+                enum:
+                  - cooking
+              - type: string
+                enum:
+                  - woodcutting
+              - type: string
+                enum:
+                  - mining
+              - type: string
+                enum:
+                  - alchemy
+          in: query
+          name: skill
+          required: false
+        - schema:
+            type: number
+          in: query
+          name: level
+          required: false
+      responses:
+        "200":
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                anyOf:
+                  - type: object
+                    required:
+                      - ok
+                      - data
+                    properties:
+                      ok:
+                        type: boolean
+                        enum:
+                          - true
+                      data:
+                        type: array
+                        items: {}
+                  - type: object
+                    required:
+                      - ok
+                      - error
+                    properties:
+                      ok:
+                        type: boolean
+                        enum:
+                          - false
+                      error:
+                        type: object
+                        required:
+                          - message
+                        properties:
+                          message:
+                            type: string
+                          upstreamCode:
+                            type: number
+        "500":
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                anyOf:
+                  - type: object
+                    required:
+                      - ok
+                      - data
+                    properties:
+                      ok:
+                        type: boolean
+                        enum:
+                          - true
+                      data:
+                        type: array
+                        items: {}
+                  - type: object
+                    required:
+                      - ok
+                      - error
+                    properties:
+                      ok:
+                        type: boolean
+                        enum:
+                          - false
+                      error:
+                        type: object
+                        required:
+                          - message
+                        properties:
+                          message:
+                            type: string
+                          upstreamCode:
+                            type: number
+  /health:
+    get:
+      responses:
+        "200":
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - status
+                properties:
+                  status:
+                    type: string
+                    enum:
+                      - ok
+  /server-status:
+    get:
+      responses:
+        "200":
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                anyOf:
+                  - type: object
+                    required:
+                      - ok
+                      - data
+                    properties:
+                      ok:
+                        type: boolean
+                        enum:
+                          - true
+                      data: {}
+                  - type: object
+                    required:
+                      - ok
+                      - error
+                    properties:
+                      ok:
+                        type: boolean
+                        enum:
+                          - false
+                      error:
+                        type: object
+                        required:
+                          - message
+                        properties:
+                          message:
+                            type: string
+                          upstreamCode:
+                            type: number
+  /test:
+    get:
+      responses:
+        "200":
+          description: Default Response
+  /fight-chicken:
+    get:
+      responses:
+        "200":
+          description: Default Response
+  /error:
+    get:
+      responses:
+        "200":
+          description: Default Response

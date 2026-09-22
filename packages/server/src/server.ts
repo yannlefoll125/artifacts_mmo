@@ -1,4 +1,4 @@
-import Fastify, {LogController, type FastifyReply, type FastifyRequest} from 'fastify';
+import Fastify, {LogController, type FastifyInstance, type FastifyReply, type FastifyRequest} from 'fastify';
 import {ApiResultSchema, HealthStatusSchema, type ApiResult, type HealthStatus} from '@artifacts/shared';
 import {
     type CraftSchema, type CraftSkill,
@@ -12,7 +12,7 @@ import {httpMessage, logger, payloadPreview} from '@/util/logger';
 import {waitCooldown} from "@/util/cooldown";
 import {CHICKEN} from "@/util/locations";
 import {Type} from "typebox";
-import type {TypeBoxTypeProvider} from "@fastify/type-provider-typebox";
+import type {FastifyPluginAsyncTypebox, TypeBoxTypeProvider} from "@fastify/type-provider-typebox";
 import {itemsRoutes} from "@/routes/items.routes";
 
 // Default request logging is two JSON-heavy lines per request; the onResponse
@@ -39,11 +39,19 @@ class QuietRequestLogController extends LogController {
     }
 }
 
-export function buildServer() {
+// `configure` runs before any route is registered — plugins that need to
+// observe route registration (e.g. @fastify/swagger in the spec-generation
+// script) must be registered there, not after buildServer returns.
+export function buildServer(configure?: (server: FastifyInstance) => void) {
     const server = Fastify({
         loggerInstance: logger,
         logController: new QuietRequestLogController(),
     }).withTypeProvider<TypeBoxTypeProvider>();
+
+    // The pino loggerInstance specializes the instance's logger generic, which
+    // FastifyInstance's default doesn't cover — safe to erase for callbacks
+    // that only register plugins.
+    configure?.(server as unknown as FastifyInstance);
 
     server.addHook('onResponse', async (request, reply) => {
         request.log.info(
@@ -79,7 +87,15 @@ export function buildServer() {
         return payload;
     });
     server.register(itemsRoutes, {prefix: '/items'});
+    // Routes live in plugins (deferred until ready) rather than directly on
+    // the instance, so plugins registered via `configure` — @fastify/swagger
+    // in the spec-generation script — see them being added.
+    server.register(rootRoutes);
 
+    return server;
+}
+
+const rootRoutes: FastifyPluginAsyncTypebox = async (server) => {
     server.get('/health', {
         schema: {response: {200: HealthStatusSchema}},
     }, async (): Promise<HealthStatus> => ({status: 'ok'}));
@@ -160,6 +176,4 @@ export function buildServer() {
     server.get('/error', async (): Promise<ApiResult<unknown>> => {
         throw new Error('test error')
     })
-
-    return server;
 }
