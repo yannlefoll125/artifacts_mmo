@@ -1,5 +1,5 @@
 import Fastify, {LogController, type FastifyInstance, type FastifyReply, type FastifyRequest} from 'fastify';
-import {ApiResultSchema, HealthStatusSchema, type ApiResult, type HealthStatus} from '@artifacts/shared';
+import {HealthStatusSchema, PROBLEM_CONTENT_TYPE, ProblemSchema, type HealthStatus} from '@artifacts/shared';
 import {
     type CraftSchema, type CraftSkill,
     getActiveCharactersCharactersActiveGet, getAllItemsItemsGet, getMapByPositionMapsLayerXYGet,
@@ -9,6 +9,7 @@ import {
 import {MyCharacters} from "@/adapters/myCharacters";
 import {STATUS_CODES} from 'node:http';
 import {httpMessage, logger, payloadPreview} from '@/util/logger';
+import {isApiError} from "@/util/utils";
 import {waitCooldown} from "@/util/cooldown";
 import {CHICKEN} from "@/util/locations";
 import {Type} from "typebox";
@@ -100,19 +101,30 @@ const rootRoutes: FastifyPluginAsyncTypebox = async (server) => {
         schema: {response: {200: HealthStatusSchema}},
     }, async (): Promise<HealthStatus> => ({status: 'ok'}));
 
-    // Example of wrapping an ArtifactsMMO endpoint in the shared ApiResult
-    // envelope — the pattern clients can rely on. Replace/extend as you build.
+    // Example of wrapping an ArtifactsMMO endpoint in the shared response
+    // convention — bare payload on success, RFC 9457 problem+json on failure.
+    // The pattern clients can rely on; replace/extend as you build.
     server.get('/server-status', {
-        schema: {response: {200: ApiResultSchema(Type.Unknown())}},
-    }, async (): Promise<ApiResult<unknown>> => {
-        const {data, response} = await getServerDetailsGet();
-        if (!data) {
-            return {ok: false, error: {message: 'upstream error', upstreamCode: response?.status}};
+        schema: {
+            response: {
+                200: Type.Unknown(),
+                500: {content: {[PROBLEM_CONTENT_TYPE]: {schema: ProblemSchema}}},
+            },
+        },
+    }, async (request, reply) => {
+        try {
+            // throwOnError on the game-API client: failures land in the
+            // catch, never as a data-less result.
+            const {data} = await getServerDetailsGet();
+            return data.data;
+        } catch (e) {
+            reply.statusCode = 500;
+            reply.type(PROBLEM_CONTENT_TYPE);
+            return {title: 'Upstream error', status: 500, upstreamCode: isApiError(e) ? e.error.code : undefined};
         }
-        return {ok: true, data: data.data};
     });
 
-    server.get('/test', async (request): Promise<ApiResult<unknown>> => {
+    server.get('/test', async (request) => {
 
         const characters = await MyCharacters.getCharacters();
         const kat = characters.find(c => c.name() === 'Kat');
@@ -138,7 +150,7 @@ const rootRoutes: FastifyPluginAsyncTypebox = async (server) => {
         }
     })
 
-    server.get('/fight-chicken', async (): Promise<ApiResult<unknown>> => {
+    server.get('/fight-chicken', async () => {
         const characters = await MyCharacters.getCharacters();
         const kat = characters.find(c => c.name() === 'Kat');
 
@@ -173,7 +185,7 @@ const rootRoutes: FastifyPluginAsyncTypebox = async (server) => {
 
 
 
-    server.get('/error', async (): Promise<ApiResult<unknown>> => {
+    server.get('/error', async () => {
         throw new Error('test error')
     })
 }

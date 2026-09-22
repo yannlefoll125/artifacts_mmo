@@ -4,7 +4,7 @@
 // and (as they appear) route path constants.
 // Importable by any TS client; only dependency is typebox.
 
-export { ApiResultSchema, ApiErrorSchema } from './envelope';
-export type { ApiResult, ApiError } from './envelope';
+export { ProblemSchema, PROBLEM_CONTENT_TYPE } from './problem';
+export type { Problem } from './problem';
 export { HealthStatusSchema } from './dto/health';
 export type { HealthStatus } from './dto/health';

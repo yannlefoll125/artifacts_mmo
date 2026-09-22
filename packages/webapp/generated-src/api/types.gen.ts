@@ -19,14 +19,11 @@ export type GetItemsErrors = {
      * Default Response
      */
     500: {
-        ok: true;
-        data: Array<unknown>;
-    } | {
-        ok: false;
-        error: {
-            message: string;
-            upstreamCode?: number;
-        };
+        type?: string;
+        title: string;
+        status: number;
+        detail?: string;
+        upstreamCode?: number;
     };
 };
 
@@ -36,16 +33,7 @@ export type GetItemsResponses = {
     /**
      * Default Response
      */
-    200: {
-        ok: true;
-        data: Array<unknown>;
-    } | {
-        ok: false;
-        error: {
-            message: string;
-            upstreamCode?: number;
-        };
-    };
+    200: Array<unknown>;
 };
 
 export type GetItemsResponse = GetItemsResponses[keyof GetItemsResponses];
@@ -75,23 +63,27 @@ export type GetServerStatusData = {
     url: '/server-status';
 };
 
+export type GetServerStatusErrors = {
+    /**
+     * Default Response
+     */
+    500: {
+        type?: string;
+        title: string;
+        status: number;
+        detail?: string;
+        upstreamCode?: number;
+    };
+};
+
+export type GetServerStatusError = GetServerStatusErrors[keyof GetServerStatusErrors];
+
 export type GetServerStatusResponses = {
     /**
      * Default Response
      */
-    200: {
-        ok: true;
-        data: unknown;
-    } | {
-        ok: false;
-        error: {
-            message: string;
-            upstreamCode?: number;
-        };
-    };
+    200: unknown;
 };
-
-export type GetServerStatusResponse = GetServerStatusResponses[keyof GetServerStatusResponses];
 
 export type GetTestData = {
     body?: never;

@@ -1,7 +1,7 @@
 # ADR-0003: TypeBox schemas in shared as the single source of truth for the server's API
 
 Date: 2026-09-22
-Status: accepted (amends the contract detail of ADR-0001)
+Status: accepted (amends the contract detail of ADR-0001; the envelope it mentions is superseded by ADR-0004 — read "envelope + DTOs" as "problem details + DTOs")
 
 ## Context
 

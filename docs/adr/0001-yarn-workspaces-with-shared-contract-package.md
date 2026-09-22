@@ -1,7 +1,7 @@
 # ADR-0001: Yarn workspaces monorepo with a shared contract package
 
 Date: 2026-09-19
-Status: accepted
+Status: accepted (contract detail amended by ADR-0003; the `ApiResult<T>` envelope superseded by ADR-0004)
 
 ## Context
 

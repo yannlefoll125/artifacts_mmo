@@ -2,7 +2,7 @@
 
 import type { Client, ClientMeta, Options as Options2, RequestResult, TDataShape } from './client';
 import { client } from './client.gen';
-import type { GetErrorData, GetErrorResponses, GetFightChickenData, GetFightChickenResponses, GetHealthData, GetHealthResponses, GetItemsData, GetItemsErrors, GetItemsResponses, GetServerStatusData, GetServerStatusResponses, GetTestData, GetTestResponses } from './types.gen';
+import type { GetErrorData, GetErrorResponses, GetFightChickenData, GetFightChickenResponses, GetHealthData, GetHealthResponses, GetItemsData, GetItemsErrors, GetItemsResponses, GetServerStatusData, GetServerStatusErrors, GetServerStatusResponses, GetTestData, GetTestResponses } from './types.gen';
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean, TResponse = unknown> = Options2<TData, ThrowOnError, TResponse> & {
     /**
@@ -22,7 +22,7 @@ export const getItems = <ThrowOnError extends boolean = false>(options?: Options
 
 export const getHealth = <ThrowOnError extends boolean = false>(options?: Options<GetHealthData, ThrowOnError>): RequestResult<GetHealthResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetHealthResponses, unknown, ThrowOnError>({ url: '/health', ...options });
 
-export const getServerStatus = <ThrowOnError extends boolean = false>(options?: Options<GetServerStatusData, ThrowOnError>): RequestResult<GetServerStatusResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetServerStatusResponses, unknown, ThrowOnError>({ url: '/server-status', ...options });
+export const getServerStatus = <ThrowOnError extends boolean = false>(options?: Options<GetServerStatusData, ThrowOnError>): RequestResult<GetServerStatusResponses, GetServerStatusErrors, ThrowOnError> => (options?.client ?? client).get<GetServerStatusResponses, GetServerStatusErrors, ThrowOnError>({ url: '/server-status', ...options });
 
 export const getTest = <ThrowOnError extends boolean = false>(options?: Options<GetTestData, ThrowOnError>): RequestResult<GetTestResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetTestResponses, unknown, ThrowOnError>({ url: '/test', ...options });
 

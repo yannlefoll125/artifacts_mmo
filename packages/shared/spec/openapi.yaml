@@ -45,73 +45,28 @@ paths:
           content:
             application/json:
               schema:
-                anyOf:
-                  - type: object
-                    required:
-                      - ok
-                      - data
-                    properties:
-                      ok:
-                        type: boolean
-                        enum:
-                          - true
-                      data:
-                        type: array
-                        items: {}
-                  - type: object
-                    required:
-                      - ok
-                      - error
-                    properties:
-                      ok:
-                        type: boolean
-                        enum:
-                          - false
-                      error:
-                        type: object
-                        required:
-                          - message
-                        properties:
-                          message:
-                            type: string
-                          upstreamCode:
-                            type: number
+                type: array
+                items: {}
         "500":
           description: Default Response
           content:
-            application/json:
+            application/problem+json:
               schema:
-                anyOf:
-                  - type: object
-                    required:
-                      - ok
-                      - data
-                    properties:
-                      ok:
-                        type: boolean
-                        enum:
-                          - true
-                      data:
-                        type: array
-                        items: {}
-                  - type: object
-                    required:
-                      - ok
-                      - error
-                    properties:
-                      ok:
-                        type: boolean
-                        enum:
-                          - false
-                      error:
-                        type: object
-                        required:
-                          - message
-                        properties:
-                          message:
-                            type: string
-                          upstreamCode:
-                            type: number
+                type: object
+                required:
+                  - title
+                  - status
+                properties:
+                  type:
+                    type: string
+                  title:
+                    type: string
+                  status:
+                    type: number
+                  detail:
+                    type: string
+                  upstreamCode:
+                    type: number
   /health:
     get:
       responses:
@@ -135,36 +90,27 @@ paths:
           description: Default Response
           content:
             application/json:
+              schema: {}
+        "500":
+          description: Default Response
+          content:
+            application/problem+json:
               schema:
-                anyOf:
-                  - type: object
-                    required:
-                      - ok
-                      - data
-                    properties:
-                      ok:
-                        type: boolean
-                        enum:
-                          - true
-                      data: {}
-                  - type: object
-                    required:
-                      - ok
-                      - error
-                    properties:
-                      ok:
-                        type: boolean
-                        enum:
-                          - false
-                      error:
-                        type: object
-                        required:
-                          - message
-                        properties:
-                          message:
-                            type: string
-                          upstreamCode:
-                            type: number
+                type: object
+                required:
+                  - title
+                  - status
+                properties:
+                  type:
+                    type: string
+                  title:
+                    type: string
+                  status:
+                    type: number
+                  detail:
+                    type: string
+                  upstreamCode:
+                    type: number
   /test:
     get:
       responses:

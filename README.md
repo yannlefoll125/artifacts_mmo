@@ -8,7 +8,7 @@ else) talk to the server and share a contract package with it.
 
 ```
 packages/
-  shared/   @artifacts/shared  — the contract: TypeBox schemas (envelope, DTOs) with
+  shared/   @artifacts/shared  — the contract: TypeBox schemas (problem details, DTOs) with
                                  Static<>-derived types, plus the server's generated
                                  OpenAPI spec (spec/openapi.yaml). Importable by any
                                  TS client; only dependency is typebox.
