@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import { getHealth } from '@generated/api'
+import { getHealth } from '@/api/client'
 
 const status = ref<'checking' | 'ok' | 'unreachable'>('checking')
 
